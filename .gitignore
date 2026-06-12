@@ -1,0 +1,16 @@
+# Licensed/extracted binaries and full flash dumps — never version, never publish.
+# MeshOS is Andy Kirby's closed-source licensed firmware; the dump contains it.
+backups/
+
+# External clones (LilyGo SDK + reference ports) — patches/ captures our changes
+T-Display-P4/
+reference/
+
+# Build output
+launcher/build/
+launcher/managed_components/
+launcher/dependencies.lock
+
+# Generated config (sdkconfig.defaults is the source of truth)
+launcher/sdkconfig
+launcher/sdkconfig.old

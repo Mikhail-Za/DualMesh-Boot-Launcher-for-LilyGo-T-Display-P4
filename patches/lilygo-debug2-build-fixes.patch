@@ -1,0 +1,60 @@
+diff --git a/main/CMakeLists.txt b/main/CMakeLists.txt
+index 259c124..8abcec7 100644
+--- a/main/CMakeLists.txt
++++ b/main/CMakeLists.txt
+@@ -69,5 +69,21 @@ elseif(CONFIG_EXAMPLE_BUILD_USB_HOST_MSC)
+     set(project_path "examples/usb_host_msc/")
+ endif()
+ 
+-idf_component_register(SRC_DIRS ${project_path} 
++idf_component_register(SRC_DIRS ${project_path}
+                         INCLUDE_DIRS ${project_path})
++
++# The debug2 branch examples consume SCREEN_WIDTH/SCREEN_HEIGHT/SCREEN_BITS_PER_PIXEL
++# and CONFIG_SCREEN_TYPE_*, but the screen-type Kconfig choice was dropped mid-refactor.
++# Values mirror libraries/lilygo_device_driver/.../t_display_p4_config.h.
++if(CONFIG_SCREEN_PIXEL_FORMAT_RGB888)
++    set(screen_bpp 24)
++else()
++    set(screen_bpp 16)
++endif()
++if(CONFIG_SCREEN_TYPE_HI8561)
++    target_compile_definitions(${COMPONENT_LIB} PRIVATE
++        SCREEN_WIDTH=540 SCREEN_HEIGHT=1168 SCREEN_BITS_PER_PIXEL=${screen_bpp})
++elseif(CONFIG_SCREEN_TYPE_RM69A10)
++    target_compile_definitions(${COMPONENT_LIB} PRIVATE
++        SCREEN_WIDTH=568 SCREEN_HEIGHT=1232 SCREEN_BITS_PER_PIXEL=${screen_bpp})
++endif()
+diff --git a/main/Kconfig.projbuild b/main/Kconfig.projbuild
+index f03d4ca..d9eee46 100644
+--- a/main/Kconfig.projbuild
++++ b/main/Kconfig.projbuild
+@@ -20,6 +20,15 @@ menu "Example Configuration"
+                 bool "RGB888"
+     endchoice
+ 
++    choice
++        prompt "Select the screen type"
++        default SCREEN_TYPE_HI8561
++            config SCREEN_TYPE_HI8561
++                bool "HI8561 (TFT 540x1168)"
++            config SCREEN_TYPE_RM69A10
++                bool "RM69A10 (AMOLED 568x1232)"
++    endchoice
++
+     choice
+         prompt "Select the color format of the camera"
+         default CAMERA_PIXEL_FORMAT_RGB565
+diff --git a/sdkconfig.defaults b/sdkconfig.defaults
+index 12dc462..c728ca0 100644
+--- a/sdkconfig.defaults
++++ b/sdkconfig.defaults
+@@ -80,3 +80,8 @@ CONFIG_ESP_HOSTED_SDIO_GPIO_RESET_SLAVE=100
+ CONFIG_USB_HOST_HUBS_SUPPORTED=y
+ CONFIG_USB_HOST_ENABLE_ENUM_FILTER_CALLBACK=y
+ CONFIG_FATFS_VOLUME_COUNT=2
++
++CONFIG_LV_FONT_MONTSERRAT_16=y
++
++CONFIG_ESP32P4_SELECTS_REV_LESS_V3=y
++CONFIG_ESP32P4_REV_MIN_100=y

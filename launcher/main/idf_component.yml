@@ -1,0 +1,20 @@
+dependencies:
+  idf: '>=5.5.3'
+
+  cpp_bus_driver:
+    override_path: "../../T-Display-P4/libraries/cpp_bus_driver"
+
+  arduino_cpp_bus_driver:
+    override_path: "../../T-Display-P4/libraries/arduino_cpp_bus_driver"
+
+  radiolib_cpp_bus_driver:
+    override_path: "../../T-Display-P4/libraries/radiolib_cpp_bus_driver"
+
+  icm20948_we:
+    override_path: "../../T-Display-P4/libraries/icm20948_we"
+
+  lilygo_device_driver:
+    override_path: "../../T-Display-P4/libraries/lilygo_device_driver"
+
+  lvgl/lvgl:
+    version: "9.4.0"

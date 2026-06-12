@@ -1,0 +1,23 @@
+menu "DualMesh Launcher Configuration"
+
+    # The lilygo_device_driver config headers require these symbols (they
+    # normally come from the LilyGo example project's Kconfig.projbuild).
+    choice
+        prompt "Screen color format"
+        default SCREEN_PIXEL_FORMAT_RGB565
+            config SCREEN_PIXEL_FORMAT_RGB565
+                bool "RGB565"
+            config SCREEN_PIXEL_FORMAT_RGB888
+                bool "RGB888"
+    endchoice
+
+    choice
+        prompt "Camera color format"
+        default CAMERA_PIXEL_FORMAT_RGB565
+            config CAMERA_PIXEL_FORMAT_RGB565
+                bool "RGB565"
+            config CAMERA_PIXEL_FORMAT_RGB888
+                bool "RGB888"
+    endchoice
+
+endmenu

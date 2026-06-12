@@ -1,0 +1,221 @@
+ESP-ROM:esp32p4-eco2-20240710
+Build:Jul 10 2024
+rst:0x1 (POWERON),boot:0x30f (SPI_FAST_FLASH_BOOT)
+SPI mode:DIO, clock div:1
+load:0x4ff33ce0,len:0x15e4
+load:0x4ff29ed0,len:0xe28
+load:0x4ff2cbd0,len:0x3518
+entry 0x4ff29eda
+I (25) boot: ESP-IDF v5.5.4 2nd stage bootloader
+I (26) boot: compile time Jun 12 2026 00:48:00
+I (26) boot: Multicore bootloader
+I (27) boot: chip revision: v1.0
+I (29) boot: efuse block revision: v0.1
+I (32) boot.esp32p4: SPI Speed      : 80MHz
+I (36) boot.esp32p4: SPI Mode       : DIO
+I (40) boot.esp32p4: SPI Flash Size : 16MB
+I (44) boot: Enabling RNG early entropy source...
+I (48) boot: Partition Table:
+I (51) boot: ## Label            Usage          Type ST Offset   Length
+I (57) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (70) boot:  2 factory          factory app      00 00 00010000 00f00000
+I (78) boot: End of partition table
+I (80) esp_image: segment 0: paddr=00010020 vaddr=400a0020 size=264ach (156844) map
+I (112) esp_image: segment 1: paddr=000364d4 vaddr=30100000 size=00068h (   104) load
+I (114) esp_image: segment 2: paddr=00036544 vaddr=4ff00000 size=09ad4h ( 39636) load
+I (124) esp_image: segment 3: paddr=00040020 vaddr=40000020 size=9fedch (655068) map
+I (222) esp_image: segment 4: paddr=000dff04 vaddr=4ff09ad4 size=0e938h ( 59704) load
+I (234) esp_image: segment 5: paddr=000ee844 vaddr=4ff18480 size=03c08h ( 15368) load
+I (239) esp_image: segment 6: paddr=000f2454 vaddr=50108080 size=00020h (    32) load
+I (245) boot: Loaded app from partition at offset 0x10000
+I (246) boot: Disabling RNG early entropy source...
+W (259) pmu_pvt: blk_version is less than 2, pvt auto dbias init not supported in efuse.
+W (261) flash HPM: HPM mode is optional feature that depends on flash model. Read Docs First!
+W (264) flash HPM: HPM mode with DC adjustment is disabled. Some flash models may not be supported. Read Docs First!
+W (274) flash HPM: High performance mode of this flash model hasn't been supported.
+I (281) MSPI Timing: Enter flash timing tuning
+I (287) hex_psram: vendor id    : 0x0d (AP)
+I (290) hex_psram: Latency      : 0x01 (Fixed)
+I (294) hex_psram: DriveStr.    : 0x00 (25 Ohm)
+I (298) hex_psram: dev id       : 0x03 (generation 4)
+I (303) hex_psram: density      : 0x07 (256 Mbit)
+I (307) hex_psram: good-die     : 0x06 (Pass)
+I (311) hex_psram: SRF          : 0x02 (Slow Refresh)
+I (316) hex_psram: BurstType    : 0x00 ( Wrap)
+I (320) hex_psram: BurstLen     : 0x03 (2048 Byte)
+I (325) hex_psram: BitMode      : 0x01 (X16 Mode)
+I (329) hex_psram: Readlatency  : 0x04 (14 cycles@Fixed)
+I (334) hex_psram: DriveStrength: 0x00 (1/1)
+I (338) MSPI Timing: Enter psram timing tuning
+I (516) esp_psram: Found 32MB PSRAM device
+I (516) esp_psram: Speed: 200MHz
+I (517) hex_psram: psram CS IO is dedicated
+I (517) cpu_start: Multicore app
+I (1043) esp_psram: SPI SRAM memory test OK
+I (1052) cpu_start: GPIO 38 and 37 are used as console UART I/O pins
+I (1052) cpu_start: Pro cpu start user code
+I (1053) cpu_start: cpu freq: 360000000 Hz
+I (1055) app_init: Application information:
+I (1058) app_init: Project name:     t-display-p4
+I (1063) app_init: App version:      bbd0e1a-dirty
+I (1067) app_init: Compile time:     Jun 12 2026 00:47:54
+I (1073) app_init: ELF file SHA256:  49cb5923d...
+I (1077) app_init: ESP-IDF:          v5.5.4
+I (1081) efuse_init: Min chip rev:     v1.0
+I (1085) efuse_init: Max chip rev:     v1.99 
+I (1089) efuse_init: Chip rev:         v1.0
+I (1093) heap_init: Initializing. RAM available for dynamic allocation:
+I (1099) heap_init: At 4FF1DF90 len 0001D030 (116 KiB): RETENT_RAM
+I (1105) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM
+I (1110) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM
+I (1116) heap_init: At 501080A0 len 00007F60 (31 KiB): RTCRAM
+I (1121) heap_init: At 30100068 len 00001F98 (7 KiB): TCM
+I (1126) esp_psram: Adding pool of 32768K of PSRAM memory to heap allocator
+I (1133) spi_flash: detected chip: gd
+I (1136) spi_flash: flash io: dio
+I (1140) sleep_gpio: Configure to isolate all GPIO pins in sleep state
+I (1146) sleep_gpio: Enable automatic switching of GPIO sleep configuration
+I (1153) main_task: Started on CPU0
+I (1177) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations
+I (1178) main_task: Calling app_main()
+Ciallo
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][93 line]: HardwareI2c1 config address: 0X20
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][95 line]: HardwareI2c1 config port_: 0
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][97 line]: HardwareI2c1 config sda_: 7
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][99 line]: HardwareI2c1 config scl_: 8
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][101 line]: HardwareI2c1 config freq_hz: 100000 hz
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/chip/i2c/xl95x5.cpp][38 line]: Get xl95x5 id success (id: 0)
+[lilygo_device_driver log][Info]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][941 line]: InitXl9535 success
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][93 line]: HardwareI2c1 config address: 0X28
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][95 line]: HardwareI2c1 config port_: 1
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][97 line]: HardwareI2c1 config sda_: 20
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][99 line]: HardwareI2c1 config scl_: 21
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][101 line]: HardwareI2c1 config freq_hz: 100000 hz
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/chip/i2c/sgm38121.cpp][38 line]: Get sgm38121 id success (id: 0X80)
+[lilygo_device_driver log][Info]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][1108 line]: InitSgm38121 success
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][93 line]: HardwareI2c1 config address: 0X5D
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][95 line]: HardwareI2c1 config port_: 0
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][97 line]: HardwareI2c1 config sda_: 7
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][99 line]: HardwareI2c1 config scl_: 8
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][101 line]: HardwareI2c1 config freq_hz: 100000 hz
+[cpp_bus_driver log][Bus]->[./libraries/cpp_bus_driver/src/chip/chip_guide.cpp][48 line]: Probe failed (not found address: 0X5D)
+[cpp_bus_driver log][Chip]->[./libraries/cpp_bus_driver/src/chip/i2c/gt9895.cpp][28 line]: Init failed
+[lilygo_device_driver log][Info]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][250 line]: Auto detected T-Display-P4 screen: hi8561
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/mipi/hardware_mipi.cpp][32 line]: HardwareMipi config freq_mhz: 60.000000
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/mipi/hardware_mipi.cpp][34 line]: HardwareMipi config lane_bit_rate_mbps: 1000.000000
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/mipi/hardware_mipi.cpp][36 line]: HardwareMipi config init_sequence_format: 3
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/mipi/hardware_mipi.cpp][39 line]: HardwareMipi config width_: 540
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/mipi/hardware_mipi.cpp][41 line]: HardwareMipi config height_: 1168
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/mipi/hardware_mipi.cpp][43 line]: HardwareMipi config hsync_: 28
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/mipi/hardware_mipi.cpp][45 line]: HardwareMipi config hbp_: 26
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/mipi/hardware_mipi.cpp][47 line]: HardwareMipi config hfp_: 20
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/mipi/hardware_mipi.cpp][49 line]: HardwareMipi config vsync_: 2
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/mipi/hardware_mipi.cpp][51 line]: HardwareMipi config vbp_: 22
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/mipi/hardware_mipi.cpp][53 line]: HardwareMipi config vfp_: 200
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/mipi/hardware_mipi.cpp][55 line]: HardwareMipi config num_data_lane_: 2
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/mipi/hardware_mipi.cpp][57 line]: HardwareMipi config color_format_: 0
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/mipi/hardware_mipi.cpp][59 line]: HardwareMipi config num_frame_buffer_: 0
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/mipi/hardware_mipi.cpp][61 line]: HardwareMipi config port_: 0
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/chip/mipi/hi8561.cpp][38 line]: Get hi8561 id success (id: 0X8561)
+[lilygo_device_driver log][Info]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][1131 line]: InitHi8561 success
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][93 line]: HardwareI2c1 config address: 0X68
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][95 line]: HardwareI2c1 config port_: 0
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][97 line]: HardwareI2c1 config sda_: 7
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][99 line]: HardwareI2c1 config scl_: 8
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][101 line]: HardwareI2c1 config freq_hz: 100000 hz
+[cpp_bus_driver log][Chip]->[./libraries/cpp_bus_driver/src/chip/i2c/hi8561_touch.cpp][40 line]: InitAddressInfo success
+[lilygo_device_driver log][Info]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][1150 line]: InitHi8561Touch success
+[lilygo_device_driver log][Info]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][1172 line]: InitHi8561Backlight success
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/software_i2c.cpp][20 line]: SoftwareI2c config address: 0X20
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/software_i2c.cpp][22 line]: SoftwareI2c config sda_: 46
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/software_i2c.cpp][24 line]: SoftwareI2c config scl_: 45
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/software_i2c.cpp][26 line]: SoftwareI2c config freq_hz: 100000 hz
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/software_i2c.cpp][28 line]: SoftwareI2c config transmit_delay_us_: 5 us
+[cpp_bus_driver log][Bus]->[./libraries/cpp_bus_driver/src/chip/chip_guide.cpp][48 line]: Probe failed (not found address: 0X20)
+[cpp_bus_driver log][Chip]->[./libraries/cpp_bus_driver/src/chip/i2c/xl95x5.cpp][28 line]: Init failed
+[lilygo_device_driver log][Info]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][1401 line]: InitXl9555 failed
+[lilygo_device_driver log][Info]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][322 line]: Keyboard device not connected
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][93 line]: HardwareI2c1 config address: 0X55
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][95 line]: HardwareI2c1 config port_: 0
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][97 line]: HardwareI2c1 config sda_: 7
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][99 line]: HardwareI2c1 config scl_: 8
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][101 line]: HardwareI2c1 config freq_hz: 100000 hz
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/chip/i2c/bq27220.cpp][39 line]: Get bq27220 device id success (id: 0X220)
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/chip/i2c/bq27220.cpp][41 line]: bq27220 fw: 0X2002, hw: 0X4
+[lilygo_device_driver log][Info]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][926 line]: InitBq27220 success
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][93 line]: HardwareI2c1 config address: 0X51
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][95 line]: HardwareI2c1 config port_: 0
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][97 line]: HardwareI2c1 config sda_: 7
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][99 line]: HardwareI2c1 config scl_: 8
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][101 line]: HardwareI2c1 config freq_hz: 100000 hz
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/chip/i2c/pcf8563x.cpp][38 line]: Get pcf8563x id success (id: 0X8)
+[lilygo_device_driver log][Info]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][1222 line]: InitPcf8563 success
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][93 line]: HardwareI2c1 config address: 0X58
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][95 line]: HardwareI2c1 config port_: 1
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][97 line]: HardwareI2c1 config sda_: 20
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][99 line]: HardwareI2c1 config scl_: 21
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][101 line]: HardwareI2c1 config freq_hz: 500000 hz
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/chip/i2c/aw862xx.cpp][167 line]: Get aw862xx id success (id: 0XB8)
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/chip/i2c/aw862xx.cpp][129 line]: Selected AW862xx RAM waveform: f0=171.1Hz library=12k_0809_170 rated=170Hz count=4
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/chip/i2c/aw862xx.cpp][936 line]: Loaded AW862xx RAM waveform: base=0x0800 count=4 size=469
+[lilygo_device_driver log][Info]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][1242 line]: InitAw86224 success
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][93 line]: HardwareI2c1 config address: 0X18
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][95 line]: HardwareI2c1 config port_: 1
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][97 line]: HardwareI2c1 config sda_: 20
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][99 line]: HardwareI2c1 config scl_: 21
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][101 line]: HardwareI2c1 config freq_hz: 100000 hz
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/chip/i2c_i2s/es8311.cpp][55 line]: Get es8311 id success (id: 0X8311)
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2s/hardware_i2s.cpp][28 line]: HardwareI2s config port_: 0
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2s/hardware_i2s.cpp][30 line]: HardwareI2s config ws_lrck_: 9
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2s/hardware_i2s.cpp][32 line]: HardwareI2s config bclk_: 12
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2s/hardware_i2s.cpp][34 line]: HardwareI2s config mclk_: 13
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2s/hardware_i2s.cpp][36 line]: HardwareI2s config mclk_multiple: 256
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2s/hardware_i2s.cpp][38 line]: HardwareI2s config sample_rate_hz: 44100 hz
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2s/hardware_i2s.cpp][40 line]: HardwareI2s config data_bit_width: 16
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2s/hardware_i2s.cpp][42 line]: HardwareI2s config i2s_mode_: 0
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2s/hardware_i2s.cpp][44 line]: HardwareI2s config clock_source_: 0
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2s/hardware_i2s.cpp][46 line]: HardwareI2s config slot_mode_in_: 2
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2s/hardware_i2s.cpp][48 line]: HardwareI2s config slot_mode_out_: 2
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2s/hardware_i2s.cpp][57 line]: HardwareI2s config data_mode: input_output
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2s/hardware_i2s.cpp][59 line]: HardwareI2s config data_in_: 11
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2s/hardware_i2s.cpp][61 line]: HardwareI2s config data_out_: 10
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2s/hardware_i2s.cpp][75 line]: HardwareI2s config i2s_mode: std
+[lilygo_device_driver log][Info]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][1263 line]: InitEs8311 success
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/uart/hardware_uart.cpp][24 line]: HardwareUart port_: 1
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/uart/hardware_uart.cpp][26 line]: HardwareUart tx_: 23
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/uart/hardware_uart.cpp][28 line]: HardwareUart rx_: 22
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/uart/hardware_uart.cpp][30 line]: HardwareUart rts_: -1
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/uart/hardware_uart.cpp][32 line]: HardwareUart cts_: -1
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/uart/hardware_uart.cpp][33 line]: HardwareUart baud_rate: 9600 bps
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/chip/uart/l76k.cpp][128 line]: Get l76k id failed
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/uart/hardware_uart.cpp][14 line]: HardwareUart has been initialized
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/chip/uart/l76k.cpp][131 line]: Get l76k id success (index: 0)
+[lilygo_device_driver log][Info]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][1334 line]: InitL76k success
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][93 line]: HardwareI2c1 config address: 0X68
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][95 line]: HardwareI2c1 config port_: 1
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][97 line]: HardwareI2c1 config sda_: 20
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][99 line]: HardwareI2c1 config scl_: 21
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/i2c/hardware_i2c_1.cpp][101 line]: HardwareI2c1 config freq_hz: 100000 hz
+[lilygo_device_driver log][Info]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][1381 line]: InitIcm20948 success
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/spi/hardware_spi.cpp][104 line]: HardwareSpi config mosi_: 3
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/spi/hardware_spi.cpp][106 line]: HardwareSpi config sclk_: 2
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/spi/hardware_spi.cpp][108 line]: HardwareSpi config miso_: 4
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/spi/hardware_spi.cpp][111 line]: HardwareSpi config cs: 24
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/spi/hardware_spi.cpp][114 line]: HardwareSpi config port_: 1
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/spi/hardware_spi.cpp][121 line]: HardwareSpi config mode_: 0
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/spi/hardware_spi.cpp][125 line]: HardwareSpi config clock_source_: 13
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/spi/hardware_spi.cpp][127 line]: HardwareSpi config flags_: 0
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/bus/spi/hardware_spi.cpp][134 line]: HardwareSpi config freq_hz: 10000000 hz
+[cpp_bus_driver log][Info]->[./libraries/cpp_bus_driver/src/chip/spi/sx126x.cpp][52 line]: Get sx126x id success (id: SX1261)
+[lilygo_device_driver log][Info]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][1393 line]: InitSx1262 success
+E (6444) sdmmc_common: sdmmc_init_ocr: send_op_cond (1) returned 0x107
+E (6444) vfs_fat_sdmmc: sdmmc_card_init failed (0x107).
+[lilygo_device_driver log][Chip]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][1661 line]: esp_vfs_fat_sdmmc_mount failed (error code: 0X107)
+[lilygo_device_driver log][Info]->[./libraries/lilygo_device_driver/src/device/t_display_p4/t_display_p4_driver.cpp][617 line]: TDisplayP4Driver init finished (mode: sync, result: failed, elapsed: 5281 ms)
+InitLvgl
+Allocate separate lvgl draw buffers
+Register dpi panel event callback for lvgl flush ready notification
+Use esp_timer as lvgl tick timer
+LvglUiTask start
+
