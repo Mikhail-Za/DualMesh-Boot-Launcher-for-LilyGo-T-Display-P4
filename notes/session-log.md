@@ -646,3 +646,65 @@ Consequences:
 - Outreach handoff doc written to Desktop:
   C:\Users\user\Desktop\T-Display-P4-C6-Recovery-Handoff.md (project context,
   both post drafts, reply-handling instructions for another AI/person).
+
+## MILESTONE C PLAN (locked 2026-06-13): Meshtastic touch UI on the HI8561
+Goal: device-ui (MUI) touch interface in our Meshtastic build so both units are
+fully usable standalone in Meshtastic (Zaid is iPhone-only; BLE parked).
+
+Architecture (validated by reading device-ui origin/elecrow-p4 branch):
+- device-ui drives big panels through LovyanGFX; for P4 boards it does NOT use
+  LGFX native buses — it subclasses lgfx Panel_FrameBufferBase + a thin IBus
+  (see include/graphics/LGFX/experimental/esp32p4/{Bus_RGB_P4,Panel_RGB_P4}.hpp)
+  where the esp_lcd driver scans a PSRAM framebuffer out autonomously.
+- For our MIPI-DSI HI8561 we mirror that pattern: Bus_DSI_P4 + Panel_DSI_P4
+  backed by esp_lcd_mipi_dsi.h DPI mode (esp_lcd_dpi_panel_get_frame_buffer) +
+  DSI PHY LDO (esp_ldo_regulator, the launcher/Homertrix code shows channel) +
+  HI8561 vendor init over DSI DCS.
+- pr9526 crowpanel envs show ALL the meshtastic-side wiring to copy:
+  device-ui_base in lib_deps, LovyanGFX dep, HAS_TFT=1/HAS_SCREEN=1, LGFX_*
+  defines, RAM_SIZE, VIEW_320x240, USE_PACKET_API, MAX_NUM_NODES, etc.
+
+Hardware facts (from LilyGo driver, all verified):
+- HI8561 (TFT SKU): 540x1168, DPI clk 60 MHz, HSYNC 28 / HBP 26 / HFP 20,
+  VSYNC 2 / VBP 22 / VFP 200, 2 data lanes, lane_bit_rate 1000 Mbps.
+- Vendor init table: cpp_bus_driver/src/chip/mipi/hi8561.h `kInitSequence`
+  (line ~126, format kWriteC8ByteData = DCS cmd + N data bytes; port to
+  esp_lcd_panel_io_tx_param over DSI DCS). Reset = XL9535 expander bit 2
+  (kScreenRst kIo2 -> register bit 2) pulse 1-0-1 (5ms/10ms/120ms), then check
+  device id (RDDID regs), init sequence, then DPI start.
+- Touch: HI8561-SKU touch controller driver cpp_bus_driver hi8561_touch.cpp
+  (I2C bus SDA7/SCL8, addr in that file; INT/RST on expander bits 3/4 =
+  kTouchRst kIo3, kTouchInt kIo4). Port read-points fn into a device-ui
+  TouchDriver glue (device-ui supports custom touch via DisplayDriverConfig).
+- Backlight: GPIO 51 (hi8561::kScreenBacklight) PWM (LEDC) — implement an
+  lgfx::ILight like Elecrow_P4_Light does with I2C (ours is plain LEDC PWM).
+- AMOLED SKU (RM69A10, 568x1232) exists — Zaid has TFT; do TFT first, leave
+  constants parameterized like the launcher does (runtime detect later).
+
+Build-side plan (variants/esp32p4/t-display-p4/platformio.ini):
+1. New file variants/esp32p4/t-display-p4/LGFX_TDISPLAY_P4.h with the
+   Bus_DSI_P4 + Panel_DSI_P4 + Light_TDP4 + LGFX_TDISPLAY_P4 class.
+2. Env additions modeled on crowpanel-advanced-p4-50: lib_deps += device-ui
+   (pin the elecrow-p4 branch or whatever pr9526 device-ui_base points at) +
+   LovyanGFX (1.2.21 zip like crowpanel-50); flags: HAS_SCREEN=1 HAS_TFT=1,
+   -DLGFX_DRIVER=LGFX_TDISPLAY_P4 -DGFX_DRIVER_INC=\"LGFX_TDISPLAY_P4.h\"
+   (include path via -Ivariants/...), DISPLAY_SIZE=540x1168 portrait,
+   LGFX_SCREEN_WIDTH/HEIGHT, VIEW_320x240 + DISPLAY_SET_RESOLUTION (verify
+   device-ui handles 540x1168 portrait; crowpanels are landscape — may need
+   rotation=1 in LGFX driver to present 1168x540 landscape to MUI),
+   RAM_SIZE=10240, USE_PACKET_API, LV_CACHE sized for 540x1168x2 ~1.3MB
+   (PSRAM 32MB - plenty), CONFIG_DISABLE_HAL_LOCKS=1.
+3. sdkconfig adds (custom_sdkconfig): CONFIG_SOC_MIPI_DSI_SUPPORTED=y already
+   in esp32p4_base; LVGL/cache settings as crowpanel.
+4. HAS_WIRE conflict: variant.h has HAS_WIRE 0 and our variant.cpp owns the
+   I2C bus for the expander — the touch glue must REUSE that same
+   i2c_master bus handle (do NOT let LGFX open its own; pass the handle or
+   use a second i2c port? Touch is on SDA7/SCL8 same bus as XL9535 — share).
+5. Remove RADIOLIB_DEBUG_* spam flags when display lands (console noise).
+6. Slot size: image will grow well past 2.5MB flex bay?? CrowPanel TFT builds
+   are ~4MB. **CHECK EARLY: ota_1 is 0x280000 (2.5MB).** If MUI build exceeds
+   it, options: trim fonts/LVGL features, or grow ota_1 by shrinking mesh_fs
+   (partition relayout = full reflash dance + MeshOS region untouched), or
+   accept classic-UI instead. MEASURE FIRST before deep integration.
+Verification sequence: build size check -> flash slot 1 -> panel lights w/
+MUI boot screen -> touch -> send message from UI Unit A<->B RF.
