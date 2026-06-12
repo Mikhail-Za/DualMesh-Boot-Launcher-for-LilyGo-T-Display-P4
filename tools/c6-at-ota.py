@@ -106,6 +106,20 @@ def main():
         s.close()
         return
 
+    if "--diag" in sys.argv:
+        at.cmd("AT+CWMODE=1")
+        at.cmd(f'AT+CWJAP="{ssid}","{pw}"', expect="\r\nOK", timeout=30)
+        at.cmd("AT+CIPSTA?", expect="\r\nOK", timeout=10)
+        host = url.split("//")[1].split(":")[0].split("/")[0]
+        port_n = url.split(":")[2].split("/")[0] if url.count(":") > 1 else "80"
+        at.cmd('AT+PING="192.168.1.1"', expect="\r\nOK", timeout=15)
+        at.cmd(f'AT+PING="{host}"', expect="\r\nOK", timeout=15)
+        if at.cmd(f'AT+CIPSTART="TCP","{host}",{port_n}', expect="CONNECT", timeout=15):
+            at.cmd("AT+CIPCLOSE", timeout=5)
+        print("\n=== diag complete ===")
+        s.close()
+        return
+
     if not at.cmd("AT+CWMODE=1"):
         sys.exit(1)
     if not at.cmd(f'AT+CWJAP="{ssid}","{pw}"', expect="OK", timeout=30):

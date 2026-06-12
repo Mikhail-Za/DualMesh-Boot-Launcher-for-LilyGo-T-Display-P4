@@ -541,3 +541,42 @@ python -m http.server in c6-ota-serve + tools/c6-at-ota.py COM6 --ssid --pass
 --url http://<pc-ip>:8000/na.bin. Failure mode is safe (AT returns ERROR, stays
 on AT). Success → flash c6-updater to slot 1 → expect hosted link + version
 2.12.7 report.
+
+## PATH B EXECUTED on Unit A — flash OK, slave does not come up (2026-06-12 night)
+Timeline: local HTTP failed (C6 joined WiFi, same subnet 192.168.1.209, gateway
+pings 15ms, but C6->PC blocked BOTH ping and TCP:8000 even after Zaid added a
+scoped firewall allow rule — asymmetric: PC->C6 ping works; unresolved, moot).
+Bypass: served the image from GitHub raw over HTTPS (USEROTA supports HTTPS, no
+cert verify) — commit 06a5584 still contains c6-ota-serve/na.bin:
+https://raw.githubusercontent.com/Mikhail-Za/Boot-Launcher-for-T-Display-P4-Liliygo-/06a5584/c6-ota-serve/na.bin
+AT+USEROTA=112 + URL -> "Recv 112 bytes" -> OK -> C6 rebooted (SDIO-AT link died
+mid-session = expected on success).
+
+RESULT: network_adapter v2.12.7 does NOT bring up its SDIO slave under the AT
+environment. c6-updater now fails at CARD level (sdmmc send_op_cond 0x107 — with
+AT it passed card init). The C6 app is crashing/hung/mis-configured pre-SDIO.
+**Unit A C6 = soft-bricked**: AT intact in ota_0 but otadata points at ota_1 and
+nothing can rewrite C6 flash without a running app (USEROTA gone, hosted never up).
+Recovery = hardware only (C6 UART pads + BOOT btn). Device otherwise 100%
+functional (LoRa/MeshOS/Meshtastic/launcher unaffected — standalone-first holds).
+
+Why it likely failed (ranked):
+1. v2.12.7 blob is the only one NOT tagged [sdio] and was built 2026-05-24, two
+   days after the T-Display-P4 v2.0 preview PCB files — plausibly a v2.0-board
+   build with different slave config (v2.0 still shows SD2_* nets though —
+   inconclusive). v2.11.5 (2026-03-17, [sdio], IDF 5.5.3) is the v1.0-era build.
+2. IDF 5.5.4 app under ESP-AT's v5.1.2 bootloader (all three LilyGo
+   network_adapter blobs are IDF 5.5.x — no older option exists). Espressif
+   nominally supports old-bootloader/new-app, so ranked second.
+3. nvs/partition-content interaction — possible, unproven.
+Second USB-C definitively P4-USB (schematic page 3 = P4 sheet). C6 USB (IO12/13)
+not routed anywhere. C6 BOOT btn exists but useless without UART access.
+
+UNIT B: untouched, ESP-AT + USEROTA still available — ONE remaining shot.
+Candidate plan (NOT executed, Zaid to decide): web-research esp-hosted-under-AT
+bootloader compat + how MeshOS users flash their C6 + LilyGo issues, THEN if
+green, USEROTA v2.11.5 [sdio] app on Unit B. Optional pre-test: USEROTA a
+self-built minimal IDF-5.5.4 SDIO-echo app to prove bootability before
+committing the real slave.
+Cleanup pending: Zaid removes firewall rule 'DualMesh C6 OTA temp' (not needed —
+GitHub path worked).
