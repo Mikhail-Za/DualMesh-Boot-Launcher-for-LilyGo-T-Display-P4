@@ -15,3 +15,5 @@ launcher/dependencies.lock
 launcher/sdkconfig
 launcher/sdkconfig.old
 meshtastic-firmware/
+
+__pycache__/
