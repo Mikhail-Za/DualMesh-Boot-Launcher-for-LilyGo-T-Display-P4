@@ -336,3 +336,8 @@ LilyGo enum kIoN: N≤7 → bit N; N≥10 → bit N-2.
 
 ## RADIO WORKING (same session): SX126x init result 0
 Root cause of -707: HPD16A has DIO3-powered TCXO @1.6V (cpp_bus_driver sx126x.h defaults enable_dio3_tcxo=true, kOutput1600Mv). Fix: SX126X_DIO3_TCXO_VOLTAGE 1.6 in variant.h. Meshtastic 2.8.0 + working SX1262 on T-Display P4 (commit in meshtastic clone). Next: set region US via meshtastic CLI over COM6 (pip install meshtastic; meshtastic --port COM6 --set lora.region US), official app over USB serial, then deploy to Unit B flex bay for RF pair test.
+
+## Milestone A status at session end (2026-06-12)
+DONE: Meshtastic 2.8.0 boots from ota_1, SX1262 init result 0 (TCXO 1.6V fix), ESP-Hosted SDIO link to C6 ACTIVE (H_SDIO_DRV Card init success). Blank screen = expected (HAS_SCREEN 0; display = Milestone C).
+REMAINING (exit test): client API link. Findings: (1) pyserial/CLI default DTR+RTS-asserted open HOLDS the P4 in reset via CH343 — zero bytes; tools/meshtastic-connect.py shim opens with both deasserted; (2) even via shim, protobuf API does not answer on UART0/COM6 though logs do. NEXT EXPERIMENT: enable native USB-CDC console like CrowPanel P4 envs do (ARDUINO_USB_CDC_ON_BOOT / -DARDUINO_USB_MODE) — API should appear on the SECOND USB-C port (P4 native USB OTG) as a new COM device; plug that port in. Alternative: investigate SerialConsole/PhoneAPI binding on UART0.
+Boot timing note: port-open pulses reset; full boot via launcher ~12s — any client must tolerate this.
