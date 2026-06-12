@@ -45,6 +45,41 @@ index f03d4ca..d9eee46 100644
      choice
          prompt "Select the color format of the camera"
          default CAMERA_PIXEL_FORMAT_RGB565
+diff --git a/main/examples/esp32c6_at_host_sdio_uart/main.cpp b/main/examples/esp32c6_at_host_sdio_uart/main.cpp
+index 07dee43..fc87821 100644
+--- a/main/examples/esp32c6_at_host_sdio_uart/main.cpp
++++ b/main/examples/esp32c6_at_host_sdio_uart/main.cpp
+@@ -13,17 +13,23 @@ extern "C" void app_main(void) {
+   auto& driver = lilygo_device_driver::TDisplayP4Driver::GetInstance();
+   driver.Init();
+ 
++  // debug2 API: pin constants moved into lilygo_device_driver::t_display_p4::gpio
++  namespace gpio = lilygo_device_driver::t_display_p4::gpio;
++
+   auto esp32c6_at_sdio_bus = std::make_shared<cpp_bus_driver::HardwareSdio>(
+-      ESP32C6_SDIO_CLK, ESP32C6_SDIO_CMD, ESP32C6_SDIO_D0, ESP32C6_SDIO_D1,
+-      ESP32C6_SDIO_D2, ESP32C6_SDIO_D3, -1, -1, -1, -1,
+-      cpp_bus_driver::HardwareSdio::SdioPort::kSlot1);
++      gpio::esp32c6::kSdioClk, gpio::esp32c6::kSdioCmd, gpio::esp32c6::kSdioD0,
++      gpio::esp32c6::kSdioD1, gpio::esp32c6::kSdioD2, gpio::esp32c6::kSdioD3,
++      -1, -1, -1, -1, cpp_bus_driver::HardwareSdio::SdioPort::kSlot1);
+ 
+   auto esp32c6_at = std::make_unique<cpp_bus_driver::EspAt>(
+       esp32c6_at_sdio_bus, [](bool value) -> void {
+-        // ESP32C6复位
+-        driver.chip().xl9535->GpioWrite(
+-            XL9535_ESP32C6_EN,
+-            static_cast<cpp_bus_driver::Xl95x5::Value>(value));
++        // ESP32C6复位 (capture-less: ctor takes a plain function pointer;
++        // the driver is a singleton anyway)
++        lilygo_device_driver::TDisplayP4Driver::GetInstance()
++            .chip()
++            .xl9535->GpioWrite(
++                lilygo_device_driver::t_display_p4::gpio::xl9535::kEsp32c6En,
++                static_cast<cpp_bus_driver::Xl95x5::Value>(value));
+       });
+ 
+   esp32c6_at->Init();
 diff --git a/sdkconfig.defaults b/sdkconfig.defaults
 index 12dc462..c728ca0 100644
 --- a/sdkconfig.defaults

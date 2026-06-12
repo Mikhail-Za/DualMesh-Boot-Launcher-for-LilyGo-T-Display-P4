@@ -518,3 +518,26 @@ C6 reflash paths (schematic H0405S002T002-V0 examined via pypdf):
   hardware access anyway. AT+USEROTA confirmed present in C6 AT v4.0.0.0 guide.
 NEXT: Zaid inspects the PCB for labeled C6 UART test pads (decides A vs B).
 c6-updater stays valuable post-swap: version query + future slave OTA tool.
+
+## PATH B in motion (2026-06-12 evening): AT bridge LIVE, C6 identified
+Zaid chose the software route (no soldering gear; rubberized back). Built LilyGo
+esp32c6_at_host_sdio_uart example (CONFIG_EXAMPLE_BUILD_ESP32C6_AT_HOST_SDIO_UART=y
+in T-Display-P4/sdkconfig; two API-drift fixes captured in
+patches/lilygo-debug2-build-fixes.patch: pin macros -> t_display_p4::gpio
+namespaces, EspAt ctor needs a CAPTURE-LESS lambda/function pointer — use the
+singleton). Bridge app (633KB) flashed to Unit A flex bay; COM6 <-> AT-over-SDIO.
+
+SCOUT RESULT: factory C6 = **ESP-AT v4.1.0.0-dev (ESP32C6-4MB), IDF v5.1.2,
+built 2025-05-07** — answers AT/AT+GMR through the bridge. USEROTA supported.
+
+Serial-tooling law (third strike, now permanent): NEVER sleep without draining —
+4KB Windows RX buffer overflows on boot logs and silently drops the NEWEST
+bytes; also never match bare "OK" (boot logs contain "memory test OK") — match
+"\r\nOK". tools/c6-at-ota.py fixed accordingly.
+
+READY: c6-ota-serve/na.bin (trimmed network_adapter v2.12.7 app image, 1209600
+bytes, validates; fits AT ota slot 1856KB). Awaiting Zaid's 2.4GHz WiFi creds →
+python -m http.server in c6-ota-serve + tools/c6-at-ota.py COM6 --ssid --pass
+--url http://<pc-ip>:8000/na.bin. Failure mode is safe (AT returns ERROR, stays
+on AT). Success → flash c6-updater to slot 1 → expect hosted link + version
+2.12.7 report.
