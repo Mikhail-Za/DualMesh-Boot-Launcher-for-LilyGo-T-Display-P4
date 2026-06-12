@@ -28,3 +28,5 @@ c6-updater/main/slave_fw.bin
 __pycache__/
 notes/*-capture.txt
 notes/c6upd-*.txt
+c6-ota-serve/
+notes/at-scout.txt
