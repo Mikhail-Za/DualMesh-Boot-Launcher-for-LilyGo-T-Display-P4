@@ -433,3 +433,47 @@ functionally complete for headless mesh use on BOTH units.
 Unit B SD card (the MeshOS data card — adverts.bin, dm_history.bin etc. left
 untouched) seeded with /firmware/: 31e48a0 meshtastic + meshos-dbac5b1 recovery.
 NEXT: Milestone B (C6 network_adapter swap -> BLE + WiFi/TCP), Milestone C display.
+
+## MILESTONE B PLAN (researched + locked 2026-06-12)
+Design principle (Zaid): STANDALONE-FIRST. Each firmware must be a fully working
+standalone node; phone connectivity is additive, never traded against standalone
+reliability. Zaid has never paired a phone to MeshOS — no regression exposure there.
+
+Findings (2x sonnet web research + on-device probe):
+- The C6 ALREADY RUNS esp-hosted (NOT ESP-AT): MeshOS boot log starts the hosted
+  host stack (host_init: ESP Hosted, H_API, add_esp_wifi_remote_channels,
+  hosted channels IF[1]/IF[2]). ESP-AT bootstrap fears moot.
+- Our Meshtastic host driver = esp-hosted v2.12.3 (esp_hosted_host_fw_ver.h in
+  framework-arduinoespressif32-libs). C6 slave is presumably the older factory
+  build (v2.11.5 or v2.0.17 era) -> protocol/version mismatch is the leading
+  theory for our "Not able to connect with ESP-Hosted slave" timeout.
+- LilyGo ships THREE slave blobs locally in T-Display-P4\firmware\
+  [T-Display-P4][esp32c6][network_adapter]\: v2.0.17, v2.11.5, v2.12.7
+  (202605241554 = board-specific, matches our host minor). ESP-AT v4.0/4.1 blobs
+  also present for ultimate rollback. NOTE: these are combined full-flash images;
+  slave OTA needs the app-only image (extract at C6 app offset, or use ESPHome
+  app-only mirror https://esphome.github.io/esp-hosted-firmware/).
+- C6 reflash paths: (a) SDIO slave OTA from the P4 — works ONLY because slave
+  already speaks hosted; reference impl github.com/lboshuizen/crowpanel-p4-c6-sdio-ota
+  + espressif host_performs_slave_ota example; conservative 1-bit/10MHz for
+  transfer. (b) Hardware fallback: C6 BOOT button (GPIO9) + USB-UART on C6
+  UART pads (GPIO16 TX/17 RX, see schematic in T-Display-P4\information\),
+  esptool --chip esp32c6 write-flash 0x0 <blob> (RISC-V: offset 0x0, NOT 0x1000).
+  (c) P4-USB-bridge passthrough: broken upstream, do not chase
+  (esp-dev-kits issue #134).
+
+Plan:
+1. Build "c6-updater" IDF app for the flex bay: connects to CURRENT slave
+   (pin esp_hosted host component to a version the old slave accepts if 2.12.3
+   refuses), LOGS the slave's current FW version (so we know the exact rollback
+   target), then slave-OTAs the v2.12.7 app image. Install via our own launcher
+   from SD — the launcher updates the C6, fully PC-free in principle.
+   Watch: slave reset line is XL9535 bit 12 (expander), unreachable by the IDF
+   gpio driver — disable driver-side slave reset, pulse the expander ourselves.
+2. Meshtastic: remove MESHTASTIC_EXCLUDE_BLUETOOTH, rebuild, verify hosted
+   handshake completes (no 19s loop), pair phone w/ official app over BLE.
+3. Regression: boot MeshOS, confirm standalone works (it will — LoRa is on P4
+   SPI, no C6 involvement), opportunistically try MeshCore app BLE pairing.
+4. If anything regresses: OTA C6 back to the logged original version; ESP-AT/
+   UART-pad recovery documented above as last resort.
+5. Later (Milestone C): display/MUI. Then open MeshCore port, upstream PR.

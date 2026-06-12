@@ -25,6 +25,14 @@ def main():
     s.dtr = False  # asserted DTR/RTS holds the P4 in reset via the CH343
     s.rts = False
     s.open()
+    # Port-open alone does not reliably pulse reset — do it explicitly so the
+    # launcher is guaranteed to run and see our command.
+    s.dtr = True
+    s.rts = True
+    time.sleep(0.2)
+    s.dtr = False
+    s.rts = False
+    s.reset_input_buffer()
 
     cmd = f"boot{slot}\n".encode()
     start = time.time()
