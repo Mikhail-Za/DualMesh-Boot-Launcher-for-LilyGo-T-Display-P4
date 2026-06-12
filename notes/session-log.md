@@ -333,3 +333,6 @@ Expander pin map (validated): XL9535@0x20 bus SDA7/SCL8, INT=GPIO5. esp_io_expan
 bit numbers: 3V3=0(active low), SKY13453=1(high=RF1), 5V=6(high), VCCA=8(low),
 GPS wake=9, C6 wake=11, C6 EN=12, SD EN=13(low), SX1262 RST=14, DIO1=15.
 LilyGo enum kIoN: N≤7 → bit N; N≥10 → bit N-2.
+
+## RADIO WORKING (same session): SX126x init result 0
+Root cause of -707: HPD16A has DIO3-powered TCXO @1.6V (cpp_bus_driver sx126x.h defaults enable_dio3_tcxo=true, kOutput1600Mv). Fix: SX126X_DIO3_TCXO_VOLTAGE 1.6 in variant.h. Meshtastic 2.8.0 + working SX1262 on T-Display P4 (commit in meshtastic clone). Next: set region US via meshtastic CLI over COM6 (pip install meshtastic; meshtastic --port COM6 --set lora.region US), official app over USB serial, then deploy to Unit B flex bay for RF pair test.
