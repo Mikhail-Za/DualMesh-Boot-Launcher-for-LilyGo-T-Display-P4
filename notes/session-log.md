@@ -238,14 +238,60 @@ NO P4 support upstream either — it's a second port after Meshtastic (reuse XL9
 display + hosted-BLE work). Data partitions can be re-carved later without moving app
 slots (only costs Meshtastic config).
 
-## Next steps
+## 2026-06-12 (night) — PHASE 3 KICKOFF: recon complete, toolchain proven
 
-1. Phase 3 Meshtastic port into ota_1: official firmware base + PR #9526
-   HostedBluetooth rebase vs Homertrix reference (cloned in reference/); patch
-   mesh_nvs/mesh_fs partition names; serial+TCP transports first, hosted BLE later.
-   MUST keep rev-less-v3 sdkconfig lines and our partition CSV. C6 needs ESP-Hosted
-   network_adapter firmware (prebuilt in LilyGo repo firmware/) — flash via C6 boot
-   button (GPIO9 strap) + UART, or check if P4 can flash it over SDIO.
-2. Open-source MeshCore companion port (after Meshtastic).
-3. Launcher polish: MeshOS-bay overwrite guard, version in title, file-list scroll
-   check, "stay in launcher" persistent option, publish write-up.
+Recon (2 Sonnet agents + local verification), all major unknowns resolved:
+
+**Meshtastic P4 state (better than expected):**
+- `esp32p4_base` env MERGED in master (came with PR #9122): full ESP-Hosted sdkconfig,
+  NimBLE-over-HCI-VHCI, MIPI-DSI SOC flags, C6 slave-OTA (CONFIG_OTA_METHOD_LITTLEFS).
+  NO board variant uses it yet — ours would be the first.
+- PR #9526 (crowpanel-p4 branch) ACTIVE, core maintainer involved; provides the
+  variant file pattern: variants/esp32p4/<name>/{platformio.ini,variant.h,variant.cpp,
+  pins_arduino.h} + boards/<name>.json (chip_variant "esp32p4_es" = v1.x silicon).
+- pioarduino `custom_sdkconfig` accepts arbitrary Kconfig → our 5 chip-rev lines CAN
+  be set per-variant. PR #9526 LACKS them (upstream gap; likely causes v1.x boot fails
+  — our fix is contribution-worthy).
+- Radio-behind-expander precedent: SenseCAP Indicator. Pattern: -DIO_EXPANDER=<i2c addr>
+  -DIO_EXPANDER_IRQ=<gpio>, pins encoded (n | IO_EXPANDER). Support lives in
+  mverch67's arduino-esp32 fork (pinned via platform_packages), NOT in meshtastic/src.
+  Open: does that fork patch work on the P4 core, or do we wrap LockingArduinoHal.
+- Display: LovyanGFX MIPI-DSI BROKEN on IDF 5.5.x (clk type mismatch, issue #788);
+  M5GFX_Backport branch is the workaround. device-ui has elecrow-p4 branch (June 5).
+  Display = last milestone, headless first.
+- Confirmed local radio map: CS=24 BUSY=6 SPI=2/3/4 direct; RESET=XL9535.IO16,
+  DIO1=XL9535.IO17, expander @0x20 INT=GPIO5.
+
+**C6 question RESOLVED (clean reversible swap):**
+- C6 runs ESP-AT today (MeshOS's modem); Meshtastic needs ESP-Hosted network_adapter.
+  Mutually exclusive, reflash to switch — LilyGo ships prebuilts for BOTH in
+  T-Display-P4/firmware/ (network_adapter v2.12.7 newest; esp32c6_at_slave v4.0.0).
+- MeshOS degrades gracefully with wrong C6 fw (AT timeouts ignored; loses WiFi/NTP/map
+  downloads only — already observed live in our boot logs).
+- P4 can flash the C6 over SDIO, no wires: esp_hosted host_performs_slave_ota; working
+  example github.com/lboshuizen/crowpanel-p4-c6-sdio-ota (must init SDIO w/o WiFi).
+  Future launcher feature: auto-swap C6 fw to match booted app.
+- C6 reset = XL9535.IO14 (LilyGo's CONFIG_ESP_HOSTED_SDIO_GPIO_RESET_SLAVE=100 is a
+  fake-pin hack); C6 wake = IO13. esp_hosted host/slave versions tightly coupled
+  (v2.9.4+ baseline; mismatch = hard failure) — pin slave to Meshtastic's component ver.
+
+**Toolchain proven:** unmodified `pio run -e t-deck` SUCCESS in 12m28s (clone at
+meshtastic-firmware/, master 07a87a825, pio 6.1.19).
+
+## Phase 3 plan (milestones)
+
+A. **Variant skeleton + radio, headless** — variants/esp32p4/t-display-p4/ + board
+   JSON; 5 chip-rev sdkconfig lines; radio pins w/ expander encoding (resolve the
+   arduino-core-fork-vs-HAL-wrapper question); custom partition CSV matching OUR
+   dualmesh table with mesh_nvs/mesh_fs names (patch Meshtastic's nvs/littlefs labels);
+   USB-serial Client API. Exit test: launcher-installed meshtastic.bin in ota_1, official
+   app connects over USB, radio inits. Then flash Unit B flex bay too → RF pair test.
+B. **C6 + network** — flash C6 to network_adapter (UART or SDIO-OTA tool), enable
+   WiFi via esp_wifi_remote, app over TCP:4403; then hosted-BLE attempt (configs
+   already in esp32p4_base). Document the C6-swap procedure for MeshOS users.
+C. **Display + MUI** — LovyanGFX DSI fix (M5GFX_Backport) or HI8561 esp_lcd driver
+   port; device-ui config (elecrow-p4 branch as reference).
+
+Upstream strategy: develop on local branch `t-display-p4-variant`; PR to
+meshtastic/firmware once Milestone A works (they want P4 boards; our chip-rev fix
+helps every v1.x P4 owner).
