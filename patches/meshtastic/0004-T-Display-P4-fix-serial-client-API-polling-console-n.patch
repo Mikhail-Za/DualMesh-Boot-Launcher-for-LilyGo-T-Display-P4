@@ -1,0 +1,65 @@
+From 7c8b810d59bb5d5f5e06571d08da73a6b12a294c Mon Sep 17 00:00:00 2001
+From: Mikhail-Za <86077672+Mikhail-Za@users.noreply.github.com>
+Date: Fri, 12 Jun 2026 12:20:41 -0500
+Subject: [PATCH 4/4] =?UTF-8?q?T-Display=20P4:=20fix=20serial=20client=20A?=
+ =?UTF-8?q?PI=20=E2=80=94=20polling=20console,=20no=20hosted=20BLE?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Two stacked bugs kept the protobuf API from answering on UART0/COM6:
+
+1. SERIAL_HAS_ON_RECEIVE (esp32-common) parks SerialConsole on INT32_MAX
+   waiting for HardwareSerial::onReceive, which never fires on this P4
+   core — logs streamed out but the console never read a byte. Unflag it
+   so the console polls (250ms idle / 5ms active), same as NRF52/RP2040.
+
+2. The stock LilyGo C6 firmware (ESP-AT) passes SDIO card init but never
+   completes the esp_hosted handshake; after the 10s timeout and a failed
+   slave reset the hosted driver reboots the host every ~19s
+   (os_wrapper_esp: Restarting host), killing any client mid-config.
+   Exclude Bluetooth until the C6 is reflashed with the esp_hosted
+   network_adapter slave (Milestone B).
+
+Verified: meshtastic python client connects on COM6, full config dump
+through config_complete_id, nodedb download OK.
+
+Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+---
+ variants/esp32p4/t-display-p4/platformio.ini | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/variants/esp32p4/t-display-p4/platformio.ini b/variants/esp32p4/t-display-p4/platformio.ini
+index 47708b1af..bf437a23d 100644
+--- a/variants/esp32p4/t-display-p4/platformio.ini
++++ b/variants/esp32p4/t-display-p4/platformio.ini
+@@ -22,6 +22,13 @@ build_src_filter =
+   ${esp32p4_base.build_src_filter}
+   +<../variants/esp32p4/t-display-p4>
+ 
++; SERIAL_HAS_ON_RECEIVE makes SerialConsole sleep (INT32_MAX) until a
++; HardwareSerial::onReceive callback wakes it. On this board the callback
++; never fires (logs stream out on UART0 but the protobuf API never reads a
++; byte), so drop the flag and let the console poll like NRF52/RP2040 do.
++build_unflags = ${esp32p4_base.build_unflags}
++  -DSERIAL_HAS_ON_RECEIVE
++
+ build_flags = ${esp32p4_base.build_flags}
+   -Ivariants/esp32p4/t-display-p4
+   -DTDISPLAY_P4
+@@ -31,6 +38,12 @@ build_flags = ${esp32p4_base.build_flags}
+   -DFS_PARTITION_LABEL=\"mesh_fs\"
+   -DRADIOLIB_DEBUG_BASIC=1
+   -DRADIOLIB_DEBUG_SPI=1
++  ; Milestone A: no BLE. The stock LilyGo C6 firmware (ESP-AT) passes SDIO
++  ; card init but never completes the esp_hosted handshake; after a 10s
++  ; timeout + failed slave reset the hosted driver REBOOTS THE HOST
++  ; ("os_wrapper_esp: Restarting host") every ~19s. Re-enable after the C6
++  ; is reflashed with the esp_hosted network_adapter slave (Milestone B).
++  -DMESHTASTIC_EXCLUDE_BLUETOOTH=1
+ 
+ ; The ng-io-expander fork's idf_component.yml has a broken P4-conditional rule
+ ; requesting espressif/cbor ^2.0.12 (no such version exists; cbor is only used
+-- 
+2.53.0.windows.2
+

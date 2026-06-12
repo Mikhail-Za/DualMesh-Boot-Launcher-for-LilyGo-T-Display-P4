@@ -1,0 +1,335 @@
+From bf0f5cc34d8d5d3a435cae791738d82600cbda83 Mon Sep 17 00:00:00 2001
+From: Mikhail-Za <86077672+Mikhail-Za@users.noreply.github.com>
+Date: Fri, 12 Jun 2026 10:57:31 -0500
+Subject: [PATCH 1/4] Add LilyGo T-Display P4 variant (first bring-up,
+ headless)
+
+ESP32-P4 rev v1.x + XL9535-routed SX1262 control lines (ng-io-expander core)
++ overridable FS partition label for multi-firmware partition layouts.
+Boots to NodeDB init under the DualMesh launcher; radio bring-up in progress.
+
+Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+---
+ boards/t-display-p4.json                      | 32 +++++++++
+ src/FSCommon.h                                |  7 +-
+ .../t-display-p4/partitions-dualmesh.csv      | 12 ++++
+ variants/esp32p4/t-display-p4/pins_arduino.h  | 53 ++++++++++++++
+ variants/esp32p4/t-display-p4/platformio.ini  | 41 +++++++++++
+ variants/esp32p4/t-display-p4/variant.cpp     | 69 +++++++++++++++++++
+ variants/esp32p4/t-display-p4/variant.h       | 44 ++++++++++++
+ 7 files changed, 257 insertions(+), 1 deletion(-)
+ create mode 100644 boards/t-display-p4.json
+ create mode 100644 variants/esp32p4/t-display-p4/partitions-dualmesh.csv
+ create mode 100644 variants/esp32p4/t-display-p4/pins_arduino.h
+ create mode 100644 variants/esp32p4/t-display-p4/platformio.ini
+ create mode 100644 variants/esp32p4/t-display-p4/variant.cpp
+ create mode 100644 variants/esp32p4/t-display-p4/variant.h
+
+diff --git a/boards/t-display-p4.json b/boards/t-display-p4.json
+new file mode 100644
+index 000000000..a282f6be7
+--- /dev/null
++++ b/boards/t-display-p4.json
+@@ -0,0 +1,32 @@
++{
++  "build": {
++    "core": "esp32",
++    "extra_flags": ["-DBOARD_HAS_PSRAM"],
++    "f_cpu": "360000000L",
++    "f_flash": "80000000L",
++    "f_psram": "200000000L",
++    "flash_mode": "dio",
++    "hwids": [["0x1A86", "0x7522"]],
++    "mcu": "esp32p4",
++    "chip_variant": "esp32p4_es",
++    "variant": "esp32p4"
++  },
++  "arduino": {
++    "partitions": "default_16MB.csv"
++  },
++  "connectivity": ["bluetooth", "openthread"],
++  "debug": {
++    "openocd_target": "esp32p4.cfg"
++  },
++  "frameworks": ["arduino", "espidf"],
++  "name": "LilyGo T-Display P4",
++  "upload": {
++    "flash_size": "16MB",
++    "maximum_ram_size": 512000,
++    "maximum_size": 16777216,
++    "require_upload_port": true,
++    "speed": 921600
++  },
++  "url": "https://lilygo.cc/en-us/products/t-display-p4",
++  "vendor": "LilyGo"
++}
+diff --git a/src/FSCommon.h b/src/FSCommon.h
+index e2e77da9a..18867808d 100644
+--- a/src/FSCommon.h
++++ b/src/FSCommon.h
+@@ -35,7 +35,12 @@ using namespace STM32_LittleFS_Namespace;
+ // ESP32 version
+ #include "LittleFS.h"
+ #define FSCom LittleFS
+-#define FSBegin() FSCom.begin(true) // format on failure
++// Variants can override the flash partition label (default "spiffs"), e.g. for
++// multi-firmware partition layouts where the filesystem must not be shared.
++#ifndef FS_PARTITION_LABEL
++#define FS_PARTITION_LABEL "spiffs"
++#endif
++#define FSBegin() FSCom.begin(true, "/littlefs", 10, FS_PARTITION_LABEL) // format on failure
+ #define FILE_O_WRITE "w"
+ #define FILE_O_READ "r"
+ #endif
+diff --git a/variants/esp32p4/t-display-p4/partitions-dualmesh.csv b/variants/esp32p4/t-display-p4/partitions-dualmesh.csv
+new file mode 100644
+index 000000000..a9e589cd7
+--- /dev/null
++++ b/variants/esp32p4/t-display-p4/partitions-dualmesh.csv
+@@ -0,0 +1,12 @@
++# Build-side mirror of the DualMesh launcher's on-flash partition table.
++# This firmware runs from the "meshtastic" OTA slot, installed by the launcher;
++# the size check below must target that 2.5MB slot. nvs (stock offset) belongs
++# to MeshOS; Meshtastic data lives in mesh_nvs/mesh_fs.
++# Name,      Type, SubType, Offset,   Size,
++nvs,         data, nvs,     0x9000,   0x6000,
++otadata,     data, ota,     0xF000,   0x2000,
++phy_init,    data, phy,     0x11000,  0x1000,
++meshos,      app,  ota_0,   0x100000, 0xAC0000,
++meshtastic,  app,  ota_1,   0xBC0000, 0x280000,
++mesh_nvs,    data, nvs,     0xE40000, 0x10000,
++mesh_fs,     data, spiffs,  0xE50000, 0x1B0000,
+diff --git a/variants/esp32p4/t-display-p4/pins_arduino.h b/variants/esp32p4/t-display-p4/pins_arduino.h
+new file mode 100644
+index 000000000..63433bbd2
+--- /dev/null
++++ b/variants/esp32p4/t-display-p4/pins_arduino.h
+@@ -0,0 +1,53 @@
++#ifndef Pins_Arduino_h
++#define Pins_Arduino_h
++
++#include "soc/soc_caps.h"
++#include <stdint.h>
++
++// BOOT button / download strap: GPIO 35
++
++// UART0 -> CH343 USB bridge (console + Meshtastic serial API)
++static const uint8_t TX = 37;
++static const uint8_t RX = 38;
++
++// System I2C bus 1 (XL9535 expander @0x20, touch, PMU, RTC, haptics)
++static const uint8_t SDA = 7;
++static const uint8_t SCL = 8;
++
++// SPI2: SX1262 LoRa
++static const uint8_t SS = 24;
++static const uint8_t MOSI = 3;
++static const uint8_t MISO = 4;
++static const uint8_t SCK = 2;
++
++static const uint8_t A0 = 16;
++static const uint8_t A1 = 17;
++static const uint8_t A2 = 18;
++static const uint8_t A3 = 19;
++static const uint8_t A4 = 20;
++static const uint8_t A5 = 21;
++
++static const uint8_t T0 = 2;
++static const uint8_t T1 = 3;
++static const uint8_t T2 = 4;
++static const uint8_t T3 = 5;
++
++// Required by the ng-io-expander core's esp32-hal-spi.c P4 LDO workaround
++// (same pattern as CrowPanel: pre-tag a valid GPIO — our LoRa CS — so
++// setLDOPower() short-circuits instead of grabbing SDMMC's LDO channel).
++#define BOARD_SDMMC_POWER_PIN 24
++#define BOARD_SDMMC_POWER_CHANNEL 4
++#define BOARD_SDMMC_POWER_ON_LEVEL HIGH
++
++// BT/WIFI — ESP32-C6 over ESP-Hosted, SDIO 4-bit (same pins as CrowPanel 70/90/101)
++#define BOARD_HAS_SDIO_ESP_HOSTED
++#define BOARD_SDIO_ESP_HOSTED_CLK 18
++#define BOARD_SDIO_ESP_HOSTED_CMD 19
++#define BOARD_SDIO_ESP_HOSTED_D0 14
++#define BOARD_SDIO_ESP_HOSTED_D1 15
++#define BOARD_SDIO_ESP_HOSTED_D2 16
++#define BOARD_SDIO_ESP_HOSTED_D3 17
++// C6 EN is XL9535 "IO14" = expander register bit 12 (not a P4 GPIO)
++#define BOARD_SDIO_ESP_HOSTED_RESET (12 | IO_EXPANDER)
++
++#endif /* Pins_Arduino_h */
+diff --git a/variants/esp32p4/t-display-p4/platformio.ini b/variants/esp32p4/t-display-p4/platformio.ini
+new file mode 100644
+index 000000000..26cd52967
+--- /dev/null
++++ b/variants/esp32p4/t-display-p4/platformio.ini
+@@ -0,0 +1,41 @@
++; LilyGo T-Display P4 — headless first bring-up (radio + serial API).
++; Runs from the DualMesh launcher's "meshtastic" OTA slot (2.5MB).
++[env:t-display-p4]
++extends = esp32p4_base
++custom_meshtastic_hw_model = 255
++custom_meshtastic_hw_model_slug = PRIVATE_HW
++custom_meshtastic_architecture = esp32-p4
++custom_meshtastic_actively_supported = false
++custom_meshtastic_display_name = LilyGo T-Display P4
++custom_meshtastic_tags = LilyGo
++
++board = t-display-p4
++board_check = true
++board_build.partitions = variants/esp32p4/t-display-p4/partitions-dualmesh.csv
++upload_protocol = esptool
++
++platform_packages =
++  ; ng-io-expander core: routes (pin | IO_EXPANDER) GPIO calls through the XL9535
++  platformio/framework-arduinoespressif32 @ https://github.com/mverch67/arduino-esp32#82aee17619ea2940de03b0db4d082d5def657771
++
++build_flags = ${esp32p4_base.build_flags}
++  -Ivariants/esp32p4/t-display-p4
++  -DTDISPLAY_P4
++  -DIO_EXPANDER=0x40
++  -DIO_EXPANDER_IRQ=5
++  -DUSE_ARDUINO_HAL_GPIO
++  -DFS_PARTITION_LABEL=\"mesh_fs\"
++
++; The ng-io-expander fork's idf_component.yml has a broken P4-conditional rule
++; requesting espressif/cbor ^2.0.12 (no such version exists; cbor is only used
++; by esp_insights/rainmaker which esp32p4_base already removes).
++custom_component_remove = ${esp32p4_base.custom_component_remove}
++  espressif/cbor
++
++custom_sdkconfig = ${esp32p4_base.custom_sdkconfig}
++  # LilyGo ships ESP32-P4 rev v1.x silicon; pre-v3 and v3+ are mutually
++  # exclusive build targets. Without these the image refuses to flash/boot.
++  CONFIG_ESP32P4_SELECTS_REV_LESS_V3=y
++  CONFIG_ESP32P4_REV_MIN_100=y
++
++lib_deps = ${esp32p4_base.lib_deps}
+diff --git a/variants/esp32p4/t-display-p4/variant.cpp b/variants/esp32p4/t-display-p4/variant.cpp
+new file mode 100644
+index 000000000..807ca9875
+--- /dev/null
++++ b/variants/esp32p4/t-display-p4/variant.cpp
+@@ -0,0 +1,69 @@
++#include "Arduino.h"
++#include "variant.h"
++#include <esp32-hal-periman.h>
++
++// The XL9535 expander handle used by the ng-io-expander arduino core
++// (esp32-hal-gpio.c routes pins flagged with IO_EXPANDER through it).
++// We create it here because the T-Display P4's expander lives at 0x20 on
++// I2C bus SDA=7/SCL=8 and also carries the board's power rails.
++#include "driver/i2c_master.h"
++#include "esp_io_expander_tca95xx_16bit.h" // XL9535 is TCA9535 register-compatible
++
++extern esp_io_expander_handle_t io_expander;
++
++extern "C" void initVariant(void)
++{
++#if defined(CONFIG_IDF_TARGET_ESP32P4) && defined(BOARD_SDMMC_POWER_PIN)
++    // Pre-tag BOARD_SDMMC_POWER_PIN so the Arduino SPI LDO auto-config
++    // short-circuits (see CrowPanel P4 variant for the original workaround).
++    if (perimanPinIsValid(BOARD_SDMMC_POWER_PIN)) {
++        pinMode(BOARD_SDMMC_POWER_PIN, OUTPUT);
++        digitalWrite(BOARD_SDMMC_POWER_PIN, BOARD_SDMMC_POWER_ON_LEVEL);
++        if (perimanGetPinBusType(BOARD_SDMMC_POWER_PIN) != ESP32_BUS_TYPE_MAX &&
++            perimanGetPinBusExtraType(BOARD_SDMMC_POWER_PIN) == nullptr) {
++            perimanSetPinBusExtraType(BOARD_SDMMC_POWER_PIN, "");
++        }
++        perimanSetPinBusExtraType(BOARD_SDMMC_POWER_PIN, "SDMMC POWER");
++    }
++#endif
++
++    if (io_expander) {
++        printf("[variant] io_expander already initialized\n");
++        return;
++    }
++
++    i2c_master_bus_config_t bus_cfg = {};
++    bus_cfg.i2c_port = 0;
++    bus_cfg.sda_io_num = (gpio_num_t)7;
++    bus_cfg.scl_io_num = (gpio_num_t)8;
++    bus_cfg.clk_source = I2C_CLK_SRC_DEFAULT;
++    bus_cfg.glitch_ignore_cnt = 7;
++    bus_cfg.flags.enable_internal_pullup = true;
++
++    i2c_master_bus_handle_t bus = NULL;
++    esp_err_t err = i2c_new_master_bus(&bus_cfg, &bus);
++    if (err != ESP_OK) {
++        printf("[variant] i2c_new_master_bus FAILED: %d\n", err);
++        return;
++    }
++
++    // 7-bit address 0x20 (A0..A2 grounded)
++    err = esp_io_expander_new_i2c_tca95xx_16bit(bus, 0x20, &io_expander);
++    printf("[variant] xl9535 expander init: err=%d handle=%p\n", err, (void *)io_expander);
++
++    // Power/RF state (3V3+5V rails, SKY13453 antenna switch, SX1262 reset
++    // release) is normally established by the DualMesh launcher before this
++    // app boots, and XL9535 outputs persist across the soft restart.
++    // For STANDALONE boots (no launcher), replicate the essentials:
++    if (io_expander) {
++        // outputs: 3V3 EN(0), SKY13453 VCTL(1), 5V EN(6), VCCA EN(8), SX1262 RST(14)
++        esp_io_expander_set_dir(io_expander, (1 << 0) | (1 << 1) | (1 << 6) | (1 << 8) | (1 << 14),
++                                IO_EXPANDER_OUTPUT);
++        esp_io_expander_set_level(io_expander, 1 << 8, 0);  // VCCA en (low = on)
++        esp_io_expander_set_level(io_expander, 1 << 1, 1);  // RF1 antenna path
++        esp_io_expander_set_level(io_expander, 1 << 0, 0);  // 3V3 rail (low = on)
++        esp_io_expander_set_level(io_expander, 1 << 6, 1);  // 5V rail on
++        esp_io_expander_set_level(io_expander, 1 << 14, 1); // SX1262 out of reset
++        // DIO1 (bit 15) stays input; core pinMode handles it via attachInterrupt
++    }
++}
+diff --git a/variants/esp32p4/t-display-p4/variant.h b/variants/esp32p4/t-display-p4/variant.h
+new file mode 100644
+index 000000000..c2990ba35
+--- /dev/null
++++ b/variants/esp32p4/t-display-p4/variant.h
+@@ -0,0 +1,44 @@
++// LilyGo T-Display P4 — ESP32-P4 (rev v1.x) + ESP32-C6 (ESP-Hosted) + SX1262.
++//
++// DUAL-BOOT CONTEXT: this firmware is designed to run from an OTA slot under the
++// DualMesh launcher (github.com/Mikhail-Za/Boot-Launcher-for-T-Display-P4-Liliygo-).
++// The launcher's factory app powers the board rails via the XL9535 I2C expander
++// (3V3/5V rails on, SKY13453 RF switch to RF1, SX1262 out of reset) before this
++// app boots, and XL9535 output state persists across the soft restart.
++//
++// The SX1262 control lines RESET and DIO1 are NOT on P4 GPIOs — they sit on the
++// XL9535 expander (register bits 14 and 15; LilyGo names them IO16/IO17). They
++// are encoded with the IO_EXPANDER flag and routed through the patched
++// arduino-esp32 core (ng-io-expander branch), same pattern as SenseCAP Indicator.
++
++// Headless for milestone A; display (HI8561/RM69A10 MIPI-DSI) comes later.
++#define HAS_SCREEN 0
++
++// Milestone A: no Wire — the XL9535 expander owns I2C bus (SDA=7/SCL=8) via the
++// core's io_expander driver; Meshtastic's Wire scan would double-drive the port.
++// TODO milestone B+: share one bus handle, re-enable scan (PCF8563 RTC, BQ27220).
++#define HAS_WIRE 0
++
++#define BUTTON_PIN 35 // BOOT button (download strap; usable as user button after boot)
++
++// Quectel L76K GNSS on UART (PPS not wired to a P4 GPIO per LilyGo config)
++#define GPS_DEFAULT_NOT_PRESENT 1
++#define GPS_RX_PIN 23
++#define GPS_TX_PIN 22
++#define HAS_GPS 1
++
++// LoRa: SX1262 in HPD16A module, SPI2, no TCXO, static SKY13453 RF switch
++// (driven by the launcher via XL9535 IO1 — not DIO2)
++#define USE_SX1262
++#define LORA_SCK 2
++#define LORA_MISO 4
++#define LORA_MOSI 3
++#define LORA_CS 24
++
++#define SX126X_CS LORA_CS
++#define SX126X_BUSY 6
++#define SX126X_RESET (14 | IO_EXPANDER) // XL9535 "IO16" = register bit 14
++#define SX126X_DIO1 (15 | IO_EXPANDER)  // XL9535 "IO17" = register bit 15
++#define SX126X_MAX_POWER 22
++// NOTE: no SX126X_DIO2_AS_RF_SWITCH and no TCXO — matches LilyGo's own
++// radiolib_sx1262_send_receive example for this board.
+-- 
+2.53.0.windows.2
+
