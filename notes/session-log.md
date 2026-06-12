@@ -580,3 +580,33 @@ self-built minimal IDF-5.5.4 SDIO-echo app to prove bootability before
 committing the real slave.
 Cleanup pending: Zaid removes firewall rule 'DualMesh C6 OTA temp' (not needed —
 GitHub path worked).
+
+## Unit A C6 recovery research + rollback test (2026-06-12 late night)
+- Restart loop Zaid saw = c6-updater in slot 1 (hosted transport "Resetting
+  myself" every ~8s -> GRUB relaunch forever). Fixed: meshtastic restored to
+  slot 1, MeshOS booted. Lesson: do not leave c6-updater as last-boot slot
+  while the C6 is dead.
+- Research agent claimed a LilyGo "C6 FLASH BRIDGE" button mode — NOT in the
+  README or any source in the repo: FABRICATED/conflated, discarded. (MeshCore
+  web flasher exists at flasher.meshcore.co.uk — how it provisions the C6 is
+  unknown; worth asking in MeshCore Discord.)
+- VERIFIED (espressif/esp-at repo): module_esp32c6_default sdkconfig has
+  CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE=y -> tested rollback hypothesis on
+  hardware: re-ran AT bridge after many C6 power cycles — NO AT, SDIO still
+  card-dead (0x107 from the bridge own sdmmc init too). So either the
+  network_adapter app self-validated (likely: hosted slaves mark_app_valid at
+  startup) or LilyGo AT-dev bootloader lacks rollback. Unit A C6 = stuck-VALID
+  on an SDIO-dead app. Software paths EXHAUSTED.
+- ROM has no SDIO download mode (SDIO_REI_REO_V2 = internal Espressif test
+  protocol, not esptool-able). esp-hosted C6 SPI default pins (2,3,4,6,7,10) do
+  NOT overlap the SDIO wiring (C6 IO18-23) — no SPI backdoor.
+- esp-hosted-mcu issues #66/#121/#167 document the same 0x107 pattern.
+- No public teardown of the cased T-Display P4 exists yet (too new). P4-EYE
+  analog (esp-dev-kits #134) shows TP-pad recovery on this architecture can
+  fail even WITH pads. Unit A C6 recovery deferred: ask LilyGo (GitHub
+  issue/support) for the official cased-unit C6 reflash procedure + ask
+  MeshCore Discord how the web flasher provisions the C6.
+- UNIT B SAFETY RULE established for the remaining USEROTA shot: only flash a
+  slave image that does NOT self-validate until its SDIO link is up (build
+  esp-hosted slave from source with rollback semantics), so a bad boot
+  auto-reverts to AT. Do NOT spend Unit B on another LilyGo prebuilt blind.
