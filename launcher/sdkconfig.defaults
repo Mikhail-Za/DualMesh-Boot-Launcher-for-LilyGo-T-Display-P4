@@ -16,15 +16,14 @@ CONFIG_ESPTOOLPY_FLASHFREQ_80M=y
 # Factory slot is 896KB — optimize for size
 CONFIG_COMPILER_OPTIMIZATION_SIZE=y
 
-# Factory-reset escape hatch: after a reset, hold BOOT (GPIO35) ~2s -> bootloader
-# erases otadata and boots the launcher. DATA_FACTORY_RESET is explicitly EMPTY:
-# the IDF default is "nvs", which would wipe the MeshOS license cache + config.
-CONFIG_BOOTLOADER_FACTORY_RESET=y
-CONFIG_BOOTLOADER_NUM_PIN_FACTORY_RESET=35
-CONFIG_BOOTLOADER_FACTORY_RESET_PIN_LOW=y
-CONFIG_BOOTLOADER_OTA_DATA_ERASE=y
-CONFIG_BOOTLOADER_DATA_FACTORY_RESET=""
-CONFIG_BOOTLOADER_HOLD_TIME_GPIO=2
+# GRUB-mode boot flow: app rollback makes every esp_ota_set_boot_partition a
+# ONE-SHOT boot. The booted firmware (closed-source MeshOS) never confirms the
+# image, so the next reset returns to the factory launcher, which shows a
+# tap-to-interrupt splash and auto-boots the last choice. No buttons needed.
+# (GPIO35 factory-reset was abandoned: it is the download strap — holding it at
+# reset enters ROM download mode, and the bootloader samples it too early to
+# press afterwards. See notes/session-log.md.)
+CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE=y
 
 # LilyGo device driver: T-Display P4 board, info logging
 CONFIG_LILYGO_DEVICE_DRIVER_T_DISPLAY_P4=y

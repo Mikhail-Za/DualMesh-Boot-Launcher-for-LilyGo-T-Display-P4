@@ -28,15 +28,19 @@
 #include "freertos/task.h"
 #include "lilygo_device_driver_library.h"
 #include "lvgl.h"
+#include "nvs.h"
+#include "nvs_flash.h"
 
 namespace {
 
 constexpr const char *kTag = "launcher";
 constexpr const char *kFirmwareDir = "/sdcard/firmware";
 constexpr int kLvglTickMs = 2;
+constexpr int kSplashSeconds = 3;
 
 _lock_t g_lvgl_lock;
 bool g_sd_ok = false;
+bool g_nvs_ok = false;
 
 lv_obj_t *g_slot_status[2];
 lv_obj_t *g_slot_boot_btn[2];
@@ -79,18 +83,53 @@ bool SlotBootable(int slot) {
   return magic == ESP_IMAGE_HEADER_MAGIC;
 }
 
+/* Last-booted slot lives in the mesh_nvs partition (never in "nvs" — that one
+ * belongs to MeshOS and we treat it as read-only). */
+int LoadLastSlot(void) {
+  if (!g_nvs_ok) return -1;
+  nvs_handle_t h;
+  if (nvs_open_from_partition("mesh_nvs", "launcher", NVS_READONLY, &h) != ESP_OK)
+    return -1;
+  int32_t v = -1;
+  nvs_get_i32(h, "last_slot", &v);
+  nvs_close(h);
+  return v;
+}
+
+void SaveLastSlot(int slot) {
+  if (!g_nvs_ok) return;
+  nvs_handle_t h;
+  if (nvs_open_from_partition("mesh_nvs", "launcher", NVS_READWRITE, &h) != ESP_OK)
+    return;
+  nvs_set_i32(h, "last_slot", slot);
+  nvs_commit(h);
+  nvs_close(h);
+}
+
 void BootSlot(int slot) {
   const esp_partition_t *part = SlotPartition(slot);
   if (part == NULL) return;
   printf("[launcher] verifying + switching to %s...\n", part->label);
+  /* With BOOTLOADER_APP_ROLLBACK_ENABLE this is a ONE-SHOT boot: the image is
+   * marked NEW, the bootloader flips it to PENDING_VERIFY, and since mesh
+   * firmwares never confirm, the next reset falls back to this launcher. */
   esp_err_t err = esp_ota_set_boot_partition(part);  // verifies image first
   if (err != ESP_OK) {
     printf("[launcher] set_boot_partition failed: %s\n", esp_err_to_name(err));
     return;
   }
+  SaveLastSlot(slot);
   printf("[launcher] rebooting into %s\n", part->label);
   vTaskDelay(pdMS_TO_TICKS(300));
   esp_restart();
+}
+
+/* Clear boot-selection history so the rollback fallback always lands on the
+ * factory launcher (never on a stale "previous" OTA entry). */
+void EraseOtadata(void) {
+  const esp_partition_t *otadata = esp_partition_find_first(
+      ESP_PARTITION_TYPE_DATA, ESP_PARTITION_SUBTYPE_DATA_OTA, NULL);
+  if (otadata) esp_partition_erase_range(otadata, 0, otadata->size);
 }
 
 /* ---------- install-from-SD worker ---------- */
@@ -334,6 +373,73 @@ void BuildUi(lv_display_t *display) {
   RefreshFileList();
 }
 
+/* GRUB-style auto-boot splash: full-screen overlay, counts down, tap anywhere
+ * to stay in the launcher. Runs only when the last-booted slot is bootable. */
+struct SplashState {
+  lv_obj_t *overlay;
+  lv_obj_t *count_label;
+  lv_timer_t *timer;
+  int slot;
+  int seconds_left;
+};
+
+void ShowAutoBootSplash(int slot) {
+  auto *st = new SplashState{};
+  st->slot = slot;
+  st->seconds_left = kSplashSeconds;
+
+  st->overlay = lv_obj_create(lv_layer_top());
+  lv_obj_set_size(st->overlay, lv_pct(100), lv_pct(100));
+  lv_obj_set_style_bg_color(st->overlay, lv_color_hex(0x0B0E11), 0);
+  lv_obj_set_style_bg_opa(st->overlay, LV_OPA_COVER, 0);
+  lv_obj_set_style_border_width(st->overlay, 0, 0);
+  lv_obj_set_flex_flow(st->overlay, LV_FLEX_FLOW_COLUMN);
+  lv_obj_set_flex_align(st->overlay, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER,
+                        LV_FLEX_ALIGN_CENTER);
+  lv_obj_add_flag(st->overlay, LV_OBJ_FLAG_CLICKABLE);
+
+  lv_obj_t *title = lv_label_create(st->overlay);
+  lv_label_set_text_fmt(title, "Booting %s", slot == 0 ? "MeshCore" : "Slot 1");
+  lv_obj_set_style_text_font(title, &lv_font_montserrat_28, 0);
+  lv_obj_set_style_text_color(title, lv_color_hex(0xE8EDF2), 0);
+
+  st->count_label = lv_label_create(st->overlay);
+  lv_label_set_text_fmt(st->count_label, "%d", st->seconds_left);
+  lv_obj_set_style_text_font(st->count_label, &lv_font_montserrat_28, 0);
+  lv_obj_set_style_text_color(st->count_label, lv_color_hex(0x8FD18C), 0);
+
+  lv_obj_t *hint = lv_label_create(st->overlay);
+  lv_label_set_text(hint, "tap anywhere for menu");
+  lv_obj_set_style_text_color(hint, lv_color_hex(0x7A8590), 0);
+
+  lv_obj_add_event_cb(
+      st->overlay,
+      [](lv_event_t *e) {
+        auto *st = (SplashState *)lv_event_get_user_data(e);
+        lv_timer_delete(st->timer);
+        lv_obj_delete(st->overlay);
+        delete st;
+        printf("[launcher] auto-boot cancelled by touch\n");
+      },
+      LV_EVENT_CLICKED, st);
+
+  st->timer = lv_timer_create(
+      [](lv_timer_t *t) {
+        auto *st = (SplashState *)lv_timer_get_user_data(t);
+        st->seconds_left--;
+        if (st->seconds_left <= 0) {
+          lv_label_set_text(st->count_label, "boot");
+          BootSlot(st->slot);  // does not return on success
+          lv_timer_delete(st->timer);
+          lv_obj_delete(st->overlay);
+          delete st;
+        } else {
+          lv_label_set_text_fmt(st->count_label, "%d", st->seconds_left);
+        }
+      },
+      1000, st);
+}
+
 /* ---------- display plumbing ---------- */
 
 void LvglTask(void *arg) {
@@ -383,6 +489,11 @@ void SerialTask(void *arg) {
 }  // namespace
 
 extern "C" void app_main(void) {
+  /* Always reach the launcher with a clean slate: any stale boot selection is
+   * erased so the rollback fallback can never resurrect an old OTA entry. */
+  EraseOtadata();
+  g_nvs_ok = (nvs_flash_init_partition("mesh_nvs") == ESP_OK);
+
   auto &driver = lilygo_device_driver::TDisplayP4Driver::GetInstance();
 
   driver.CreateDrivers();
@@ -477,6 +588,10 @@ extern "C" void app_main(void) {
 
   _lock_acquire(&g_lvgl_lock);
   BuildUi(display);
+  int last = LoadLastSlot();
+  if (last >= 0 && SlotBootable(last)) {
+    ShowAutoBootSplash(last);
+  }
   _lock_release(&g_lvgl_lock);
 
   if (is_tft) {
