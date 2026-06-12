@@ -422,3 +422,14 @@ Debug tip that found it: otadata entry decode — bytes 0-3 ota_seq, 24-27 ota_s
 SD note: G:\firmware\ still holds the OLD bin (ab6609f, marks itself valid).
 Replace with firmware-t-display-p4-2.8.0.31e48a0.bin next time the card is in the
 PC — do NOT deploy ab6609f to Unit B.
+
+## FIRST DEVICE-TO-DEVICE RF TEST PASSED (2026-06-12)
+Unit B deployed via the launcher itself (Zaid touch-flashed 31e48a0 from SD —
+field validation of flash-from-SD with a real firmware). Unit B node: Meshtastic
+bf57, myNodeNum 847764431, COM8, API worked first try. Region US set on both.
+tools/rf-pair-test.py: A->B and B->A broadcast texts both received,
+rssi -60 dBm / snr ~6 dB at desk distance. The dual-boot Meshtastic port is now
+functionally complete for headless mesh use on BOTH units.
+Unit B SD card (the MeshOS data card — adverts.bin, dm_history.bin etc. left
+untouched) seeded with /firmware/: 31e48a0 meshtastic + meshos-dbac5b1 recovery.
+NEXT: Milestone B (C6 network_adapter swap -> BLE + WiFi/TCP), Milestone C display.
