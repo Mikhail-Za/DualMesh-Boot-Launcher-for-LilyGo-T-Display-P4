@@ -610,3 +610,23 @@ GitHub path worked).
   slave image that does NOT self-validate until its SDIO link is up (build
   esp-hosted slave from source with rollback semantics), so a bad boot
   auto-reverts to AT. Do NOT spend Unit B on another LilyGo prebuilt blind.
+
+## GAME-CHANGER from MeshOS binary reverse (2026-06-13, Zaid s idea)
+Strings-scan of our MeshOS dump: MeshOS uses the **factory ESP-AT C6 via
+AT-over-SDIO** (LilyGo EspAt driver strings: "esp32c6 at time data",
+AT+SYSSTORE, reconnect loop). It contains NO C6-flashing machinery and links
+the hosted RPC stack apparently unused. The MeshCore web flasher never touches
+the C6 — it does not need to. My "MeshOS needs esp-hosted" inference was WRONG.
+Consequences:
+1. MeshOS crash loop on Unit A explained: its AT driver hard-crashes (stack
+   protection fault after "MeshCore Integration Active") when the C6 is
+   card-dead. MeshOS unusable on Unit A until ESP-AT restored. Unit A parked on
+   Meshtastic (boot slot 1) — stable, C6-independent.
+2. **UNIT B C6 = DO NOT EVER FLASH.** Factory ESP-AT is exactly what MeshOS
+   requires. Hosted-C6 and MeshOS are mutually exclusive (until a per-slot C6
+   firmware swap exists). Milestone B (Meshtastic BLE) PARKED.
+3. Phone connectivity for Meshtastic WITHOUT the C6: the official Android app
+   supports USB-serial — works today over USB-C, zero risk.
+4. Unit A goal simplified: restore ESP-AT to its C6 (image intact in ota_0;
+   need physical access to flip otadata). Community drafts written:
+   notes/draft-lilygo-issue.md + notes/draft-meshcore-discord.md (Zaid posts).
