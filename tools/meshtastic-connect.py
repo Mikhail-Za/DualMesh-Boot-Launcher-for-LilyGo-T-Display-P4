@@ -2,8 +2,12 @@
 
 pyserial's default DTR/RTS-asserted open holds this board in reset, so the
 stock `meshtastic --port COMx` CLI can never connect. This shim opens the port
-with DTR/RTS deasserted, waits out the DualMesh launcher boot (~12s), then
-talks to the node normally.
+with DTR/RTS deasserted, drains the DualMesh launcher + meshtastic boot
+(~14s; the port-open itself pulses reset), then talks to the node normally.
+
+NOTE: self.stream must be assigned inside connect(), like the official
+SerialInterface does — StreamInterface.__init__ resets self.stream to None,
+so anything assigned before it is silently clobbered and all writes no-op.
 
 Usage: python meshtastic-connect.py COM6 [--set-region US]
 """
@@ -16,20 +20,27 @@ from meshtastic.stream_interface import StreamInterface
 
 class QuietSerialInterface(StreamInterface):
     def __init__(self, port):
+        self.port = port
+        StreamInterface.__init__(self, connectNow=True)
+
+    def connect(self):
         s = serial.Serial()
-        s.port = port
+        s.port = self.port
         s.baudrate = 115200
         s.timeout = 0.5
         s.write_timeout = 0
         s.dtr = False  # do NOT assert: holds the P4 in reset via CH343 circuit
         s.rts = False
         s.open()
-        self.stream = s
-        # Port-open still pulses a reset; give launcher splash + meshtastic
-        # boot time before the protocol handshake.
+        # Port-open still pulses a reset. Drain while the launcher splash +
+        # meshtastic boot run — a plain sleep would overflow the OS RX buffer.
         print("waiting for device boot (launcher splash + meshtastic init)...")
-        time.sleep(14)
-        StreamInterface.__init__(self, connectNow=True)
+        end = time.time() + 14
+        while time.time() < end:
+            s.read(4096)
+        s.reset_input_buffer()
+        self.stream = s
+        super().connect()
 
 
 def main():

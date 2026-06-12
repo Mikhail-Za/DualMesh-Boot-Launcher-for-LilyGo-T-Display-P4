@@ -343,3 +343,52 @@ REMAINING (exit test): client API link. Findings: (1) pyserial/CLI default DTR+R
 Boot timing note: port-open pulses reset; full boot via launcher ~12s — any client must tolerate this.
 
 USB experiment (Zaid, 2026-06-12): second USB-C port does NOT enumerate (no COM port, nothing in Device Manager) with current CDC-less Meshtastic build — expected, since no USB stack runs. Retest after building with ARDUINO_USB_CDC_ON_BOOT; if still dead, the port may be power-only/OTG-host-wired — then fall back to UART0 PhoneAPI debugging or WiFi-TCP (Milestone B).
+
+## 2026-06-12 (cont): client-API blockers root-caused — TWO stacked bugs
+Plan revision: the "enable native USB-CDC" experiment is DEAD WRONG for this board.
+CrowPanel P4 envs actually set ARDUINO_USB_CDC_ON_BOOT=0 / ARDUINO_USB_MODE=1 — the
+API is served on plain UART0. And the P4's FS-USB pin (GPIO24, USB-Serial-JTAG D-)
+is wired to LoRa CS on the T-Display P4, so the second USB-C can only ever be the
+HS OTG PHY (TinyUSB project, not a flag). Do not revisit USB-CDC for the API.
+
+Bug 1 — SERIAL_HAS_ON_RECEIVE (esp32-common.ini) makes SerialConsole sleep
+(INT32_MAX) until HardwareSerial::onReceive fires; on the P4/ng-io-expander core it
+apparently never does → device streams logs but never READS the API request. Fix:
+build_unflags = -DSERIAL_HAS_ON_RECEIVE in our env → console polls (250ms idle/5ms
+active), same mode NRF52/RP2040 use. (Launcher's polling IDF console on the same
+pins is what proved RX hardware was fine.)
+
+Bug 2 — REBOOT LOOP every ~19s (this was the real CLI killer, present in all prior
+captures but the restart fell outside our read windows). "Card init success" is
+only SDIO card-level probe; the esp_hosted protocol handshake then times out after
+10s ("Not able to connect with ESP-Hosted slave device") because the stock LilyGo
+C6 firmware is ESP-AT, not the esp_hosted network_adapter slave. Driver resets the
+C6 (GPIO[76] = expander bit 12 | 0x40), SDIO re-init fails (0x107), then
+"H_SDIO_DRV: Host is resetting itself" → os_wrapper_esp: Restarting host →
+SW_CPU_RESET. 3 boots per 60s captured (notes/boot-capture.txt, not committed).
+Fix for Milestone A: -DMESHTASTIC_EXCLUDE_BLUETOOTH=1 (HostedBluetooth.cpp is
+gated on it) — no hosted init, no loop. Milestone B re-enables BLE after C6 swap
+to network_adapter v2.12.7.
+
+New tools: tools/boot-slot.py (spams bootN through launcher window, echoes boot
+log), tools/serial-monitor.py (passive capture, DTR/RTS deasserted).
+
+## MILESTONE A EXIT TEST PASSED (2026-06-12)
+Bug 3 (client-side, the last one): the shim assigned self.stream BEFORE
+StreamInterface.__init__, which resets self.stream = None — every write
+silently no-opped against a None stream. Official SerialInterface avoids this
+by assigning self.stream inside its connect() override; shim now does the same
+(and drains the RX buffer during the 14s boot wait instead of sleeping, so the
+4KB Windows OS buffer can't overflow).
+
+Verified end-to-end with tools/api-probe.py (raw wake + wantConfig, no client
+lib): 45 FromRadio frames — my_info, metadata, 8 channels, 10 config,
+16 moduleConfig, node_infos, fileInfo, config_complete_id=42. Then
+tools/meshtastic-connect.py: full nodedb download, owner Meshtastic fc5d
+(!79f1e7d3), firmware 2.8.0.ab6609f, PRIVATE_HW. lora.region set to US over
+the API (device self-rebooted to apply).
+
+Meshtastic clone commit: 7c8b810d5 (polling console + EXCLUDE_BLUETOOTH).
+NEXT: copy bin to SD /firmware/, deploy to Unit B flex bay, first RF pair test.
+Milestone B prereq confirmed by the reboot-loop diagnosis: C6 MUST be reflashed
+with esp_hosted network_adapter v2.12.7 before re-enabling BLE/WiFi.
