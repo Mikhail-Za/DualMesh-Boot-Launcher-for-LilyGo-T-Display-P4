@@ -295,3 +295,41 @@ C. **Display + MUI** — LovyanGFX DSI fix (M5GFX_Backport) or HI8561 esp_lcd dr
 Upstream strategy: develop on local branch `t-display-p4-variant`; PR to
 meshtastic/firmware once Milestone A works (they want P4 boards; our chip-rev fix
 helps every v1.x P4 owner).
+
+## 2026-06-12 — MILESTONE A IN PROGRESS: Meshtastic BOOTS on T-Display P4
+
+Branch `t-display-p4-variant` (based on pr9526 = crowpanel-p4 + develop; fetched via
+`git fetch origin pull/9526/head:pr9526`). Variant committed at bf0f5cc34.
+
+**WORKING:** Meshtastic 2.8.0 boots from ota_1 under the launcher: NodeDB, fresh
+LittleFS on mesh_fs (storage isolation works), default config saved, serial console
+logs, HostedBluetooth setup runs (releases C6 from reset). XL9535 expander handle
+inits OK in initVariant (err=0). Image 1.48MB = 57% of slot.
+
+**Build recipe traps (in order hit):**
+1. ng-io-expander fork (mverch67/arduino-esp32#82aee17, pinned via platform_packages)
+   has broken P4 rule: espressif/cbor ^2.0.12 → custom_component_remove espressif/cbor.
+2. Fork's esp32-hal-spi.c P4 LDO workaround needs BOARD_SDMMC_POWER_PIN/CHANNEL/
+   ON_LEVEL defines + peri-tag block in initVariant (copied from CrowPanel).
+3. variant.cpp only compiles with build_src_filter += +<../variants/esp32p4/t-display-p4>.
+4. **Binary filename includes git hash** — after committing, flash the NEW
+   firmware-t-display-p4-2.8.0.<hash>.bin (stale-flash cost one debug round).
+5. Boot for tests: reset, wait ~3s, spam 'boot1' over serial into the launcher
+   splash window (launcher auto-boots last slot after 3s otherwise).
+
+**OPEN BUG (the only blocker): SX126x init result -707** (SPI_CMD_FAILED — chip
+responds, reports command failure). Same with expander hardware reset (rst=78) and
+RADIOLIB_NC. No TCXO on this board (LilyGo example AND Homertrix port both run
+without TCXO/DIO2-switch; Homertrix uses cpp_bus_driver Sx126x not RadioLib;
+sync word 0x2B/0x24B4). Current experiment (build running at session end): explicit
+reset pulse in initVariant (bit14 low 5ms→high 20ms) + RADIOLIB_DEBUG_BASIC/SPI=1
+to dump actual SPI status bytes → notes/bootlog-meshtastic-6.txt.
+Next suspects if unresolved: Arduino-P4 SPI host/clock-source quirk (LilyGo example
+explicitly uses SPI2_HOST, clock_source 11, 10MHz; check what Arduino SPI.begin
+picks on P4), BUSY pulldown handling, compare RadioLib hal SPI transactions vs
+LilyGo's working cpp_bus_driver traffic.
+
+Expander pin map (validated): XL9535@0x20 bus SDA7/SCL8, INT=GPIO5. esp_io_expander
+bit numbers: 3V3=0(active low), SKY13453=1(high=RF1), 5V=6(high), VCCA=8(low),
+GPS wake=9, C6 wake=11, C6 EN=12, SD EN=13(low), SX1262 RST=14, DIO1=15.
+LilyGo enum kIoN: N≤7 → bit N; N≥10 → bit N-2.

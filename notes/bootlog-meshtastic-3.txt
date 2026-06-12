@@ -1,0 +1,2167 @@
+[0;31m[  5862][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5870][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5878][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5886][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5894][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5902][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5921][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5929][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5937][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5945][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5953][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5961][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5980][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5988][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5996][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6004][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6012][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6020][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6039][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6047][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6055][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6063][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6071][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6079][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6098][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6106][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6114][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6122][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6130][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6138][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6157][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6165][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6173][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6181][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6189][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6197][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6216][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6224][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6232][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6240][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6248][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6256][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6275][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6283][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6291][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6299][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6307][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6315][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6334][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6342][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6350][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6358][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6366][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6374][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6382][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6390][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6399][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6407][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6425][E][esp32-hal-gpio.c:120] __pinMode(): io_expander not initialized[0m
+[0;31m[  6432][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6442][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6450][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6458][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6466][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6474][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6482][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6490][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6509][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6517][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6525][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6533][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6541][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6549][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6568][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6576][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6584][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6592][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6600][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6608][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6627][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6635][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6643][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6651][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6659][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6667][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6686][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6694][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6702][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6710][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6718][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6726][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6745][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6753][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6761][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6769][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6777][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6785][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6804][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6812][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6820][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6828][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6836][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6844][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6863][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6871][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6879][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6887][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6895][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6903][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6922][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6930][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6938][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6946][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6954][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6962][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6981][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6989][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6997][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7005][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7013][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7021][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7040][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7048][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7056][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7064][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7072][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7080][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7099][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7107][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7115][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7123][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7131][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7139][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7158][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7166][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7174][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7182][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7190][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7198][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7217][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7225][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7233][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7241][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7249][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7257][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7276][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7284][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7292][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7300][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7308][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7316][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7335][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7343][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7351][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7359][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7367][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7375][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7394][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7402][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7410][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7418][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7426][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7434][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7453][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7461][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7469][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7477][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7485][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7493][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7501][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7509][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7518][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7526][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7544][E][esp32-hal-gpio.c:120] __pinMode(): io_expander not initialized[0m
+[0;31m[  7551][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7561][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7569][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7577][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7585][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7593][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7601][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7609][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7628][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7636][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7644][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7652][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7660][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7668][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7687][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7695][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7703][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7711][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7719][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7727][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7746][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7754][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7762][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7770][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7778][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7786][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7805][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7813][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7821][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7829][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7837][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7845][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7864][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7872][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7880][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7888][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7896][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7904][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7923][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7931][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7939][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7947][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7955][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7963][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7982][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7990][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7998][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8006][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8014][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8022][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8041][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8049][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8057][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8065][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8073][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8081][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8100][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8108][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8116][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8124][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8132][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8140][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8159][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8167][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8175][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8183][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8191][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8199][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8218][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8226][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8234][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8242][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8250][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8258][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8277][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8285][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8293][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8301][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8309][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8317][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8336][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8344][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8352][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8360][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8368][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8376][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8395][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8403][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8411][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8419][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8427][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8435][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8454][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8462][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8470][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8478][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8486][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8494][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8513][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8521][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8529][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8537][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8545][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8553][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8572][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8580][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8588][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8596][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8604][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8612][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8620][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8628][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8637][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8645][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8663][E][esp32-hal-gpio.c:120] __pinMode(): io_expander not initialized[0m
+[0;31m[  8670][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8680][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8688][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8696][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8704][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8712][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8720][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8728][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8747][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8755][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8763][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8771][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8779][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8787][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8806][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8814][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8822][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8830][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8838][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8846][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8865][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8873][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8881][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8889][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8897][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8905][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8924][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8932][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8940][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8948][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8956][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8964][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8983][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8991][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8999][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9007][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9015][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9023][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9042][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9050][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9058][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9066][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9074][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9082][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9101][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9109][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9117][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9125][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9133][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9141][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9160][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9168][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9176][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9184][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9192][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9200][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9219][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9227][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9235][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9243][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9251][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9259][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9278][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9286][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9294][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9302][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9310][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9318][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9337][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9345][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9353][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9361][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9369][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9377][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9396][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9404][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9412][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9420][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9428][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9436][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9455][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9463][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9471][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9479][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9487][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9495][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9514][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9522][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9530][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9538][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9546][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9554][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9573][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9581][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9589][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9597][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9605][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9613][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9632][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9640][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9648][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9656][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9664][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9672][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9691][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9699][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9707][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9715][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9723][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9731][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9739][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9747][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9756][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9764][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9782][E][esp32-hal-gpio.c:120] __pinMode(): io_expander not initialized[0m
+[0;31m[  9789][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9799][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9807][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9815][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9823][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9831][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9839][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9847][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9866][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9874][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9882][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9890][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9898][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9906][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9925][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9933][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9941][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9949][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9957][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9965][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9984][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9992][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10000][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10008][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10016][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10024][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10043][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10051][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10059][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10067][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10075][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10083][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10102][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10110][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10118][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10126][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10134][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10142][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10161][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10169][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10177][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10185][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10193][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10201][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10220][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10228][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10236][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10244][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10252][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10260][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10279][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10287][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10295][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10303][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10311][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10319][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10338][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10346][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10354][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10362][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10370][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10378][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10397][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10405][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10413][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10421][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10429][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10437][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10456][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10464][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10472][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10480][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10488][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10496][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10515][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10523][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10531][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10539][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10547][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10555][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10574][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10582][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10590][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10598][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10606][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10614][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10633][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10641][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10649][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10657][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10665][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10673][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10692][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10700][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10708][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10716][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10724][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10732][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10751][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10759][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10767][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10775][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10783][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10791][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10810][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10818][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10826][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10834][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10842][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10850][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10858][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10866][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10875][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10883][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10901][E][esp32-hal-gpio.c:120] __pinMode(): io_expander not initialized[0m
+[0;31m[ 10908][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10918][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10926][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10934][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10942][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10950][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10958][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10966][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10985][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10993][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11001][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11009][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11017][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11025][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11044][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11052][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11060][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11068][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11076][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11084][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11103][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11111][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11119][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11127][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11135][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11143][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11162][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11170][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11178][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11186][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11194][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11202][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11221][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11229][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11237][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11245][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11253][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11261][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11280][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11288][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11296][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11304][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11312][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11320][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11339][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11347][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11355][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11363][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11371][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11379][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11398][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11406][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11414][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11422][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11430][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11438][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11457][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11465][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11473][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11481][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11489][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11497][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11516][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11524][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11532][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11540][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11548][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11556][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11575][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11583][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11591][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11599][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11607][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11615][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11634][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11642][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11650][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11658][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11666][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11674][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11693][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11701][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11709][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11717][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11725][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11733][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11752][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11760][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11768][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11776][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11784][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11792][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11811][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11819][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11827][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11835][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11843][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11851][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11870][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11878][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11886][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11894][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11902][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11910][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11929][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11937][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11945][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11953][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11961][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11969][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11977][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11985][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11994][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 12002][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[32mINFO  [0m| ??:??:?? 12 [32mSX126x init result -2
+[0m[33mWARN  [0m| ??:??:?? 12 [33mNo SX1262 radio
+[0m[31mERROR [0m| ??:??:?? 12 [31mNOTE! Record critical error 3 at src/main.cpp:1047
+[0m[32mINFO  [0m| ??:??:?? 12 [32mPowerFSM init, USB power=1
+[0m[34mDEBUG [0m| ??:??:?? 12 [34mFree heap  :  384228 bytes
+[0m[34mDEBUG [0m| ??:??:?? 12 [34mFree PSRAM : 33535596 bytes
+[0m[34mDEBUG [0m| ??:??:?? 12 [34mNode status update: 2 online, 2 total
+[0m[0;31m[ 12052][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 12070][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13077][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13085][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13143][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13151][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13209][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13217][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13275][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13283][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13341][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13349][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13407][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13415][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13473][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13481][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13539][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13547][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13605][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13613][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13671][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13679][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13737][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13745][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13803][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13811][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13869][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13877][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13935][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13943][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14001][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14009][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14067][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14075][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14133][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14141][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14199][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14207][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14265][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14273][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14331][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14339][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14397][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14405][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14463][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14471][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14529][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14537][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14595][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14603][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14661][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14669][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14727][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14735][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14793][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14801][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14859][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14867][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14925][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14933][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14991][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14999][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 15057][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 15065][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[34mDEBUG [0m| ??:??:?? 15 [PowerFSM] [34m[HostedBluetooth] setSlaveResetLine: GPIO[54] -> 0 (assertReset=0, activeLevel=1)
+[0m[34mDEBUG [0m| ??:??:?? 15 [PowerFSM] [34m[HostedBluetooth] setup(): Released co-processor from reset
+[0m[33mWARN  [0m| ??:??:?? 15 [PowerFSM] [33mHosted event handler already registered, continuing
+[0m[0;32m[ 15094][I][BLEDevice.cpp:293] init(): Initializing BLE stack: NimBLE[0m
+[0;32m[ 15110][I][esp32-hal-hosted.c:251] hostedInitBLE(): Initializing ESP-Hosted for BLE[0m
+[0;32m[ 15118][I][esp32-hal-hosted.c:186] hostedInit(): Initializing ESP-Hosted[0m
+[0;32mI (16047) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120[0m
+[0;33mW (16047) H_API: ESP-Hosted config valid; reuse existing config[0m
+[0;32mI (16052) H_API: ** add_esp_wifi_remote_channels **[0m
+[0;32mI (16059) H_SDIO_DRV: sdio_data_to_rx_buf_task started[0m
+[0;32m[ 15143][I][esp32-hal-hosted.c:211] hostedInit(): ESP-Hosted initialized![0m
+[0;32mI (16082) H_API: ESP-Hosted Try to communicate with ESP-Hosted slave
+[0m
+[0;32mI (16082) transport: Attempt connection with slave: retry[0][0m
+[0;33mW (16084) H_SDIO_DRV: Reset slave using GPIO[76][0m
+[0;32mI (16090) os_wrapper_esp: GPIO [76] configured[0m
+[0;32mI (17615) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[40000 KHz][0m
+[0;32mI (17615) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[76][0m
+[0;32mI (17621) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1][0m
+[0;32mI (17653) sdio_wrapper: Function 0 Blocksize: 512[0m
+[0;32mI (17653) sdio_wrapper: Function 1 Blocksize: 512[0m
+[0;32mI (17753) H_SDIO_DRV: Card init success, TRANSPORT_RX_ACTIVE[0m
+[0;32mI (17753) transport: set_transport_state: 1[0m
+[0;32mI (17753) transport: Waiting for esp_hosted slave to be ready[0m
+[0;32mI (17763) H_SDIO_DRV: SDIO Host operating in STREAMING MODE[0m
+[0;32mI (17764) H_SDIO_DRV: Starting SDIO process rx task[0m
+[0;32mI (17766) H_SDIO_DRV: Open data path at slave[0m
+[0;32mI (27560) transport: Not able to connect with ESP-Hosted slave device[0m
+[0;33mW (27560) H_SDIO_DRV: Reset slave using GPIO[76][0m
+[0;32mI (27561) os_wrapper_esp: GPIO [76] configured[0m
+[0;32mI (29086) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[40000 KHz][0m
+[0;32mI (29086) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[76][0m
+[0;32mI (29092) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1][0m
+[0;31mE (29129) sdmmc_io: sdmmc_io_rw_extended: sdmmc_send_cmd returned 0x107[0m
+[0;31mE (29129) H_SDIO_DRV: failed to read registers[0m
+[0;32mI (29130) H_SDIO_DRV: Host is resetting itself, to avoid any sdio race condition[0m
+[0;32mI (29139) os_wrapper_esp: Restarting host[0m
+ESP-ROM:esp32p4-eco2-20240710
+Build:Jul 10 2024
+rst:0xc (SW_CPU_RESET),boot:0x30f (SPI_FAST_FLASH_BOOT)
+Core0 Saved PC:0x4ff03fd8
+Core1 Saved PC:0x4ff08de6
+SPI mode:DIO, clock div:1
+load:0x4ff33ce0,len:0x15e4
+load:0x4ff29ed0,len:0xe28
+load:0x4ff2cbd0,len:0x359c
+entry 0x4ff29eda
+I (33) boot: ESP-IDF v5.5.4 2nd stage bootloader
+I (33) boot: compile time Jun 12 2026 08:28:19
+I (34) boot: Multicore bootloader
+I (35) boot: chip revision: v1.0
+I (36) boot: efuse block revision: v0.1
+I (40) boot.esp32p4: SPI Speed      : 80MHz
+I (44) boot.esp32p4: SPI Mode       : DIO
+I (47) boot.esp32p4: SPI Flash Size : 16MB
+I (51) boot: Enabling RNG early entropy source...
+I (56) boot: Partition Table:
+I (58) boot: ## Label            Usage          Type ST Offset   Length
+I (65) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (71) boot:  1 otadata          OTA data         01 00 0000f000 00002000
+I (78) boot:  2 phy_init         RF data          01 01 00011000 00001000
+I (84) boot:  3 factory          factory app      00 00 00020000 000e0000
+I (91) boot:  4 meshos           OTA app          00 10 00100000 00ac0000
+I (97) boot:  5 meshtastic       OTA app          00 11 00bc0000 00280000
+I (104) boot:  6 mesh_nvs         WiFi data        01 02 00e40000 00010000
+I (110) boot:  7 mesh_fs          Unknown data     01 82 00e50000 001b0000
+I (118) boot: End of partition table
+I (121) esp_image: segment 0: paddr=00bc0020 vaddr=40100020 size=5abd0h (371664) map
+I (173) esp_image: segment 1: paddr=00c1abf8 vaddr=30100000 size=0035ch (   860) load
+I (175) esp_image: segment 2: paddr=00c1af5c vaddr=4ff00000 size=050bch ( 20668) load
+I (181) esp_image: segment 3: paddr=00c20020 vaddr=40000020 size=fca4ch (1034828) map
+I (309) esp_image: segment 4: paddr=00d1ca74 vaddr=4ff050bc size=0aba0h ( 43936) load
+I (317) esp_image: segment 5: paddr=00d2761c vaddr=4ff0fc80 size=03200h ( 12800) load
+I (320) esp_image: segment 6: paddr=00d2a824 vaddr=50108080 size=00024h (    36) load
+I (325) boot: Loaded app from partition at offset 0xbc0000
+I (326) boot: Disabling RNG early entropy source...
+[0;33mW (342) pmu_pvt: blk_version is less than 2, pvt auto dbias init not supported in efuse.[0m
+[0;32mI (344) hex_psram: psram CS IO is dedicated[0m
+[0;32mI (344) cpu_start: Multicore app[0m
+[0;32mI (360) cpu_start: GPIO 38 and 37 are used as console UART I/O pins[0m
+[0;32mI (360) cpu_start: Pro cpu start user code[0m
+[0;32mI (360) cpu_start: cpu freq: 360000000 Hz[0m
+[0;32mI (365) app_init: Application information:[0m
+[0;32mI (370) app_init: Project name:     meshtastic-firmware[0m
+[0;32mI (376) app_init: App version:      v2.7.23.b246bcd-376-gabdb2e07c-[0m
+[0;32mI (382) app_init: Compile time:     Jun 12 2026 10:45:45[0m
+[0;32mI (388) app_init: ELF file SHA256:  d44db5116...[0m
+[0;32mI (394) app_init: ESP-IDF:          5.5.4[0m
+[0;32mI (398) efuse_init: Min chip rev:     v1.0[0m
+[0;32mI (403) efuse_init: Max chip rev:     v1.99 [0m
+[0;32mI (408) efuse_init: Chip rev:         v1.0[0m
+[0;32mI (413) hex_psram: vendor id    : 0x0d (AP)[0m
+[0;32mI (418) hex_psram: Latency      : 0x01 (Fixed)[0m
+[0;32mI (423) hex_psram: DriveStr.    : 0x00 (25 Ohm)[0m
+[0;32mI (428) hex_psram: dev id       : 0x03 (generation 4)[0m
+[0;32mI (434) hex_psram: density      : 0x07 (256 Mbit)[0m
+[0;32mI (439) hex_psram: good-die     : 0x06 (Pass)[0m
+[0;32mI (444) hex_psram: SRF          : 0x02 (Slow Refresh)[0m
+[0;32mI (450) hex_psram: BurstType    : 0x00 ( Wrap)[0m
+[0;32mI (455) hex_psram: BurstLen     : 0x03 (2048 Byte)[0m
+[0;32mI (461) hex_psram: BitMode      : 0x01 (X16 Mode)[0m
+[0;32mI (466) hex_psram: Readlatency  : 0x04 (14 cycles@Fixed)[0m
+[0;32mI (472) hex_psram: DriveStrength: 0x00 (1/1)[0m
+[0;32mI (477) MSPI Timing: Enter psram timing tuning[0m
+[0;32mI (567) esp_psram: Found 32MB PSRAM device[0m
+[0;32mI (567) esp_psram: Speed: 200MHz[0m
+[0;32mI (889) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (889) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (890) heap_init: At 4FF1D010 len 0001DFB0 (119 KiB): RETENT_RAM[0m
+[0;32mI (896) heap_init: At 4FF3AFC0 len 00004BF0 (18 KiB): RAM[0m
+[0;32mI (902) heap_init: At 4FF40000 len 00040000 (256 KiB): RAM[0m
+[0;32mI (909) heap_init: At 501080A4 len 00007F5C (31 KiB): RTCRAM[0m
+[0;32mI (915) heap_init: At 3010035C len 00001CA4 (7 KiB): TCM[0m
+[0;32mI (922) spi_flash: detected chip: gd[0m
+[0;32mI (925) spi_flash: flash io: dio[0m
+[0;32mI (931) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (937) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (944) main_task: Started on CPU0[0m
+[0;32mI (948) main_task: Calling app_main()[0m
+[0;32mI (952) esp_psram: Adding pool of 32768K of PSRAM memory to heap allocator[0m
+[0;32m[    38][I][esp32-hal-psram.c:106] psramAddToHeap(): PSRAM added to the heap.[0m
+[0;32mI (991?? @[32mINFO  [0m| ??:??:?? 0 [32m
+
+//\ E S H T /\ S T / C
+
+[0m[32mINFO  [0m| ??:??:?? 0 [32mBooted, wake cause 0 (boot count 1), reset_reason=reset
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mFilesystem files (16384/1769472 Bytes):
+[0m[34mDEBUG [0m| ??:??:?? 0 [34m /prefs/channels.proto (57 Bytes)
+[0m[34mDEBUG [0m| ??:??:?? 0 [34m /prefs/device.proto (65 Bytes)
+[0m[34mDEBUG [0m| ??:??:?? 0 [34m /prefs/nodes.proto (238 Bytes)
+[0m[32mINFO  [0m| ??:??:?? 0 [32mNo I2C devices found
+[0m[34mDEBUG [0m| ??:??:?? 0 [34macc_info = 0
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mmag_info = 0
+[0m[32mINFO  [0m| ??:??:?? 0 [32mS:B:255,2.8.0.bf0f5cc,t-display-p4,meshtastic/firmware
+[0m[32mINFO  [0m| ??:??:?? 0 [32mBuild timestamp: 1781240400
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mTotal heap: 444320
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mFree heap: 395788
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mTotal PSRAM: 33554432
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mFree PSRAM: 33549824
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mNVS: UsedEntries 39, FreeEntries 717, AllEntries 756, NameSpaces 5
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mSetup Preferences in Flash Storage
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mNumber of Device Reboots: 18
+[0m[32mINFO  [0m| ??:??:?? 0 [32mInit NodeDB
+[0m[32mINFO  [0m| ??:??:?? 0 [32mLoad /prefs/nodes.proto
+[0m[32mINFO  [0m| ??:??:?? 0 [32mLoaded /prefs/nodes.proto successfully
+[0m[32mINFO  [0m| ??:??:?? 0 [32mLoaded saved nodedatabase v25: 1 nodes, 0 pos, 0 tel, 0 env, 0 status
+[0m[32mINFO  [0m| ??:??:?? 0 [32mLoad /prefs/device.proto
+[0m[32mINFO  [0m| ??:??:?? 0 [32mLoaded /prefs/device.proto successfully
+[0m[32mINFO  [0m| ??:??:?? 0 [32mLoaded saved devicestate version 25
+[0m[31mERROR [0m| ??:??:?? 0 [31mCould not open / read /prefs/config.proto
+[0m[32mINFO  [0m| ??:??:?? 0 [32mInstall default LocalConfig
+[0m[32mINFO  [0m| ??:??:?? 0 [32mSet default channel and radio preferences!
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mExpand short PSK #1
+[0m[32mINFO  [0m| ??:??:?? 0 [32mWanted region 0, using UNSET
+[0m[31mERROR [0m| ??:??:?? 0 [31mCould not open / read /prefs/module.proto
+[0m[32mINFO  [0m| ??:??:?? 0 [32mInstall default ModuleConfig
+[0m[32mINFO  [0m| ??:??:?? 0 [32mLoad /prefs/channels.proto
+[0m[32mINFO  [0m| ??:??:?? 0 [32mLoaded /prefs/channels.proto successfully
+[0m[32mINFO  [0m| ??:??:?? 0 [32mLoaded saved channelFile version 25
+[0m[31mERROR [0m| ??:??:?? 0 [31mCould not open / read /prefs/uiconfig.proto
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mcleanupMeshDB purged 0 entries
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mUse nodenum 0x79f1e7d3 
+[0m[32mINFO  [0m| ??:??:?? 0 [32mAdding node to database with 2 nodes and 395340 bytes free!
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mNumber of Device Reboots: 18
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mExpand short PSK #1
+[0m[32mINFO  [0m| ??:??:?? 0 [32mWanted region 0, using UNSET
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mCoerce telemetry to role-aware minimum on defaults
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mCoerce position broadcasts to role-aware minimum and smart broadcast min of 5 minutes on defaults
+[0m[32mINFO  [0m| ??:??:?? 0 [32mSort took 0 milliseconds
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mSave to disk 4
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mOpening /prefs/device.proto, fullAtomic=1
+[0m[32mINFO  [0m| ??:??:?? 0 [32mSave /prefs/device.proto
+[0m[32mINFO  [0m| ??:??:?? 0 [32mTransmitHistory: no history file found, starting fresh
+[0m[33mWARN  [0m| ??:??:?? 0 [33mPacket History - Invalid size -1, using default 200
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mSPI.begin(SCK=2, MISO=4, MOSI=3, NSS=24)
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mUse compiled/slipstreamed tzplaceholder                                         
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mSet Timezone to GMT0
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mRead RTC time as 233
+[0m[32mINFO  [0m| ??:??:?? 0 [32mExternal Notification Module Disabled
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mRescan for I2C keyboard
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mScan for I2C devices on port 1
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mScan address 0x1f
+[0m[0;31m[   434][E][Wire.cpp:425] beginTransmission(): could not acquire lock[0m
+[0;31m[   453][E][Wire.cpp:454] endTransmission(): NULL TX buffer pointer[0m
+[31mERROR [0m| ??:??:?? 0 [31mUnknown error at address 0x1f
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mScan address 0x34
+[0m[0;31m[   461][E][Wire.cpp:425] beginTransmission(): could not acquire lock[0m
+[0;31m[   478][E][Wire.cpp:454] endTransmission(): NULL TX buffer pointer[0m
+[31mERROR [0m| ??:??:?? 0 [31mUnknown error at address 0x34
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mScan address 0x55
+[0m[0;31m[   486][E][Wire.cpp:425] beginTransmission(): could not acquire lock[0m
+[0;31m[   502][E][Wire.cpp:454] endTransmission(): NULL TX buffer pointer[0m
+[31mERROR [0m| ??:??:?? 0 [31mUnknown error at address 0x55
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mScan address 0x5a
+[0m[0;31m[   511][E][Wire.cpp:425] beginTransmission(): could not acquire lock[0m
+[0;31m[   527][E][Wire.cpp:454] endTransmission(): NULL TX buffer pointer[0m
+[31mERROR [0m| ??:??:?? 0 [31mUnknown error at address 0x5a
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mScan address 0x5f
+[0m[0;31m[   536][E][Wire.cpp:425] beginTransmission(): could not acquire lock[0m
+[0;31m[   552][E][Wire.cpp:454] endTransmission(): NULL TX buffer pointer[0m
+[31mERROR [0m| ??:??:?? 0 [31mUnknown error at address 0x5f
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mSX126xInterface(cs=24, irq=79, rst=78, busy=6)
+[0m[34mDEBUG [0m| ??:??:?? 0 [34mSX126X_DIO3_TCXO_VOLTAGE not defined, not using DIO3 as TCXO reference voltage
+[0m[32mINFO  [0m| ??:??:?? 0 [32mStart meshradio init
+[0m[32mINFO  [0m| ??:??:?? 0 [32mRadio freq=906.875, config.lora.frequency_offset=0.000
+[0m[32mINFO  [0m| ??:??:?? 0 [32mSet radio: region=UNSET, name=LongFast, config=0, ch=19, power=30
+[0m[32mINFO  [0m| ??:??:?? 0 [32mnewRegion->freqStart -> newRegion->freqEnd: 902.000000 -> 928.000000 (26.000000 MHz)
+[0m[32mINFO  [0m| ??:??:?? 0 [32mnumFreqSlots: 104 x 250.000kHz
+[0m[32mINFO  [0m| ??:??:?? 0 [32mchannel_num: 20
+[0m[32mINFO  [0m| ??:??:?? 0 [32mfrequency: 906.875000
+[0m[32mINFO  [0m| ??:??:?? 0 [32mSlot time: 28 msec, preamble time: 131 msec
+[0m[32mINFO  [0m| ??:??:?? 0 [32mFinal Tx power: 22 dBm
+[0m[0;31m[   635][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   652][E][esp32-hal-gpio.c:120] __pinMode(): io_expander not initialized[0m
+[0;31m[   659][E][esp32-hal-gpio.c:120] __pinMode(): io_expander not initialized[0m
+[0;31m[   667][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   676][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   684][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   692][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   700][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[   708][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   716][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   725][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[   743][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   751][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   759][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[   767][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   775][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   783][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[   802][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   810][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   818][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[   826][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   834][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   842][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[   861][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   869][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   877][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[   885][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   893][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   901][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[   920][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   928][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   936][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[   944][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   952][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   960][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[   979][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   987][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[   995][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1003][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1011][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1019][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1038][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1046][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1054][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1062][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1070][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1078][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1097][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1105][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1113][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1121][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1129][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1137][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1156][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1164][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1172][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1180][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1188][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1196][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1215][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1223][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1231][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1239][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1247][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1255][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1274][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1282][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1290][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1298][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1306][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1314][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1333][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1341][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1349][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1357][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1365][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1373][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1392][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1400][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1408][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1416][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1424][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1432][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1451][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1459][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1467][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1475][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1483][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1491][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1510][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1518][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1526][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1534][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1542][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1550][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1569][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1577][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1585][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1593][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1601][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1609][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1628][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1636][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1644][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1652][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1660][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1668][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1687][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1695][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1703][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1711][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1719][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1727][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1735][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1743][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1752][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1760][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1778][E][esp32-hal-gpio.c:120] __pinMode(): io_expander not initialized[0m
+[0;31m[  1785][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1795][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1803][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1811][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1819][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1827][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1835][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1843][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1862][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1870][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1878][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1886][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1894][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1902][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1921][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1929][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1937][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1945][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1953][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1961][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  1980][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1988][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  1996][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2004][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2012][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2020][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2039][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2047][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2055][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2063][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2071][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2079][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2098][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2106][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2114][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2122][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2130][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2138][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2157][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2165][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2173][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2181][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2189][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2197][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2216][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2224][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2232][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2240][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2248][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2256][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2275][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2283][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2291][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2299][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2307][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2315][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2334][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2342][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2350][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2358][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2366][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2374][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2393][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2401][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2409][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2417][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2425][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2433][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2452][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2460][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2468][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2476][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2484][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2492][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2511][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2519][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2527][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2535][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2543][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2551][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2570][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2578][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2586][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2594][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2602][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2610][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2629][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2637][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2645][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2653][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2661][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2669][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2688][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2696][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2704][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2712][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2720][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2728][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2747][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2755][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2763][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2771][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2779][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2787][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2806][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2814][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2822][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2830][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2838][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2846][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2854][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2862][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2871][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2879][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2897][E][esp32-hal-gpio.c:120] __pinMode(): io_expander not initialized[0m
+[0;31m[  2904][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2914][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2922][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2930][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2938][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2946][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2954][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2962][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  2981][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2989][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  2997][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3005][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3013][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3021][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3040][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3048][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3056][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3064][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3072][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3080][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3099][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3107][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3115][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3123][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3131][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3139][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3158][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3166][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3174][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3182][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3190][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3198][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3217][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3225][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3233][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3241][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3249][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3257][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3276][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3284][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3292][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3300][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3308][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3316][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3335][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3343][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3351][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3359][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3367][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3375][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3394][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3402][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3410][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3418][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3426][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3434][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3453][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3461][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3469][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3477][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3485][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3493][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3512][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3520][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3528][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3536][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3544][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3552][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3571][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3579][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3587][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3595][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3603][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3611][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3630][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3638][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3646][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3654][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3662][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3670][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3689][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3697][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3705][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3713][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3721][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3729][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3748][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3756][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3764][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3772][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3780][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3788][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3807][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3815][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3823][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3831][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3839][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3847][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3866][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3874][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3882][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3890][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3898][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3906][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3925][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3933][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3941][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3949][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3957][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3965][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3973][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  3981][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3990][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  3998][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4016][E][esp32-hal-gpio.c:120] __pinMode(): io_expander not initialized[0m
+[0;31m[  4023][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4033][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4041][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4049][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4057][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4065][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4073][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4081][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4100][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4108][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4116][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4124][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4132][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4140][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4159][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4167][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4175][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4183][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4191][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4199][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4218][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4226][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4234][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4242][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4250][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4258][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4277][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4285][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4293][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4301][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4309][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4317][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4336][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4344][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4352][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4360][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4368][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4376][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4395][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4403][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4411][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4419][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4427][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4435][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4454][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4462][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4470][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4478][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4486][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4494][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4513][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4521][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4529][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4537][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4545][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4553][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4572][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4580][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4588][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4596][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4604][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4612][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4631][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4639][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4647][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4655][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4663][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4671][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4690][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4698][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4706][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4714][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4722][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4730][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4749][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4757][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4765][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4773][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4781][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4789][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4808][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4816][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4824][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4832][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4840][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4848][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4867][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4875][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4883][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4891][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4899][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4907][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4926][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4934][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4942][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4950][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4958][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4966][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  4985][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  4993][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5001][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5009][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5017][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5025][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5044][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5052][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5060][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5068][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5076][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5084][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5092][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5100][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5109][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5117][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5135][E][esp32-hal-gpio.c:120] __pinMode(): io_expander not initialized[0m
+[0;31m[  5142][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5152][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5160][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5168][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5176][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5184][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5192][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5200][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5219][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5227][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5235][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5243][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5251][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5259][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5278][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5286][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5294][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5302][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5310][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5318][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5337][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5345][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5353][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5361][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5369][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5377][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5396][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5404][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5412][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5420][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5428][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5436][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5455][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5463][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5471][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5479][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5487][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5495][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5514][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5522][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5530][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5538][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5546][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5554][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5573][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5581][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5589][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5597][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5605][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5613][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5632][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5640][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5648][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5656][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5664][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5672][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5691][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5699][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5707][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5715][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5723][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5731][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5750][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5758][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5766][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5774][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5782][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5790][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5809][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5817][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5825][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5833][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5841][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5849][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5868][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5876][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5884][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5892][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5900][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5908][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5927][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5935][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5943][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5951][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5959][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5967][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  5986][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  5994][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6002][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6010][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6018][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6026][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6045][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6053][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6061][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6069][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6077][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6085][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6104][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6112][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6120][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6128][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6136][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6144][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6163][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6171][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6179][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6187][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6195][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6203][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6211][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6219][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6228][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6236][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6254][E][esp32-hal-gpio.c:120] __pinMode(): io_expander not initialized[0m
+[0;31m[  6261][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6271][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6279][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6287][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6295][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6303][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6311][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6319][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6338][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6346][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6354][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6362][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6370][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6378][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6397][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6405][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6413][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6421][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6429][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6437][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6456][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6464][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6472][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6480][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6488][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6496][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6515][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6523][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6531][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6539][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6547][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6555][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6574][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6582][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6590][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6598][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6606][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6614][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6633][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6641][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6649][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6657][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6665][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6673][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6692][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6700][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6708][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6716][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6724][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6732][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6751][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6759][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6767][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6775][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6783][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6791][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6810][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6818][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6826][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6834][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6842][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6850][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6869][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6877][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6885][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6893][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6901][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6909][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6928][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6936][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6944][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6952][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6960][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6968][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  6987][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  6995][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7003][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7011][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7019][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7027][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7046][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7054][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7062][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7070][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7078][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7086][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7105][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7113][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7121][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7129][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7137][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7145][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7164][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7172][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7180][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7188][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7196][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7204][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7223][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7231][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7239][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7247][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7255][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7263][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7282][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7290][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7298][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7306][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7314][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7322][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7330][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7338][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7347][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7355][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7373][E][esp32-hal-gpio.c:120] __pinMode(): io_expander not initialized[0m
+[0;31m[  7380][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7390][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7398][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7406][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7414][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7422][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7430][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7438][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7457][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7465][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7473][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7481][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7489][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7497][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7516][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7524][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7532][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7540][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7548][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7556][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7575][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7583][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7591][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7599][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7607][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7615][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7634][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7642][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7650][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7658][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7666][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7674][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7693][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7701][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7709][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7717][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7725][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7733][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7752][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7760][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7768][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7776][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7784][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7792][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7811][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7819][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7827][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7835][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7843][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7851][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7870][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7878][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7886][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7894][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7902][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7910][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7929][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7937][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7945][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7953][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7961][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7969][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  7988][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  7996][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8004][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8012][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8020][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8028][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8047][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8055][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8063][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8071][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8079][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8087][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8106][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8114][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8122][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8130][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8138][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8146][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8165][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8173][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8181][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8189][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8197][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8205][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8224][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8232][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8240][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8248][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8256][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8264][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8283][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8291][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8299][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8307][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8315][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8323][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8342][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8350][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8358][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8366][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8374][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8382][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8401][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8409][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8417][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8425][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8433][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8441][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8449][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8457][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8466][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8474][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8492][E][esp32-hal-gpio.c:120] __pinMode(): io_expander not initialized[0m
+[0;31m[  8499][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8509][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8517][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8525][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8533][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8541][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8549][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8557][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8576][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8584][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8592][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8600][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8608][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8616][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8635][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8643][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8651][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8659][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8667][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8675][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8694][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8702][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8710][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8718][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8726][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8734][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8753][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8761][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8769][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8777][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8785][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8793][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8812][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8820][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8828][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8836][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8844][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8852][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8871][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8879][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8887][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8895][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8903][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8911][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8930][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8938][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8946][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8954][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8962][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8970][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  8989][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  8997][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9005][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9013][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9021][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9029][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9048][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9056][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9064][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9072][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9080][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9088][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9107][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9115][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9123][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9131][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9139][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9147][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9166][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9174][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9182][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9190][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9198][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9206][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9225][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9233][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9241][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9249][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9257][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9265][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9284][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9292][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9300][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9308][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9316][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9324][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9343][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9351][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9359][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9367][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9375][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9383][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9402][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9410][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9418][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9426][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9434][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9442][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9461][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9469][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9477][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9485][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9493][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9501][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9520][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9528][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9536][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9544][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9552][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9560][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9568][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9576][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9585][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9593][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9611][E][esp32-hal-gpio.c:120] __pinMode(): io_expander not initialized[0m
+[0;31m[  9618][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9628][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9636][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9644][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9652][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9660][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9668][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9676][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9695][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9703][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9711][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9719][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9727][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9735][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9754][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9762][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9770][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9778][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9786][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9794][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9813][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9821][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9829][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9837][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9845][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9853][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9872][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9880][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9888][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9896][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9904][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9912][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9931][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9939][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9947][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9955][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9963][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9971][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[  9990][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[  9998][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10006][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10014][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10022][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10030][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10049][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10057][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10065][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10073][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10081][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10089][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10108][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10116][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10124][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10132][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10140][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10148][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10167][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10175][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10183][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10191][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10199][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10207][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10226][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10234][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10242][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10250][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10258][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10266][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10285][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10293][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10301][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10309][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10317][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10325][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10344][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10352][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10360][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10368][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10376][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10384][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10403][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10411][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10419][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10427][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10435][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10443][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10462][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10470][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10478][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10486][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10494][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10502][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10521][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10529][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10537][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10545][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10553][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10561][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10580][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10588][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10596][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10604][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10612][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10620][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10639][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10647][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10655][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10663][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10671][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10679][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10687][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10695][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10704][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10712][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10730][E][esp32-hal-gpio.c:120] __pinMode(): io_expander not initialized[0m
+[0;31m[ 10737][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10747][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10755][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10763][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10771][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10779][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10787][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10795][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10814][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10822][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10830][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10838][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10846][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10854][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10873][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10881][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10889][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10897][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10905][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10913][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10932][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10940][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10948][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10956][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10964][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10972][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 10991][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 10999][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11007][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11015][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11023][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11031][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11050][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11058][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11066][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11074][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11082][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11090][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11109][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11117][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11125][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11133][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11141][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11149][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11168][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11176][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11184][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11192][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11200][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11208][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11227][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11235][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11243][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11251][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11259][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11267][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11286][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11294][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11302][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11310][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11318][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11326][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11345][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11353][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11361][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11369][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11377][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11385][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11404][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11412][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11420][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11428][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11436][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11444][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11463][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11471][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11479][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11487][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11495][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11503][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11522][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11530][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11538][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11546][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11554][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11562][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11581][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11589][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11597][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11605][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11613][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11621][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11640][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11648][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11656][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11664][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11672][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11680][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11699][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11707][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11715][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11723][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11731][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11739][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11758][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11766][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11774][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11782][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11790][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11798][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11806][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11814][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11823][E][esp32-hal-gpio.c:204] __digitalWrite(): io_expander not initialized)[0m
+[0;31m[ 11831][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[32mINFO  [0m| ??:??:?? 11 [32mSX126x init result -2
+[0m[33mWARN  [0m| ??:??:?? 11 [33mNo SX1262 radio
+[0m[31mERROR [0m| ??:??:?? 11 [31mNOTE! Record critical error 3 at src/main.cpp:1047
+[0m[32mINFO  [0m| ??:??:?? 11 [32mPowerFSM init, USB power=1
+[0m[34mDEBUG [0m| ??:??:?? 11 [34mFree heap  :  384228 bytes
+[0m[34mDEBUG [0m| ??:??:?? 11 [34mFree PSRAM : 33535596 bytes
+[0m[34mDEBUG [0m| ??:??:?? 11 [34mNode status update: 2 online, 2 total
+[0m[0;31m[ 11880][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 11899][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 12906][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 12914][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 12972][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 12980][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13038][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13046][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13104][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13112][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13170][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13178][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13236][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13244][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13302][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13310][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13368][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13376][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13434][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13442][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13500][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13508][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13566][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13574][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13632][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13640][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13698][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13706][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13764][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13772][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13830][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13838][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13896][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13904][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13962][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 13970][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14028][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14036][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14094][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14102][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14160][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14168][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14226][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14234][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14292][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14300][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14358][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14366][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14424][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14432][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14490][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14498][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14556][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14564][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14622][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14630][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14688][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14696][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14754][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14762][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14820][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14828][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14886][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[0;31m[ 14894][E][esp32-hal-gpio.c:228] __digitalRead(): io_expander not initialized)[0m
+[34mDEBUG [0m| ??:??:?? 14 [PowerFSM] [34m[HostedBluetooth] setSlaveResetLine: GPIO[54] -> 0 (assertReset=0, activeLevel=1)
+[0m[34mDEBUG [0m| ??:??:?? 14 [PowerFSM] [34m[HostedBluetooth] setup(): Released co-processor from reset
+[0m[33mWARN  [0m| ??:??:?? 14 [PowerFSM] [33mHosted event handler already registered, continuing
+[0m[0;32m[ 14923][I][BLEDevice.cpp:293] init(): Initializing BLE stack: NimBLE[0m
+[0;32m[ 14939][I][esp32-hal-hosted.c:251] hostedInitBLE(): Initializing ESP-Hosted for BLE[0m
+[0;32m[ 14947][I][esp32-hal-hosted.c:186] hostedInit(): Initializing ESP-Hosted[0m
+[0;32mI (15876) H_API: ESP-Hosted starting. Hosted_Tasks: prio:23, stack: 5120 RPC_task_stack: 5120[0m
+[0;33mW (15876) H_API: ESP-Hosted config valid; reuse existing config[0m
+[0;32mI (15881) H_API: ** add_esp_wifi_remote_channels **[0m
+[0;32mI (15888) H_SDIO_DRV: sdio_data_to_rx_buf_task started[0m
+[0;32m[ 14972][I][esp32-hal-hosted.c:211] hostedInit(): ESP-Hosted initialized![0m
+[0;32mI (15911) H_API: ESP-Hosted Try to communicate with ESP-Hosted slave
+[0m
+[0;32mI (15911) transport: Attempt connection with slave: retry[0][0m
+[0;33mW (15913) H_SDIO_DRV: Reset slave using GPIO[76][0m
+[0;32mI (15919) os_wrapper_esp: GPIO [76] configured[0m
+[0;32mI (17444) sdio_wrapper: SDIO master: Slot 1, Data-Lines: 4-bit Freq(KHz)[40000 KHz][0m
+[0;32mI (17444) sdio_wrapper: GPIOs: CLK[18] CMD[19] D0[14] D1[15] D2[16] D3[17] Slave_Reset[76][0m
+[0;32mI (17450) sdio_wrapper: Queues: Tx[20] Rx[20] SDIO-Rx-Mode[1][0m
+[0;32mI (17482) sdio_wrapper: Function 0 Blocksize: 512[0m
+[0;32mI (17482) sdio_wrapper: Function 1 Blocksize: 512[0m
+[0;32mI (17582) H_SDIO_DRV: Card init success, TRANSPORT_RX_ACTIVE[0m
+[0;32mI (17582) transport: set_transport_state: 1[0m
+[0;32mI (17582) transport: Waiting for esp_hosted slave to be ready[0m
+[0;32mI (17592) H_SDIO_DRV: SDIO Host operating in STREAMING MODE[0m
+[0;32mI (17593) H_SDIO_DRV: Starting SDIO process rx task[0m
+[0;32mI (17595) H_SDIO_DRV: Open data path at slave[0m
+
