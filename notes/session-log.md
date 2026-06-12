@@ -197,15 +197,42 @@ USER-VALIDATED on hardware: UI renders, touch works, file select works, installe
 screen-lvgl-demo.bin from SD into slot1 (progress bar OK), booted slot1 demo, serial
 return to launcher, boot0 back to MeshOS with config intact. Device ends in MeshOS.
 
+## 2026-06-12 (later) — GIT + GITHUB + BOOTLOADER INDEPENDENCE + GRUB MODE
+
+- Git repo initialized; pushed to github.com/Mikhail-Za/Boot-Launcher-for-T-Display-P4-Liliygo-
+  (main branch; public README; backups/ + clones excluded; LilyGo fixes as patches/).
+  Global git identity set on this machine (was unset — root cause of "identity unknown").
+- **Bootloader independence:** our 5.5.4 bootloader boots MeshOS once it carries the
+  SPIRAM/MSPI config → earlier crash root-caused as missing PSRAM bootloader config,
+  NOT IDF version pairing. Stock bootloader no longer needed.
+- **Factory-reset GPIO abandoned with proof:** GPIO35 is the download strap (held at
+  reset → ROM download mode, verified on hardware: boot:0x307) AND the bootloader
+  samples the pin once ~30ms after reset (bootloader_common.c:45 returns GPIO_NOT_HOLD
+  immediately) — the press-after-reset window is humanly impossible. Board has TWO
+  boot buttons (P4 GPIO35 + C6 GPIO9) — fyi for C6 flashing later.
+- **GRUB mode shipped + validated:** CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE makes every
+  boot one-shot (mesh firmwares never confirm the image → every reset falls back to
+  factory launcher). Launcher erases otadata at startup (no stale fallback targets),
+  stores last-used slot in mesh_nvs namespace "launcher" (MeshOS "nvs" = read-only),
+  3s tap-to-interrupt auto-boot splash. Hardware-validated: MeshOS → reset → splash
+  countdown → auto-boot MeshOS. Commits: ded48bc…fc82673.
+
+## Plan: 3 firmwares (agreed with Zaid)
+
+MeshOS permanently resident (ota_0, can't re-download). ota_1 = flex bay: Meshtastic
+and open-source MeshCore both live on SD, launcher swaps in ~20-30s. Open MeshCore has
+NO P4 support upstream either — it's a second port after Meshtastic (reuse XL9535 +
+display + hosted-BLE work). Data partitions can be re-carved later without moving app
+slots (only costs Meshtastic config).
+
 ## Next steps
 
-1. Factory-reset GPIO escape hatch: rebuild bootloader with LilyGo's PSRAM config +
-   CONFIG_BOOTLOADER_FACTORY_RESET (find BOOT button GPIO); verify it boots MeshOS —
-   replaces PC-side otadata erase as the no-PC return path. Until then: getting back
-   to launcher from MeshOS needs the PC (or reflash ota_data via launcher install).
-2. Phase 3 Meshtastic port into ota_1: official firmware base + PR #9526
+1. Phase 3 Meshtastic port into ota_1: official firmware base + PR #9526
    HostedBluetooth rebase vs Homertrix reference (cloned in reference/); patch
    mesh_nvs/mesh_fs partition names; serial+TCP transports first, hosted BLE later.
-   MUST keep rev-less-v3 sdkconfig lines and our partition CSV.
-3. Launcher polish: scrollability check on long file lists, MeshOS-bay guard
-   (warn before overwriting slot0), version/date in title, publish write-up.
+   MUST keep rev-less-v3 sdkconfig lines and our partition CSV. C6 needs ESP-Hosted
+   network_adapter firmware (prebuilt in LilyGo repo firmware/) — flash via C6 boot
+   button (GPIO9 strap) + UART, or check if P4 can flash it over SDIO.
+2. Open-source MeshCore companion port (after Meshtastic).
+3. Launcher polish: MeshOS-bay overwrite guard, version in title, file-list scroll
+   check, "stay in launcher" persistent option, publish write-up.

@@ -276,14 +276,69 @@ void RefreshFileList() {
   if (count == 0) lv_list_add_text(g_file_list, "no .bin files in /sdcard/firmware");
 }
 
+void DoStartInstall(int slot) {
+  for (int i = 0; i < 2; i++) lv_obj_add_state(g_install_btn[i], LV_STATE_DISABLED);
+  InstallJob *job = new InstallJob{g_selected_file, slot};
+  xTaskCreate(InstallTask, "install", 8192, job, 4, NULL);
+}
+
+/* Slot 0 holds licensed MeshOS, which cannot be re-downloaded — overwriting it
+ * requires explicit confirmation. */
+void ShowOverwriteConfirm(int slot) {
+  lv_obj_t *overlay = lv_obj_create(lv_layer_top());
+  lv_obj_set_size(overlay, lv_pct(100), lv_pct(100));
+  lv_obj_set_style_bg_color(overlay, lv_color_hex(0x0B0E11), 0);
+  lv_obj_set_style_bg_opa(overlay, LV_OPA_90, 0);
+  lv_obj_set_style_border_width(overlay, 0, 0);
+  lv_obj_set_flex_flow(overlay, LV_FLEX_FLOW_COLUMN);
+  lv_obj_set_flex_align(overlay, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER,
+                        LV_FLEX_ALIGN_CENTER);
+  lv_obj_set_style_pad_row(overlay, 24, 0);
+
+  lv_obj_t *warn = lv_label_create(overlay);
+  lv_label_set_text(warn,
+                    "Slot 0 holds MeshCore (licensed).\n"
+                    "It cannot be re-downloaded.\n\nOverwrite it?");
+  lv_obj_set_style_text_color(warn, lv_color_hex(0xF2C14E), 0);
+  lv_obj_set_style_text_font(warn, &lv_font_montserrat_24, 0);
+  lv_obj_set_style_text_align(warn, LV_TEXT_ALIGN_CENTER, 0);
+
+  lv_obj_t *cancel = lv_button_create(overlay);
+  lv_obj_set_size(cancel, 260, 70);
+  lv_obj_t *cl = lv_label_create(cancel);
+  lv_label_set_text(cl, "Cancel");
+  lv_obj_center(cl);
+  lv_obj_add_event_cb(
+      cancel, [](lv_event_t *e) { lv_obj_delete((lv_obj_t *)lv_event_get_user_data(e)); },
+      LV_EVENT_CLICKED, overlay);
+
+  lv_obj_t *confirm = lv_button_create(overlay);
+  lv_obj_set_size(confirm, 260, 70);
+  lv_obj_set_style_bg_color(confirm, lv_color_hex(0xB3392E), 0);
+  lv_obj_t *fl = lv_label_create(confirm);
+  lv_label_set_text(fl, "Overwrite Slot 0");
+  lv_obj_center(fl);
+  static int confirm_slot;
+  confirm_slot = slot;
+  lv_obj_add_event_cb(
+      confirm,
+      [](lv_event_t *e) {
+        lv_obj_delete((lv_obj_t *)lv_event_get_user_data(e));
+        DoStartInstall(confirm_slot);
+      },
+      LV_EVENT_CLICKED, overlay);
+}
+
 void StartInstall(int slot) {
   if (g_selected_file.empty()) {
     lv_label_set_text(g_progress_label, "Select a .bin file first");
     return;
   }
-  for (int i = 0; i < 2; i++) lv_obj_add_state(g_install_btn[i], LV_STATE_DISABLED);
-  InstallJob *job = new InstallJob{g_selected_file, slot};
-  xTaskCreate(InstallTask, "install", 8192, job, 4, NULL);
+  if (slot == 0 && SlotBootable(0)) {
+    ShowOverwriteConfirm(slot);
+    return;
+  }
+  DoStartInstall(slot);
 }
 
 void BuildUi(lv_display_t *display) {

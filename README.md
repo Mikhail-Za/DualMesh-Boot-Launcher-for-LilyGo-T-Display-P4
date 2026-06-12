@@ -104,4 +104,6 @@ open-source projects build from their own repos.
 
 ## License
 
-MIT for the code in this repository.
+GPL-3.0 (see `LICENSE`). The launcher builds against LilyGo's GPL-3.0
+`lilygo_device_driver` / `cpp_bus_driver` libraries, so GPL-3.0 is both the
+right and the required choice for this project.
