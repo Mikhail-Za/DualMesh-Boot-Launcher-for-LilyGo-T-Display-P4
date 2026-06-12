@@ -1,0 +1,68 @@
+# T-Display P4 ships ESP32-P4 rev v1.0 silicon — pre-v3 and v3+ are mutually
+# exclusive build targets. Without these two lines the binary refuses to flash/boot.
+CONFIG_ESP32P4_SELECTS_REV_LESS_V3=y
+CONFIG_ESP32P4_REV_MIN_100=y
+
+CONFIG_IDF_TARGET="esp32p4"
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
+
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions_dualmesh.csv"
+
+# Match the on-flash layout headers (DIO @ 80MHz)
+CONFIG_ESPTOOLPY_FLASHMODE_DIO=y
+CONFIG_ESPTOOLPY_FLASHFREQ_80M=y
+
+# This app runs ONE-SHOT from the flex bay (ota_1) under the DualMesh launcher.
+# It must never mark itself valid; plain IDF apps don't, so nothing to do —
+# just never call esp_ota_mark_app_valid_cancel_rollback().
+
+# ESP-Hosted host -> ESP32-C6 slave over SDIO (validated pin set: our
+# Meshtastic build reached SDIO card-init success with these).
+# ENABLED is the master switch — without it the component compiles to nothing.
+CONFIG_ESP_HOSTED_ENABLED=y
+# esp_wifi_remote owns the slave-target choice; ESP_HOSTED_CP_TARGET_ESP32C6
+# depends on it. Without this the target silently defaults to ESP32H2, which
+# has no SDIO, so the transport choice silently falls back to SPI.
+CONFIG_SLAVE_IDF_TARGET_ESP32C6=y
+# Driver's slave-reset GPIO defaults to 54 = 2x8 expansion header pin (keyboard
+# CS, nothing attached) — harmless; the REAL C6 reset is XL9535 bit 12 which we
+# pulse ourselves in main.c.
+CONFIG_ESP_HOSTED_P4_DEV_BOARD_NONE=y
+CONFIG_ESP_HOSTED_IDF_SLAVE_TARGET="esp32c6"
+CONFIG_ESP_HOSTED_CP_TARGET_ESP32C6=y
+CONFIG_ESP_HOSTED_SDIO_HOST_INTERFACE=y
+CONFIG_ESP_HOSTED_TRANSPORT_SDIO=y
+CONFIG_ESP_HOSTED_PRIV_SDIO_OPTION=y
+CONFIG_ESP_HOSTED_SDIO_SLOT_1=y
+CONFIG_ESP_HOSTED_SDIO_4_BIT_BUS=y
+CONFIG_ESP_HOSTED_PRIV_SDIO_PIN_CLK_SLOT_1=18
+CONFIG_ESP_HOSTED_PRIV_SDIO_PIN_CMD_SLOT_1=19
+CONFIG_ESP_HOSTED_PRIV_SDIO_PIN_D0_SLOT_1=14
+CONFIG_ESP_HOSTED_PRIV_SDIO_PIN_D1_4BIT_BUS_SLOT_1=15
+CONFIG_ESP_HOSTED_PRIV_SDIO_PIN_D2_4BIT_BUS_SLOT_1=16
+CONFIG_ESP_HOSTED_PRIV_SDIO_PIN_D3_4BIT_BUS_SLOT_1=17
+CONFIG_ESP_HOSTED_SDIO_PIN_CLK=18
+CONFIG_ESP_HOSTED_SDIO_PIN_CMD=19
+CONFIG_ESP_HOSTED_SDIO_PIN_D0=14
+CONFIG_ESP_HOSTED_SDIO_PIN_D1=15
+CONFIG_ESP_HOSTED_SDIO_PIN_D2=16
+CONFIG_ESP_HOSTED_SDIO_PIN_D3=17
+
+# Conservative clock for the OTA transfer (normal runtime uses 40MHz)
+CONFIG_ESP_HOSTED_SDIO_CLOCK_FREQ_KHZ=20000
+
+# The factory slave's stream framing predates the host's RX streaming mode
+# (host logged: len[25970]>max[1524], offset != exp — then reset loop).
+# RX optimization is a choice — select NONE to use plain per-packet reads.
+CONFIG_ESP_HOSTED_SDIO_OPTIMIZATION_RX_NONE=y
+# Diagnose at the prompt instead of rebooting on transport failure
+CONFIG_ESP_HOSTED_TRANSPORT_RESTART_ON_FAILURE=n
+
+# The C6 reset/enable line is on the XL9535 I2C expander (bit 12) — the IDF
+# gpio driver cannot reach it. We power-cycle the C6 ourselves in main.c
+# before hosted init; do not let the driver reset the slave.
+CONFIG_ESP_HOSTED_SLAVE_RESET_ONLY_IF_NECESSARY=y
+CONFIG_ESP_HOSTED_SDIO_RESET_DELAY_MS=2000
+
+CONFIG_FREERTOS_HZ=1000

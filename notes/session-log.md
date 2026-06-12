@@ -477,3 +477,44 @@ Plan:
 4. If anything regresses: OTA C6 back to the logged original version; ESP-AT/
    UART-pad recovery documented above as last resort.
 5. Later (Milestone C): display/MUI. Then open MeshCore port, upstream PR.
+
+## Milestone B session 1 (2026-06-12 afternoon): C6 truth discovered — it runs ESP-AT
+Built c6-updater/ (IDF app for the flex bay: XL9535 read-modify-write power +
+C6 power-cycle, esp_hosted host pinned ~2.12.3, embedded LilyGo network_adapter
+v2.12.7 app image [extract via tools/extract-c6-app.ps1; image is 1.21MB after
+0xFF trim], serial console: version/flash/reboot, never cancels rollback).
+Build traps: CONFIG_ESP_HOSTED_ENABLED=y is the master switch (component
+compiles to NOTHING without it); CP target gated on esp_wifi_remote's
+CONFIG_SLAVE_IDF_TARGET_ESP32C6=y (else silently defaults H2 → SDIO option
+vanishes → SPI transport on wrong pins); esp_wifi_remote must be an explicit
+dependency; after export.ps1 the IDF esptool needs underscore args
+(default_reset) — silent flash failures otherwise; ccache keeps app_desc
+compile-time stale (don't trust it for build identity).
+
+DIAGNOSIS (the big one): SDIO card init succeeds but host drops frames —
+len[25970]>max OR offset[25697]!=exp[12]. 0x6572/0x6461 = ASCII "re"/"da" —
+the slave is sending TEXT ("ready") — **the factory C6 runs ESP-AT v4.0.0.0**
+(LilyGo README line 357 confirms: "esp32c6_at factory program"). MeshOS starts
+an esp-hosted HOST stack but its link must be failing the same way — its
+WiFi/BLE phone features can never have worked on factory C6 (Zaid never used
+them — consistent). Meshtastic's reboot-loop root cause = same.
+
+C6 reflash paths (schematic H0405S002T002-V0 examined via pypdf):
+- C6 UART0 (module pins RXD0/TXD0, nets C6_U0TXD/C6_U0RXD) goes NOWHERE except
+  (probably) test pads on the C6 sheet — not on any header. 2x8P header carries
+  P4 GPIOs only (26/27/32/33/ADC/53/54). Second USB-C = P4 HS-OTG (VBUS1
+  USB_DP/DM on P4 sheet); CH343 owns the other (USB1_P/N). C6-MINI-1U module
+  may not even expose IO12/13 (C6 USB).
+- C6 BOOT button = C6_IO9 (strapping) exists on-board; C6 "reset" = power-cycle
+  via XL9535 bit 12 (we control it).
+- PATH A (hardware, safe): USB-UART adapter on C6 UART test pads + hold C6
+  BOOT + power-cycle C6 → esptool --chip esp32c6 write-flash 0x0 <LilyGo blob>
+  (combined image, offset 0x0, RISC-V). Fully reversible both directions.
+- PATH B (software-only, riskier): drive ESP-AT over SDIO from a P4 app
+  (LilyGo esp32c6_at_host_sdio_* examples prove AT-over-SDIO works), join WiFi
+  (AT+CWJAP), then AT+USEROTA <url> serving the network_adapter APP image from
+  the PC. Caveats: image would run under ESP-AT's partition table/bootloader
+  (plausible but unproven); if it doesn't boot, C6 is soft-bricked until PATH A
+  hardware access anyway. AT+USEROTA confirmed present in C6 AT v4.0.0.0 guide.
+NEXT: Zaid inspects the PCB for labeled C6 UART test pads (decides A vs B).
+c6-updater stays valuable post-swap: version query + future slave OTA tool.

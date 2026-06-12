@@ -1,0 +1,151 @@
+--- monitoring COM6 for 75s (device resets on open) ---
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:30] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:31] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:32] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:33] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:34] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:35] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:36] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:37] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:38] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:39] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:40] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:41] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:42] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:43] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:44] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:45] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:46] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:47] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:48] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:49] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:50] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:51] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:52] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:53] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:54] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:55] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:56] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:57] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:58] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:55:59] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:0] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:1] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:2] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:4] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:5] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:6] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:7] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:8] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:9] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:10] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:11] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:12] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:13] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:14] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:15] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:16] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:17] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:18] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:19] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:20] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:21] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:22] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:23] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:24] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:25] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:26] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:27] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:28] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:29] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:30] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:31] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:32] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:33] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:34] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:35] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:36] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:37] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:38] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:39] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:40] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:41] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:42] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:43] week:[5]
+
+pcf8563 year:[26] month:[6] day:[12] time:[1:56:44] week:[5]
+
+
+--- done; last byte received at t+74.8s ---

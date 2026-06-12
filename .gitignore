@@ -16,4 +16,13 @@ launcher/sdkconfig
 launcher/sdkconfig.old
 meshtastic-firmware/
 
+# c6-updater build output + extracted LilyGo slave image (regenerate with
+# tools/extract-c6-app.ps1 from the T-Display-P4 clone)
+c6-updater/build/
+c6-updater/managed_components/
+c6-updater/dependencies.lock
+c6-updater/sdkconfig
+c6-updater/sdkconfig.old
+c6-updater/main/slave_fw.bin
+
 __pycache__/

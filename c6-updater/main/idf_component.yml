@@ -1,0 +1,10 @@
+dependencies:
+  idf: '>=5.5.3'
+
+  # Host driver for the ESP32-C6 over SDIO. Pin to the same minor as the
+  # slave image we ship (network_adapter v2.12.7) and our Meshtastic host
+  # (v2.12.3 in the pioarduino framework libs).
+  espressif/esp_hosted: '~2.12.3'
+
+  # esp_hosted's wifi glue includes esp_wifi_remote.h unconditionally
+  espressif/esp_wifi_remote: '*'
