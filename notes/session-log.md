@@ -392,3 +392,33 @@ Meshtastic clone commit: 7c8b810d5 (polling console + EXCLUDE_BLUETOOTH).
 NEXT: copy bin to SD /firmware/, deploy to Unit B flex bay, first RF pair test.
 Milestone B prereq confirmed by the reboot-loop diagnosis: C6 MUST be reflashed
 with esp_hosted network_adapter v2.12.7 before re-enabling BLE/WiFi.
+
+## CRITICAL TRAP FOUND + FIXED: Meshtastic captured the boot path (2026-06-12)
+Symptom (Zaid): launcher splash gone — reset always booted straight into headless
+Meshtastic (bootloader log: "Loaded app from partition at offset 0xbc0000", no
+factory). Root cause: the P4 Arduino framework libs bake in
+CONFIG_APP_ROLLBACK_ENABLE, so initArduino() (esp32-hal-misc.c) sees
+PENDING_VERIFY on first boot and calls esp_ota_mark_app_valid_cancel_rollback()
+→ otadata state VALID (0x2) → the launcher one-shot contract is broken and the
+factory app becomes unreachable. MeshOS (pure IDF, no such call) never did this,
+which is why GRUB mode validated fine before the Meshtastic era.
+
+Fix (commit 31e48a00a, patch 0005): override the core's weak hook in variant.cpp —
+`extern "C" bool verifyRollbackLater(void) { return true; }` — defers verification
+forever; Meshtastic never marks itself valid. Verified on hardware twice: launcher
+one-shot → meshtastic runs → reset → bootloader loads 0x20000 (factory launcher) →
+splash → 3s → auto-boots meshtastic again. ANY future OTA-slot firmware we build
+MUST carry this override (or its IDF equivalent: never cancel rollback).
+
+Recovery recipe if a slot app ever captures boot again:
+`esptool --chip esp32p4 -p COM6 erase-region 0xF000 0x2000` (or write
+launcher/build/ota_data_initial.bin at 0xF000) → factory launcher returns.
+Launcher serial cmd `erase-otadata` does the same when the launcher is reachable.
+
+Debug tip that found it: otadata entry decode — bytes 0-3 ota_seq, 24-27 ota_state
+(0=NEW 1=PENDING_VERIFY 2=VALID 4=ABORTED). serial-monitor.py grew a `reset` arg
+(pulse DTR/RTS) for deterministic boot captures.
+
+SD note: G:\firmware\ still holds the OLD bin (ab6609f, marks itself valid).
+Replace with firmware-t-display-p4-2.8.0.31e48a0.bin next time the card is in the
+PC — do NOT deploy ab6609f to Unit B.

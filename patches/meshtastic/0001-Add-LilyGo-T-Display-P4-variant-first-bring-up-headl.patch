@@ -1,7 +1,7 @@
 From bf0f5cc34d8d5d3a435cae791738d82600cbda83 Mon Sep 17 00:00:00 2001
 From: Mikhail-Za <86077672+Mikhail-Za@users.noreply.github.com>
 Date: Fri, 12 Jun 2026 10:57:31 -0500
-Subject: [PATCH 1/4] Add LilyGo T-Display P4 variant (first bring-up,
+Subject: [PATCH 1/5] Add LilyGo T-Display P4 variant (first bring-up,
  headless)
 
 ESP32-P4 rev v1.x + XL9535-routed SX1262 control lines (ng-io-expander core)

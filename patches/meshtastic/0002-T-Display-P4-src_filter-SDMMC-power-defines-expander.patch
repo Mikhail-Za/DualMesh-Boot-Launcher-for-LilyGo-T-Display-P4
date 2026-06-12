@@ -1,7 +1,7 @@
 From a6779b5321f5e18e7d71a65b09290d25199ae8b2 Mon Sep 17 00:00:00 2001
 From: Mikhail-Za <86077672+Mikhail-Za@users.noreply.github.com>
 Date: Fri, 12 Jun 2026 11:13:36 -0500
-Subject: [PATCH 2/4] T-Display P4: src_filter, SDMMC power defines, expander
+Subject: [PATCH 2/5] T-Display P4: src_filter, SDMMC power defines, expander
  init + SX1262 reset pulse
 
 Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>

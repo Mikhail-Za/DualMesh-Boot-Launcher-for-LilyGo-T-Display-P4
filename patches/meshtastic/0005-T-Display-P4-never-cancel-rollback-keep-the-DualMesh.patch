@@ -1,0 +1,48 @@
+From 31e48a00a0c78890b81ede41e396ed22a34b5d58 Mon Sep 17 00:00:00 2001
+From: Mikhail-Za <86077672+Mikhail-Za@users.noreply.github.com>
+Date: Fri, 12 Jun 2026 12:56:54 -0500
+Subject: [PATCH 5/5] =?UTF-8?q?T-Display=20P4:=20never=20cancel=20rollback?=
+ =?UTF-8?q?=20=E2=80=94=20keep=20the=20DualMesh=20launcher=20reachable?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The P4 framework libs bake in CONFIG_APP_ROLLBACK_ENABLE, so initArduino()
+marks the slot valid on first boot and permanently captures the boot path:
+every subsequent reset goes straight into headless Meshtastic and the
+factory launcher (with its splash/slot picker) is unreachable. Override the
+weak verifyRollbackLater() hook to defer verification forever — the
+launcher boots this slot one-shot and every reset returns to the launcher,
+same contract MeshOS follows.
+
+Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+---
+ variants/esp32p4/t-display-p4/variant.cpp | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/variants/esp32p4/t-display-p4/variant.cpp b/variants/esp32p4/t-display-p4/variant.cpp
+index 9ee1b687e..c4a1cf730 100644
+--- a/variants/esp32p4/t-display-p4/variant.cpp
++++ b/variants/esp32p4/t-display-p4/variant.cpp
+@@ -11,6 +11,18 @@
+ 
+ extern esp_io_expander_handle_t io_expander;
+ 
++// DualMesh GRUB mode: the launcher boots this slot one-shot (PENDING_VERIFY)
++// so the NEXT reset falls back to the factory launcher. The Arduino core's
++// initArduino() would otherwise call esp_ota_mark_app_valid_cancel_rollback()
++// (CONFIG_APP_ROLLBACK_ENABLE is baked into the P4 framework libs), which
++// permanently captures the boot path — the device then resets straight into
++// headless Meshtastic and the launcher splash is unreachable. Returning true
++// here defers verification forever; we never mark ourselves valid.
++extern "C" bool verifyRollbackLater(void)
++{
++    return true;
++}
++
+ extern "C" void initVariant(void)
+ {
+ #if defined(CONFIG_IDF_TARGET_ESP32P4) && defined(BOARD_SDMMC_POWER_PIN)
+-- 
+2.53.0.windows.2
+

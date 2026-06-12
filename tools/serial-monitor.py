@@ -4,7 +4,9 @@ Opens the port with DTR/RTS deasserted (asserted lines hold the P4 in
 reset); the open itself still pulses reset, so this captures a boot from
 the very start. Prints everything with a relative timestamp per chunk.
 
-Usage: python serial-monitor.py [COM6] [seconds]
+Usage: python serial-monitor.py [COM6] [seconds] [reset]
+  "reset" as third arg pulses DTR/RTS (asserted = P4 held in reset via the
+  CH343 circuit) so the capture deterministically starts from a fresh boot.
 """
 import sys
 import time
@@ -22,6 +24,13 @@ def main():
     s.dtr = False
     s.rts = False
     s.open()
+    if len(sys.argv) > 3 and sys.argv[3] == "reset":
+        s.dtr = True
+        s.rts = True
+        time.sleep(0.2)
+        s.dtr = False
+        s.rts = False
+        s.reset_input_buffer()
     start = time.time()
     print(f"--- monitoring {port} for {duration:.0f}s (device resets on open) ---")
     last_data = start

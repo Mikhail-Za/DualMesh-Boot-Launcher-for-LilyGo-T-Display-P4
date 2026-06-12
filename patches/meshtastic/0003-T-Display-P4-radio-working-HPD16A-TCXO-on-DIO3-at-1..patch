@@ -1,7 +1,7 @@
 From ab6609f9e745e29ac0ff1b0c24a51aef657a02dd Mon Sep 17 00:00:00 2001
 From: Mikhail-Za <86077672+Mikhail-Za@users.noreply.github.com>
 Date: Fri, 12 Jun 2026 11:21:10 -0500
-Subject: [PATCH 3/4] =?UTF-8?q?T-Display=20P4:=20radio=20working=20?=
+Subject: [PATCH 3/5] =?UTF-8?q?T-Display=20P4:=20radio=20working=20?=
  =?UTF-8?q?=E2=80=94=20HPD16A=20TCXO=20on=20DIO3=20at=201.6V?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

@@ -1,7 +1,7 @@
 From 7c8b810d59bb5d5f5e06571d08da73a6b12a294c Mon Sep 17 00:00:00 2001
 From: Mikhail-Za <86077672+Mikhail-Za@users.noreply.github.com>
 Date: Fri, 12 Jun 2026 12:20:41 -0500
-Subject: [PATCH 4/4] =?UTF-8?q?T-Display=20P4:=20fix=20serial=20client=20A?=
+Subject: [PATCH 4/5] =?UTF-8?q?T-Display=20P4:=20fix=20serial=20client=20A?=
  =?UTF-8?q?PI=20=E2=80=94=20polling=20console,=20no=20hosted=20BLE?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
