@@ -1,12 +1,13 @@
-# DualMesh shared partition table — T-Display P4, 16MB flash.
+# DualMesh shared partition table — T-Display P4, 16MB flash. v2 (2026-06-13):
+# ota_1 grown 2.5MB -> 3.625MB for the device-ui/MUI Meshtastic build (3.34MB);
+# mesh_nvs/mesh_fs moved/shrunk accordingly. MeshOS region and stock nvs unchanged.
 # "nvs" keeps the stock offset/size so MeshOS finds its license cache unchanged.
-# Meshtastic build will be patched to use mesh_nvs/mesh_fs instead of nvs/spiffs.
 # Name,      Type, SubType, Offset,   Size,
 nvs,         data, nvs,     0x9000,   0x6000,
 otadata,     data, ota,     0xF000,   0x2000,
 phy_init,    data, phy,     0x11000,  0x1000,
 factory,     app,  factory, 0x20000,  0xE0000,
 meshos,      app,  ota_0,   0x100000, 0xAC0000,
-meshtastic,  app,  ota_1,   0xBC0000, 0x280000,
-mesh_nvs,    data, nvs,     0xE40000, 0x10000,
-mesh_fs,     data, spiffs,  0xE50000, 0x1B0000,
+meshtastic,  app,  ota_1,   0xBC0000, 0x3A0000,
+mesh_nvs,    data, nvs,     0xF60000, 0x10000,
+mesh_fs,     data, spiffs,  0xF70000, 0x90000,

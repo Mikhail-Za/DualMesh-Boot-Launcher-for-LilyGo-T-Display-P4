@@ -726,3 +726,16 @@ reflash meshtastic app at 0xBC0000; mesh_nvs and mesh_fs wiped -> re-set
 lora.region US after. Update partitions_dualmesh.csv copies (launcher,
 c6-updater, meshtastic variant, flash-dualmesh.ps1) IN LOCKSTEP. Then proceed
 with the LGFX_TDISPLAY_P4 driver per the locked Milestone C plan above.
+
+## Partition relayout v2 EXECUTED on Unit A (2026-06-13)
+Table v2 flashed (gen_esp32part round-trip verified): ota_1 now 0x3A0000
+(3712KB) at 0xBC0000; mesh_nvs 0xF60000; mesh_fs 0xF70000 576KB. Only the TABLE
+was reflashed (app binary at 0xBC0000 untouched by boundary moves) + otadata
+erased. Verified: launcher boots and parses v2; meshtastic boots, formatted the
+relocated mesh_fs, API works, lora.region US re-set. MeshOS region untouched
+(not boot-tested on A — crash-loops on dead C6 regardless). CSV copies synced
+across launcher, c6-updater, meshtastic variant. Unit B gets the same table
+when deploying the display build (flash table at 0x8000 + erase otadata at
+0xF000 + re-set region; MeshOS works there so boot-test it after).
+NEXT (fresh session): implement LGFX_TDISPLAY_P4 per the locked Milestone C
+plan; build target now fits (3.34MB under 3.625MB).
