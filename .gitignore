@@ -26,3 +26,5 @@ c6-updater/sdkconfig.old
 c6-updater/main/slave_fw.bin
 
 __pycache__/
+notes/*-capture.txt
+notes/c6upd-*.txt
