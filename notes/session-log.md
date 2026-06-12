@@ -217,6 +217,19 @@ return to launcher, boot0 back to MeshOS with config intact. Device ends in Mesh
   3s tap-to-interrupt auto-boot splash. Hardware-validated: MeshOS → reset → splash
   countdown → auto-boot MeshOS. Commits: ded48bc…fc82673.
 
+## 2026-06-12 (evening) — guard, license, Unit B fleet deployment
+
+- Slot-0 overwrite guard shipped (confirm dialog; protects licensed MeshOS bay).
+- LICENSE = GPL-3.0 (required: links LilyGo's GPL-3.0 driver libs). v0.1.0 tagged.
+- Community post drafted (notes/draft-community-post.md), held for Zaid review.
+- ESP-IDF v5.4.3 clone deleted (~3GB).
+- **Unit B (MAC 30:ED:A0:E1:BF:57, COM8):** dumped (had to retry at 460800 baud —
+  921600 died mid-transfer: "Packet content transfer stopped"), same hw rev v1.0,
+  same stock layout, MeshOS app image **bit-identical to Unit A's** (sha256
+  00800b59…) → image is device-agnostic, licenses live in NVS only. Full dual-boot
+  layout deployed; launcher + MeshOS verified over serial — B's own identity
+  (+Chessman2) and license intact. Both units now dual-boot. Commits → ecfc506.
+
 ## Plan: 3 firmwares (agreed with Zaid)
 
 MeshOS permanently resident (ota_0, can't re-download). ota_1 = flex bay: Meshtastic
