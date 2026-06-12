@@ -708,3 +708,21 @@ Build-side plan (variants/esp32p4/t-display-p4/platformio.ini):
    accept classic-UI instead. MEASURE FIRST before deep integration.
 Verification sequence: build size check -> flash slot 1 -> panel lights w/
 MUI boot screen -> touch -> send message from UI Unit A<->B RF.
+
+## Milestone C gate measured (2026-06-13): MUI build = 3.34MB, flex bay = 2.5MB
+crowpanel-advanced-p4-50 (full device-ui MUI TFT build) compiles to 3,504,112
+bytes once device-ui is pinned to the elecrow-p4 branch zip (b4afa48 — master
+snapshot lacks the P4 LGFX classes; pin committed in our branch). The
+URLService WiFiClient error from the master snapshot disappears on that branch.
+VERDICT: 2.5MB ota_1 is too small -> PARTITION RELAYOUT REQUIRED before the
+display work. Proposed new table (only regions at and after 0xBC0000 change):
+  meshtastic ota_1  0xBC0000  size 0x3A0000  (3.625MB, was 2.5MB)
+  mesh_nvs          0xF60000  size 0x010000  (moved from 0xE40000)
+  mesh_fs           0xF70000  size 0x090000  (576KB, was 1.7MB — meshtastic
+                    config and nodedb need only ~100-200KB)
+MeshOS (0x100000..0xBC0000), launcher, stock nvs all UNTOUCHED. Procedure per
+unit: flash new partition-table.bin at 0x8000 + erase otadata at 0xF000 +
+reflash meshtastic app at 0xBC0000; mesh_nvs and mesh_fs wiped -> re-set
+lora.region US after. Update partitions_dualmesh.csv copies (launcher,
+c6-updater, meshtastic variant, flash-dualmesh.ps1) IN LOCKSTEP. Then proceed
+with the LGFX_TDISPLAY_P4 driver per the locked Milestone C plan above.
