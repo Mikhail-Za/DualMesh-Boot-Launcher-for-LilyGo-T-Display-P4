@@ -630,3 +630,19 @@ Consequences:
 4. Unit A goal simplified: restore ESP-AT to its C6 (image intact in ota_0;
    need physical access to flip otadata). Community drafts written:
    notes/draft-lilygo-issue.md + notes/draft-meshcore-discord.md (Zaid posts).
+
+## 2026-06-13: credential scrub + repo private + outreach handoff
+- WiFi password leaked into committed serial captures (commit 291a386, was
+  public ~30 min). History rewritten locally and force-pushed with Zaid
+  authorization (main now @733de9b lineage); all notes/*.txt gitignored.
+  Zaid rotated the WiFi password and set the REPO PRIVATE — stays private
+  until project completion (his decision; trust impact acknowledged).
+  RULE: never commit raw serial captures; review every `git add -A` diff for
+  secrets before committing.
+- Zaid has NO Android device (iPhone only; iOS Meshtastic app is BLE-only) —
+  USB-serial phone connectivity is NOT a substitute for him. BLE/hosted-C6
+  returns to the long-term map (per-slot C6 firmware swap concept), pending
+  Unit A C6 recovery learnings.
+- Outreach handoff doc written to Desktop:
+  C:\Users\user\Desktop\T-Display-P4-C6-Recovery-Handoff.md (project context,
+  both post drafts, reply-handling instructions for another AI/person).
