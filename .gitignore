@@ -14,3 +14,4 @@ launcher/dependencies.lock
 # Generated config (sdkconfig.defaults is the source of truth)
 launcher/sdkconfig
 launcher/sdkconfig.old
+meshtastic-firmware/
