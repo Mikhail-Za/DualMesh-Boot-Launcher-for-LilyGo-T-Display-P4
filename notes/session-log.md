@@ -739,3 +739,24 @@ when deploying the display build (flash table at 0x8000 + erase otadata at
 0xF000 + re-set region; MeshOS works there so boot-test it after).
 NEXT (fresh session): implement LGFX_TDISPLAY_P4 per the locked Milestone C
 plan; build target now fits (3.34MB under 3.625MB).
+
+## MILESTONE C: DISPLAY + TOUCH UP ON UNIT A (2026-06-13)
+Build 168910f (3.21MB, fits 3.625MB bay): device-ui MUI running on the HI8561.
+Log proof: "[TDP4] DSI panel up fb=0x4800ed80", "[TDP4] touch up, info addr
+0x20011120", "DeviceScreen::init() done", "TFTView_320x240 init done". Radio
+still good (SX1262 init success).
+Implementation: local device-ui clone (device-ui-tdp4/, branch elecrow-p4 +
+commit 0604b8b) referenced via symlink:// lib_dep; our board = include/graphics/
+LGFX/LGFX_TDISPLAY_P4.h (Bus_DSI_P4 esp_lcd MIPI-DSI framebuffer + LDO ch3
+1830mV + full HI8561 vendor init table + Panel_FrameBufferBase rows + LEDC
+backlight GPIO51 + memory-mapped touch @0x68 sharing variant.cpp i2c_master
+bus via exported tdp4_i2c_bus) + 3-line DisplayDriverFactory include. Patch
+mirrored at patches/device-ui-tdisplay-p4.patch.
+Gotchas hit: device-ui factory has NO generic include hook (GFX_DRIVER_INC is
+dead for it — needs per-board ifdef = fork); ITouch has no isEnabled override;
+touch ESRAM discovery uses kMaxDsramNum=25 (guessed 10 → invalid addr 0x240);
+**tftSetup() only runs when config.display.displaymode == COLOR (=3)** — fresh
+configs default elsewhere → set via API (one-time per device/fs-wipe).
+variant.cpp: exports tdp4_i2c_bus, panel+touch reset pulses (XL9535 bits 2/3)
+under HAS_SCREEN. PENDING USER VALIDATION: what the panel actually shows +
+touch response; then deploy to Unit B (with partition v2 + displaymode COLOR).
