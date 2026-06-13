@@ -760,3 +760,25 @@ configs default elsewhere → set via API (one-time per device/fs-wipe).
 variant.cpp: exports tdp4_i2c_bus, panel+touch reset pulses (XL9535 bits 2/3)
 under HAS_SCREEN. PENDING USER VALIDATION: what the panel actually shows +
 touch response; then deploy to Unit B (with partition v2 + displaymode COLOR).
+
+## Milestone C user validation + polish backlog (2026-06-13)
+Zaid confirms: UI renders and touch navigation works (photo: Settings & Tools).
+Issues + analysis:
+1. UI SMALL: device-ui has NO DPI scaling — the 320x240-designed widgets render
+   at native pixel size on the full 540x1168 (LGFXDriver only calls
+   lv_display_set_resolution; views: 160x80/240x240/320x240/480x222 +
+   VIEW_240x320 portrait alias of 320x240). PLAN: render LVGL at 270x584 and
+   pixel-double into the framebuffer — override writeImage in Panel_DSI_P4
+   (keep private fb ptr + 1080B stride; 2x2 nearest-neighbor), report panel
+   270x584 to LGFX, halve touch coords in getTouchRaw. Widgets 2x bigger,
+   LVGL work 4x cheaper. (Alt considered+rejected: theme/font enlarging —
+   partial; LVGL9 has no display zoom.)
+2. KEYBOARD: virtual keyboard EXISTS in TFTView_320x240 (objects.keyboard,
+   shown on message input focus; sized PCT(100)/PCT(45) on v>=480). Zaid
+   likely had no chat open: MUI opens chats from the Channels (Groups) tab —
+   tap the channel button -> chat -> tap text area -> keyboard. Also v>=480
+   branch runs (1168) so keyboard should be half-screen. VERIFY with him.
+3. "No add-chat options": by design — chats spawn from Channels tab or Nodes
+   (DM); list stays empty until a peer node is seen. Unit B (Meshtastic in its
+   slot 1) must be powered for DMs. NOTE Unit B still on partition v1 + needs
+   displaymode=COLOR when it gets the display build.
