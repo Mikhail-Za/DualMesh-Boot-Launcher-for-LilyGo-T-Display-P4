@@ -1,0 +1,187 @@
+From 980ba25aba874718e23fee85f66c312fb59f3f05 Mon Sep 17 00:00:00 2001
+From: Mikhail-Za <86077672+Mikhail-Za@users.noreply.github.com>
+Date: Sun, 14 Jun 2026 09:08:16 -0500
+Subject: [PATCH 9/9] T-Display P4: BQ27220 battery + charging state, L76K GPS
+ bring-up, native display build flags, IGNORE_CALIBRATION_DATA
+
+Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
+---
+ src/Power.cpp                                | 66 ++++++++++++++++++++
+ variants/esp32p4/t-display-p4/platformio.ini | 14 ++++-
+ variants/esp32p4/t-display-p4/variant.cpp    | 15 ++++-
+ variants/esp32p4/t-display-p4/variant.h      |  7 ++-
+ 4 files changed, 97 insertions(+), 5 deletions(-)
+
+diff --git a/src/Power.cpp b/src/Power.cpp
+index 43e9f1059..191eed30a 100644
+--- a/src/Power.cpp
++++ b/src/Power.cpp
+@@ -294,6 +294,65 @@ using namespace meshtastic;
+  */
+ static HasBatteryLevel *batteryLevel; // Default to NULL for no battery level sensor
+ 
++#ifdef HAS_TDP4_BQ27220
++// LilyGo T-Display P4: BQ27220 fuel gauge at I2C 0x55 on the shared bus
++// (tdp4_i2c_bus, created in variant.cpp; XL9535 + touch also live there). Read it
++// directly with the IDF i2c_master API so we don't pull in the IDF-only cpp_bus_driver.
++// Standard BQ27220 commands: Voltage = 0x08 (mV, u16 LE), StateOfCharge = 0x2C (% LE).
++#include "driver/i2c_master.h"
++extern i2c_master_bus_handle_t tdp4_i2c_bus;
++
++class TDP4BatteryLevel : public HasBatteryLevel
++{
++  public:
++    bool init()
++    {
++        if (_dev)
++            return true;
++        if (tdp4_i2c_bus == nullptr)
++            return false;
++        i2c_device_config_t cfg = {};
++        cfg.dev_addr_length = I2C_ADDR_BIT_LEN_7;
++        cfg.device_address = 0x55;
++        cfg.scl_speed_hz = 100000;
++        if (i2c_master_bus_add_device(tdp4_i2c_bus, &cfg, &_dev) != ESP_OK)
++            return false;
++        // Probe: a real voltage read (non-0xFFFF) means the gauge ACKed.
++        return read16(0x08) != 0xFFFF;
++    }
++    int getBatteryPercent() override
++    {
++        uint16_t soc = read16(0x2C);
++        return (soc <= 100) ? (int)soc : -1; // -1 -> Meshtastic derives % from voltage (OCV)
++    }
++    uint16_t getBattVoltage() override
++    {
++        uint16_t mv = read16(0x08);
++        return (mv == 0xFFFF) ? 0 : mv;
++    }
++    bool isBatteryConnect() override { return getBattVoltage() > 2500; }
++    // BQ27220 Current (0x0C, signed mA): positive = charging into the battery, strongly
++    // negative = running on battery, ~0 = full pack on USB. Derive USB-present + charging
++    // from the sign — no separate charger chip or 2nd I2C bus needed.
++    bool isVbusIn() override { return readCurrent() > -10; }
++    bool isCharging() override { return readCurrent() > 10; }
++
++  private:
++    int16_t readCurrent() { return (int16_t)read16(0x0C); }
++    uint16_t read16(uint8_t cmd)
++    {
++        if (_dev == nullptr)
++            return 0xFFFF;
++        uint8_t out[2] = {0xFF, 0xFF};
++        if (i2c_master_transmit_receive(_dev, &cmd, 1, out, sizeof(out), 100) != ESP_OK)
++            return 0xFFFF;
++        return (uint16_t)out[0] | ((uint16_t)out[1] << 8);
++    }
++    i2c_master_dev_handle_t _dev = nullptr;
++};
++static TDP4BatteryLevel tdp4BatteryLevel;
++#endif
++
+ #ifdef BATTERY_PIN
+ 
+ void battery_adcEnable()
+@@ -779,6 +838,13 @@ bool Power::setup()
+         found = true;
+     } else if (meshSolarInit()) {
+         found = true;
++#ifdef HAS_TDP4_BQ27220
++    } else if (tdp4BatteryLevel.init()) {
++        batteryLevel = &tdp4BatteryLevel;
++        LOG_INFO("BQ27220 ready (%umV, %d%%, vbus=%d charging=%d)", tdp4BatteryLevel.getBattVoltage(),
++                 tdp4BatteryLevel.getBatteryPercent(), tdp4BatteryLevel.isVbusIn(), tdp4BatteryLevel.isCharging());
++        found = true;
++#endif
+     } else if (analogInit()) {
+         found = true;
+     } else {
+diff --git a/variants/esp32p4/t-display-p4/platformio.ini b/variants/esp32p4/t-display-p4/platformio.ini
+index 77f02c918..0fedd49e3 100644
+--- a/variants/esp32p4/t-display-p4/platformio.ini
++++ b/variants/esp32p4/t-display-p4/platformio.ini
+@@ -56,13 +56,22 @@ build_flags = ${esp32p4_base.build_flags}
+   -DLV_USE_LOG=0
+   -DLV_CACHE_DEF_SIZE=3400000
+   -DLGFX_DRIVER=LGFX_TDISPLAY_P4
++  ; Native 1:1 rendering at the panel's real 540x1168 (no upscaling = sharp).
++  ; LGFX_BUFSIZE is one full logical frame (540*1168*2 = 1261440) for FULL-mode
++  ; double-buffered present. Portrait view (240x320 family) matches the panel
++  ; orientation; apply_hotfix() fills the screens to the real resolution.
+   -DLGFX_SCREEN_WIDTH=540
+   -DLGFX_SCREEN_HEIGHT=1168
+   -DLGFX_BUFSIZE=1261440
+   -DLGFX_SKIP_RGB565_SWAP
+   -DDISPLAY_SIZE=540x1168
+-  -DVIEW_320x240
++  -DVIEW_240x320
+   -DDISPLAY_SET_RESOLUTION
++  ; HI8561 capacitive touch reports true panel pixels and our driver renders
++  ; native 1:1, so no calibration transform is wanted. Ignore any stale stored
++  ; calibration_data (a matrix from the old upscaled coord space mapped every
++  ; touch off-screen -> dead touch); LovyanGFX then uses identity cfg bounds.
++  -DIGNORE_CALIBRATION_DATA
+   -DUSE_PACKET_API
+   -DMAP_FULL_REDRAW
+   -DCONFIG_DISABLE_HAL_LOCKS=1
+@@ -74,6 +83,9 @@ build_flags = ${esp32p4_base.build_flags}
+   -DUSE_LOG_DEBUG
+   -DLOG_DEBUG_INC=\"DebugConfiguration.h\"
+   -DRADIOLIB_SPI_PARANOID=0
++  ; Battery telemetry: BQ27220 fuel gauge @ I2C 0x55 on the shared tdp4_i2c_bus.
++  ; Read directly via IDF i2c_master in Power.cpp (no cpp_bus_driver dependency).
++  -DHAS_TDP4_BQ27220
+ 
+ ; The ng-io-expander fork's idf_component.yml has a broken P4-conditional rule
+ ; requesting espressif/cbor ^2.0.12 (no such version exists; cbor is only used
+diff --git a/variants/esp32p4/t-display-p4/variant.cpp b/variants/esp32p4/t-display-p4/variant.cpp
+index fa97170e4..3bd54d27d 100644
+--- a/variants/esp32p4/t-display-p4/variant.cpp
++++ b/variants/esp32p4/t-display-p4/variant.cpp
+@@ -72,12 +72,23 @@ extern "C" void initVariant(void)
+     // For STANDALONE boots (no launcher), replicate the essentials:
+     if (io_expander) {
+         // outputs: 3V3 EN(0), SKY13453 VCTL(1), 5V EN(6), VCCA EN(8), SX1262 RST(14)
+-        esp_io_expander_set_dir(io_expander, (1 << 0) | (1 << 1) | (1 << 6) | (1 << 8) | (1 << 14),
++        esp_io_expander_set_dir(io_expander,
++                                (1 << 0) | (1 << 1) | (1 << 6) | (1 << 8) | (1 << 9) | (1 << 14),
+                                 IO_EXPANDER_OUTPUT);
+         esp_io_expander_set_level(io_expander, 1 << 8, 0);  // VCCA en (low = on)
+         esp_io_expander_set_level(io_expander, 1 << 1, 1);  // RF1 antenna path
+-        esp_io_expander_set_level(io_expander, 1 << 0, 0);  // 3V3 rail (low = on)
+         esp_io_expander_set_level(io_expander, 1 << 6, 1);  // 5V rail on
++
++        // --- L76K GPS bring-up: assert 3V3 rail on + GPS wake HIGH (kIo11/bit9).
++        // Re-creating our esp_io_expander can reset XL9535 outputs, so re-assert
++        // them. Verified via readback this reaches 3V3-on + wake-high.
++        // NOTE (Unit A, 2026-06-14): with the XL9535 confirmed in the correct
++        // state, the on-board L76K still returns ZERO bytes at 9600 and 115200
++        // (raw UART) -> suspected GPS hardware non-response on this unit. This is
++        // the correct bring-up for a populated/working module (e.g. Unit B).
++        esp_io_expander_set_level(io_expander, 1 << 0, 0);  // 3V3 rail on (low = on)
++        esp_io_expander_set_level(io_expander, 1 << 9, 1);  // L76K GPS wake HIGH (kIo11)
++        delay(50);
+         // Hardware-reset the SX1262 so it never inherits stale state from a
+         // previously booted firmware (dual-boot: MeshOS may have left it
+         // mid-RX with different settings).
+diff --git a/variants/esp32p4/t-display-p4/variant.h b/variants/esp32p4/t-display-p4/variant.h
+index 3d3239499..ce7cf30d3 100644
+--- a/variants/esp32p4/t-display-p4/variant.h
++++ b/variants/esp32p4/t-display-p4/variant.h
+@@ -21,8 +21,11 @@
+ 
+ #define BUTTON_PIN 35 // BOOT button (download strap; usable as user button after boot)
+ 
+-// Quectel L76K GNSS on UART (PPS not wired to a P4 GPIO per LilyGo config)
+-#define GPS_DEFAULT_NOT_PRESENT 1
++// Quectel L76K GNSS on UART1 (TX=22 / RX=23). The L76K is powered/woken via the XL9535
++// expander pin kIo11 (mask bit 9), asserted HIGH in variant.cpp initVariant(). With
++// GPS_RX_PIN defined and GPS_DEFAULT_NOT_PRESENT removed, fresh configs default GpsMode
++// = ENABLED (NodeDB.cpp:915). On an already-configured unit, toggle GPS via the home
++// location button. (PPS not wired to a P4 GPIO per LilyGo config.)
+ #define GPS_RX_PIN 23
+ #define GPS_TX_PIN 22
+ #define HAS_GPS 1
+-- 
+2.53.0.windows.2
+

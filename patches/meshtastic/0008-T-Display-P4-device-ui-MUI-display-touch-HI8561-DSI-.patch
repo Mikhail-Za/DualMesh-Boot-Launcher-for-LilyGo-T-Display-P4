@@ -1,0 +1,144 @@
+From ddfd7962600175e0c213686abdda1a82dec23a3c Mon Sep 17 00:00:00 2001
+From: Mikhail-Za <86077672+Mikhail-Za@users.noreply.github.com>
+Date: Fri, 12 Jun 2026 19:23:55 -0500
+Subject: [PATCH 8/9] T-Display P4: device-ui MUI display + touch (HI8561 DSI,
+ local device-ui fork)
+
+---
+ variants/esp32p4/t-display-p4/platformio.ini | 40 +++++++++++++++++++-
+ variants/esp32p4/t-display-p4/variant.cpp    | 22 +++++++++--
+ variants/esp32p4/t-display-p4/variant.h      |  4 +-
+ 3 files changed, 59 insertions(+), 7 deletions(-)
+
+diff --git a/variants/esp32p4/t-display-p4/platformio.ini b/variants/esp32p4/t-display-p4/platformio.ini
+index bf437a23d..77f02c918 100644
+--- a/variants/esp32p4/t-display-p4/platformio.ini
++++ b/variants/esp32p4/t-display-p4/platformio.ini
+@@ -36,14 +36,44 @@ build_flags = ${esp32p4_base.build_flags}
+   -DIO_EXPANDER_IRQ=5
+   -DUSE_ARDUINO_HAL_GPIO
+   -DFS_PARTITION_LABEL=\"mesh_fs\"
+-  -DRADIOLIB_DEBUG_BASIC=1
+-  -DRADIOLIB_DEBUG_SPI=1
+   ; Milestone A: no BLE. The stock LilyGo C6 firmware (ESP-AT) passes SDIO
+   ; card init but never completes the esp_hosted handshake; after a 10s
+   ; timeout + failed slave reset the hosted driver REBOOTS THE HOST
+   ; ("os_wrapper_esp: Restarting host") every ~19s. Re-enable after the C6
+   ; is reflashed with the esp_hosted network_adapter slave (Milestone B).
+   -DMESHTASTIC_EXCLUDE_BLUETOOTH=1
++  ; ---- Milestone C: device-ui (MUI) on the HI8561 MIPI-DSI panel ----
++  -DHAS_SCREEN=1
++  -DHAS_TFT=1
++  -DRAM_SIZE=10240
++  -DLV_LVGL_H_INCLUDE_SIMPLE
++  -DLV_CONF_INCLUDE_SIMPLE
++  -DLV_COMP_CONF_INCLUDE_SIMPLE
++  -DLV_USE_SYSMON=0
++  -DLV_USE_PROFILER=0
++  -DLV_USE_PERF_MONITOR=0
++  -DLV_USE_MEM_MONITOR=0
++  -DLV_USE_LOG=0
++  -DLV_CACHE_DEF_SIZE=3400000
++  -DLGFX_DRIVER=LGFX_TDISPLAY_P4
++  -DLGFX_SCREEN_WIDTH=540
++  -DLGFX_SCREEN_HEIGHT=1168
++  -DLGFX_BUFSIZE=1261440
++  -DLGFX_SKIP_RGB565_SWAP
++  -DDISPLAY_SIZE=540x1168
++  -DVIEW_320x240
++  -DDISPLAY_SET_RESOLUTION
++  -DUSE_PACKET_API
++  -DMAP_FULL_REDRAW
++  -DCONFIG_DISABLE_HAL_LOCKS=1
++  -DMESHTASTIC_EXCLUDE_WEBSERVER=1
++  -DMESHTASTIC_EXCLUDE_CANNEDMESSAGES=1
++  -DMESHTASTIC_EXCLUDE_INPUTBROKER=1
++  -DMAX_NUM_NODES=500
++  -DMAX_NUM_NODES_VIEW=500
++  -DUSE_LOG_DEBUG
++  -DLOG_DEBUG_INC=\"DebugConfiguration.h\"
++  -DRADIOLIB_SPI_PARANOID=0
+ 
+ ; The ng-io-expander fork's idf_component.yml has a broken P4-conditional rule
+ ; requesting espressif/cbor ^2.0.12 (no such version exists; cbor is only used
+@@ -58,3 +88,9 @@ custom_sdkconfig = ${esp32p4_base.custom_sdkconfig}
+   CONFIG_ESP32P4_REV_MIN_100=y
+ 
+ lib_deps = ${esp32p4_base.lib_deps}
++  ; device-ui: local clone of the elecrow-p4 branch + our T-Display P4 board
++  ; (LGFX_TDISPLAY_P4.h + factory include) — patch captured in
++  ; tdisplay-p4-dualmesh/patches/device-ui-tdisplay-p4.patch
++  symlink://C:/Users/user/tdisplay-p4-dualmesh/device-ui-tdp4
++  # renovate: datasource=github-tags depName=LovyanGFX packageName=lovyan03/LovyanGFX
++  https://github.com/lovyan03/LovyanGFX/archive/refs/tags/1.2.21.zip
+diff --git a/variants/esp32p4/t-display-p4/variant.cpp b/variants/esp32p4/t-display-p4/variant.cpp
+index c4a1cf730..fa97170e4 100644
+--- a/variants/esp32p4/t-display-p4/variant.cpp
++++ b/variants/esp32p4/t-display-p4/variant.cpp
+@@ -11,6 +11,10 @@
+ 
+ extern esp_io_expander_handle_t io_expander;
+ 
++// Shared with LGFX_TDISPLAY_P4.h (touch controller sits on the same bus as
++// the XL9535)
++i2c_master_bus_handle_t tdp4_i2c_bus = NULL;
++
+ // DualMesh GRUB mode: the launcher boots this slot one-shot (PENDING_VERIFY)
+ // so the NEXT reset falls back to the factory launcher. The Arduino core's
+ // initArduino() would otherwise call esp_ota_mark_app_valid_cancel_rollback()
+@@ -52,15 +56,14 @@ extern "C" void initVariant(void)
+     bus_cfg.glitch_ignore_cnt = 7;
+     bus_cfg.flags.enable_internal_pullup = true;
+ 
+-    i2c_master_bus_handle_t bus = NULL;
+-    esp_err_t err = i2c_new_master_bus(&bus_cfg, &bus);
++    esp_err_t err = i2c_new_master_bus(&bus_cfg, &tdp4_i2c_bus);
+     if (err != ESP_OK) {
+         printf("[variant] i2c_new_master_bus FAILED: %d\n", err);
+         return;
+     }
+ 
+     // 7-bit address 0x20 (A0..A2 grounded)
+-    err = esp_io_expander_new_i2c_tca95xx_16bit(bus, 0x20, &io_expander);
++    err = esp_io_expander_new_i2c_tca95xx_16bit(tdp4_i2c_bus, 0x20, &io_expander);
+     printf("[variant] xl9535 expander init: err=%d handle=%p\n", err, (void *)io_expander);
+ 
+     // Power/RF state (3V3+5V rails, SKY13453 antenna switch, SX1262 reset
+@@ -83,6 +86,19 @@ extern "C" void initVariant(void)
+         esp_io_expander_set_level(io_expander, 1 << 14, 1); // out of reset
+         delay(20);
+         // DIO1 (bit 15) stays input; core pinMode handles it via attachInterrupt
++
++#if HAS_SCREEN
++        // Panel (bit 2) and touch (bit 3) hardware resets, timed per the
++        // LilyGo Hi8561 / Hi8561Touch drivers. LGFX_TDISPLAY_P4 then runs the
++        // DSI init sequence against a freshly reset panel.
++        esp_io_expander_set_dir(io_expander, (1 << 2) | (1 << 3), IO_EXPANDER_OUTPUT);
++        esp_io_expander_set_level(io_expander, (1 << 2) | (1 << 3), 1);
++        delay(10);
++        esp_io_expander_set_level(io_expander, (1 << 2) | (1 << 3), 0);
++        delay(10);
++        esp_io_expander_set_level(io_expander, (1 << 2) | (1 << 3), 1);
++        delay(120);
++#endif
+     }
+ 
+     // SX1262 BUSY: LilyGo's reference example configures it with a pulldown
+diff --git a/variants/esp32p4/t-display-p4/variant.h b/variants/esp32p4/t-display-p4/variant.h
+index ec20bf111..3d3239499 100644
+--- a/variants/esp32p4/t-display-p4/variant.h
++++ b/variants/esp32p4/t-display-p4/variant.h
+@@ -11,8 +11,8 @@
+ // are encoded with the IO_EXPANDER flag and routed through the patched
+ // arduino-esp32 core (ng-io-expander branch), same pattern as SenseCAP Indicator.
+ 
+-// Headless for milestone A; display (HI8561/RM69A10 MIPI-DSI) comes later.
+-#define HAS_SCREEN 0
++// Milestone C: HAS_SCREEN/HAS_TFT come from platformio.ini build flags
++// (device-ui/MUI on the HI8561 MIPI-DSI panel via LGFX_TDISPLAY_P4.h).
+ 
+ // Milestone A: no Wire — the XL9535 expander owns I2C bus (SDA=7/SCL=8) via the
+ // core's io_expander driver; Meshtastic's Wire scan would double-drive the port.
+-- 
+2.53.0.windows.2
+

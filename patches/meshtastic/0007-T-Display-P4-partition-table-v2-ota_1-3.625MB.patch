@@ -1,0 +1,37 @@
+From 168910faf3f520b7cb68f45656a2a57fbb70d46d Mon Sep 17 00:00:00 2001
+From: Mikhail-Za <86077672+Mikhail-Za@users.noreply.github.com>
+Date: Fri, 12 Jun 2026 17:42:59 -0500
+Subject: [PATCH 7/9] T-Display P4: partition table v2 (ota_1 3.625MB)
+
+---
+ .../esp32p4/t-display-p4/partitions-dualmesh.csv  | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/variants/esp32p4/t-display-p4/partitions-dualmesh.csv b/variants/esp32p4/t-display-p4/partitions-dualmesh.csv
+index a9e589cd7..e4fb65172 100644
+--- a/variants/esp32p4/t-display-p4/partitions-dualmesh.csv
++++ b/variants/esp32p4/t-display-p4/partitions-dualmesh.csv
+@@ -1,12 +1,13 @@
+-# Build-side mirror of the DualMesh launcher's on-flash partition table.
+-# This firmware runs from the "meshtastic" OTA slot, installed by the launcher;
+-# the size check below must target that 2.5MB slot. nvs (stock offset) belongs
+-# to MeshOS; Meshtastic data lives in mesh_nvs/mesh_fs.
++# DualMesh shared partition table — T-Display P4, 16MB flash. v2 (2026-06-13):
++# ota_1 grown 2.5MB -> 3.625MB for the device-ui/MUI Meshtastic build (3.34MB);
++# mesh_nvs/mesh_fs moved/shrunk accordingly. MeshOS region and stock nvs unchanged.
++# "nvs" keeps the stock offset/size so MeshOS finds its license cache unchanged.
+ # Name,      Type, SubType, Offset,   Size,
+ nvs,         data, nvs,     0x9000,   0x6000,
+ otadata,     data, ota,     0xF000,   0x2000,
+ phy_init,    data, phy,     0x11000,  0x1000,
++factory,     app,  factory, 0x20000,  0xE0000,
+ meshos,      app,  ota_0,   0x100000, 0xAC0000,
+-meshtastic,  app,  ota_1,   0xBC0000, 0x280000,
+-mesh_nvs,    data, nvs,     0xE40000, 0x10000,
+-mesh_fs,     data, spiffs,  0xE50000, 0x1B0000,
++meshtastic,  app,  ota_1,   0xBC0000, 0x3A0000,
++mesh_nvs,    data, nvs,     0xF60000, 0x10000,
++mesh_fs,     data, spiffs,  0xF70000, 0x90000,
+-- 
+2.53.0.windows.2
+

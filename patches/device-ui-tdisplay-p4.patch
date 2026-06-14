@@ -1,21 +1,9 @@
-From 0604b8b1a3c03803d9db82d9a1cc851ed6aa5aed Mon Sep 17 00:00:00 2001
-From: Mikhail-Za <86077672+Mikhail-Za@users.noreply.github.com>
-Date: Fri, 12 Jun 2026 19:23:29 -0500
-Subject: [PATCH] Add LilyGo T-Display P4 (HI8561 MIPI-DSI framebuffer +
- memory-mapped touch)
-
----
- include/graphics/LGFX/LGFX_TDISPLAY_P4.h      | 453 ++++++++++++++++++
- .../graphics/driver/DisplayDriverFactory.cpp  |   3 +
- 2 files changed, 456 insertions(+)
- create mode 100644 include/graphics/LGFX/LGFX_TDISPLAY_P4.h
-
 diff --git a/include/graphics/LGFX/LGFX_TDISPLAY_P4.h b/include/graphics/LGFX/LGFX_TDISPLAY_P4.h
 new file mode 100644
-index 0000000..f1dea71
+index 0000000..e5ffd15
 --- /dev/null
 +++ b/include/graphics/LGFX/LGFX_TDISPLAY_P4.h
-@@ -0,0 +1,453 @@
+@@ -0,0 +1,571 @@
 +// LovyanGFX device for the LilyGo T-Display P4 TFT SKU (HI8561, MIPI-DSI
 +// 540x1168) for use with meshtastic device-ui (MUI).
 +//
@@ -43,6 +31,8 @@ index 0000000..f1dea71
 +#include <esp_lcd_panel_ops.h>
 +#include <esp_ldo_regulator.h>
 +#include <esp_log.h>
++#include <freertos/FreeRTOS.h>
++#include <freertos/semphr.h>
 +
 +#include "driver/i2c_master.h"
 +#include "lgfx/v1/Bus.hpp"
@@ -58,6 +48,11 @@ index 0000000..f1dea71
 +
 +#define TDP4_PANEL_W 540
 +#define TDP4_PANEL_H 1168
++// Native 1:1 rendering — LVGL renders at the panel's real resolution, so text
++// and graphics are pixel-perfect (no upscaling blur). The UI is sized up via
++// the view's apply_hotfix() + larger fonts instead of stretching pixels.
++#define TDP4_LOGICAL_W 540
++#define TDP4_LOGICAL_H 1168
 +#define TDP4_BL_PIN 51
 +
 +namespace lgfx
@@ -166,7 +161,7 @@ index 0000000..f1dea71
 +
 +    bool init(void) override
 +    {
-+        if (_fb)
++        if (_fbs[0])
 +            return true;
 +
 +        esp_ldo_channel_config_t ldo_cfg = {};
@@ -227,6 +222,7 @@ index 0000000..f1dea71
 +        dpi_cfg.video_timing.vsync_pulse_width = 2;
 +        dpi_cfg.video_timing.vsync_back_porch = 22;
 +        dpi_cfg.video_timing.vsync_front_porch = 200;
++        dpi_cfg.num_fbs = 2; // double buffer: compose into the off-screen fb, swap on vsync
 +        dpi_cfg.flags.use_dma2d = true;
 +        if (esp_lcd_new_panel_dpi(_dsi_bus, &dpi_cfg, &_panel) != ESP_OK) {
 +            ESP_LOGE("TDP4", "dpi panel create failed");
@@ -236,14 +232,47 @@ index 0000000..f1dea71
 +            ESP_LOGE("TDP4", "dpi panel init failed");
 +            return false;
 +        }
-+        void *fb = nullptr;
-+        if (esp_lcd_dpi_panel_get_frame_buffer(_panel, 1, &fb) != ESP_OK || fb == nullptr) {
++        void *fb0 = nullptr, *fb1 = nullptr;
++        if (esp_lcd_dpi_panel_get_frame_buffer(_panel, 2, &fb0, &fb1) != ESP_OK || fb0 == nullptr || fb1 == nullptr) {
 +            ESP_LOGE("TDP4", "get framebuffer failed");
 +            return false;
 +        }
-+        _fb = static_cast<uint8_t *>(fb);
-+        ESP_LOGI("TDP4", "DSI panel up, fb=%p", fb);
++        _fbs[0] = static_cast<uint8_t *>(fb0);
++        _fbs[1] = static_cast<uint8_t *>(fb1);
++        // The driver starts scanning fb[0] (cur_fb_index = 0), so fb[1] is the
++        // first off-screen buffer we compose into.
++        _back = 1;
++        _vsync = xSemaphoreCreateBinary();
++        esp_lcd_dpi_panel_event_callbacks_t cbs = {};
++        cbs.on_refresh_done = &Bus_DSI_P4::onRefreshDone;
++        esp_err_t cb_err = esp_lcd_dpi_panel_register_event_callbacks(_panel, &cbs, this);
++        if (cb_err != ESP_OK)
++            ESP_LOGE("TDP4", "vsync cb register failed: %d (present() will fall back to timeout)", cb_err);
++        ESP_LOGI("TDP4", "DSI panel up, fb0=%p fb1=%p (double-buffered)", fb0, fb1);
 +        return true;
++    }
++
++    // Off-screen buffer the panel is NOT currently scanning — LVGL composes here.
++    uint16_t *backbuf(void) { return reinterpret_cast<uint16_t *>(_fbs[_back]); }
++
++    // Present the composed frame: a draw_bitmap whose source IS one of the
++    // driver's framebuffers is a zero-copy vsync swap (esp_lcd_panel_dpi.c),
++    // so the new frame appears atomically at the next frame boundary — no tear.
++    // Then wait until that frame is actually on screen before flipping, so we
++    // never compose into a buffer that is still being scanned out.
++    void present(void)
++    {
++        if (_panel == nullptr)
++            return;
++        if (_vsync)
++            xSemaphoreTake(_vsync, 0); // drop any stale refresh-done from a prior frame
++        esp_lcd_panel_draw_bitmap(_panel, 0, 0, TDP4_PANEL_W, TDP4_PANEL_H, _fbs[_back]);
++        // Wait for the next refresh-done: the buffer we just swapped in is now on
++        // screen, so the other buffer is free to compose into. ~1 frame (16ms) at
++        // 60Hz; the short timeout caps the stall if the vsync cb ever drops.
++        if (_vsync)
++            xSemaphoreTake(_vsync, pdMS_TO_TICKS(25));
++        _back ^= 1;
 +    }
 +
 +    void release(void) override {}
@@ -260,7 +289,7 @@ index 0000000..f1dea71
 +    void initDMA(void) override {}
 +    void addDMAQueue(const uint8_t *, uint32_t) override {}
 +    void execDMAQueue(void) override {}
-+    uint8_t *getDMABuffer(uint32_t) override { return _fb; }
++    uint8_t *getDMABuffer(uint32_t) override { return _fbs[0]; }
 +    void beginRead(void) override {}
 +    void endRead(void) override {}
 +    uint32_t readData(uint_fast8_t) override { return 0; }
@@ -268,11 +297,25 @@ index 0000000..f1dea71
 +    void readPixels(void *, pixelcopy_t *, uint32_t) override {}
 +
 +  private:
++    // MUST be in IRAM: the DPI driver rejects (and does not install) a vsync
++    // callback that isn't, which would leave _vsync ungiven and make present()
++    // block its full timeout every frame — stalling the LVGL/touch task.
++    static bool IRAM_ATTR onRefreshDone(esp_lcd_panel_handle_t, esp_lcd_dpi_panel_event_data_t *, void *ctx)
++    {
++        auto *self = static_cast<Bus_DSI_P4 *>(ctx);
++        BaseType_t hp = pdFALSE;
++        if (self->_vsync)
++            xSemaphoreGiveFromISR(self->_vsync, &hp);
++        return hp == pdTRUE;
++    }
++
 +    esp_ldo_channel_handle_t _ldo = nullptr;
 +    esp_lcd_dsi_bus_handle_t _dsi_bus = nullptr;
 +    esp_lcd_panel_io_handle_t _io = nullptr;
 +    esp_lcd_panel_handle_t _panel = nullptr;
-+    uint8_t *_fb = nullptr;
++    uint8_t *_fbs[2] = {nullptr, nullptr};
++    uint8_t _back = 1;
++    SemaphoreHandle_t _vsync = nullptr;
 +};
 +
 +// ---------------------------------------------------------------------------
@@ -293,26 +336,84 @@ index 0000000..f1dea71
 +            return false;
 +        if (!Panel_FrameBufferBase::init(use_reset))
 +            return false;
-+        auto fb = _bus->getDMABuffer(0);
-+        if (fb == nullptr)
++        _dsibus = static_cast<Bus_DSI_P4 *>(_bus);
++        if (_dsibus == nullptr || _dsibus->getDMABuffer(0) == nullptr)
 +            return false;
++        // Rows kept coherent with the PHYSICAL framebuffer stride so stray
++        // base-class writes stay sane; the LVGL flush path goes through our
++        // scaling writeImage override and never uses them.
 +        size_t line_array_size = _cfg.panel_height * sizeof(void *);
 +        auto line_array = static_cast<uint8_t **>(heap_alloc_dma(line_array_size));
 +        if (line_array == nullptr)
 +            return false;
 +        memset(line_array, 0, line_array_size);
-+        const size_t line_length = (((_cfg.panel_width * _write_bits) >> 3) + 3) & ~3;
++        auto fb8 = reinterpret_cast<uint8_t *>(_dsibus->getDMABuffer(0));
 +        for (uint16_t y = 0; y < _cfg.panel_height; ++y) {
-+            line_array[y] = fb;
-+            fb += line_length;
++            line_array[y] = fb8;
++            fb8 += TDP4_PANEL_W * 2;
 +        }
 +        _lines_buffer = line_array;
 +        return true;
 +    }
 +
++    // LVGL flush lands here (lgfx->pushImage -> writeImage). Native 1:1: copy
++    // the rgb565 source straight into the off-screen DSI buffer at (x,y) — no
++    // scaling, so the render stays pixel-perfect. present() swaps it on vsync.
++    void writeImage(uint_fast16_t x, uint_fast16_t y, uint_fast16_t w, uint_fast16_t h, pixelcopy_t *param,
++                    bool use_dma) override
++    {
++        (void)use_dma;
++        uint16_t *_fb = _dsibus ? _dsibus->backbuf() : nullptr;
++        if (_fb == nullptr || param == nullptr || param->src_data == nullptr || x >= TDP4_PANEL_W)
++            return;
++        auto src = static_cast<const uint16_t *>(param->src_data);
++        const uint32_t pitch = param->src_bitwidth ? param->src_bitwidth : w;
++        const uint32_t sxoff = param->src_x, syoff = param->src_y;
++        uint32_t ww = w;
++        if (x + ww > TDP4_PANEL_W)
++            ww = TDP4_PANEL_W - x;
++        for (uint32_t sy = 0; sy < h; ++sy) {
++            uint32_t gy = y + sy;
++            if (gy >= TDP4_PANEL_H)
++                break;
++            const uint16_t *srow = src + (sy + syoff) * pitch + sxoff;
++            memcpy(_fb + gy * TDP4_PANEL_W + x, srow, ww * sizeof(uint16_t));
++        }
++    }
++
++    void writeFillRectPreclipped(uint_fast16_t x, uint_fast16_t y, uint_fast16_t w, uint_fast16_t h,
++                                 uint32_t rawcolor) override
++    {
++        uint16_t *_fb = _dsibus ? _dsibus->backbuf() : nullptr;
++        if (_fb == nullptr || x >= TDP4_PANEL_W || y >= TDP4_PANEL_H)
++            return;
++        uint32_t dx1 = x + w, dy1 = y + h;
++        if (dx1 > TDP4_PANEL_W)
++            dx1 = TDP4_PANEL_W;
++        if (dy1 > TDP4_PANEL_H)
++            dy1 = TDP4_PANEL_H;
++        const uint16_t c = static_cast<uint16_t>(rawcolor);
++        for (uint32_t dy = y; dy < dy1; ++dy) {
++            uint16_t *drow = _fb + dy * TDP4_PANEL_W;
++            for (uint32_t dx = x; dx < dx1; ++dx)
++                drow[dx] = c;
++        }
++    }
++
++    // Called by the LVGL flush path once all of a frame's pixels are composed
++    // into the back buffer: swap it on screen atomically.
++    void present(void)
++    {
++        if (_dsibus)
++            _dsibus->present();
++    }
++
 +    color_depth_t setColorDepth(color_depth_t) override { return _write_depth; }
 +    void writeCommand(uint32_t, uint_fast8_t) override {}
 +    void writeData(uint32_t, uint_fast8_t) override {}
++
++  private:
++    Bus_DSI_P4 *_dsibus = nullptr;
 +};
 +
 +// ---------------------------------------------------------------------------
@@ -392,8 +493,9 @@ index 0000000..f1dea71
 +            uint16_t y = (p[2] << 8) | p[3];
 +            if (x == 0xFFFF && y == 0xFFFF)
 +                continue;
-+            tp[got].x = x;
-+            tp[got].y = y;
++            // native 1:1 — touch coordinates already match the LVGL surface
++            tp[got].x = x < TDP4_PANEL_W ? x : TDP4_PANEL_W - 1;
++            tp[got].y = y < TDP4_PANEL_H ? y : TDP4_PANEL_H - 1;
 +            tp[got].size = p[4] ? p[4] : 1;
 +            tp[got].id = got;
 +            ++got;
@@ -427,19 +529,23 @@ index 0000000..f1dea71
 +    lgfx::Touch_HI8561 _touch_instance;
 +
 +  public:
-+    const uint32_t screenWidth = TDP4_PANEL_W;
-+    const uint32_t screenHeight = TDP4_PANEL_H;
++    const uint32_t screenWidth = TDP4_LOGICAL_W;
++    const uint32_t screenHeight = TDP4_LOGICAL_H;
 +
 +    bool hasButton(void) { return false; }
++
++    // Swap the composed back buffer on screen (called from the LVGL flush path
++    // after the last dirty area of a frame). Double-buffered, vsync-synced.
++    void present(void) { _panel_instance.present(); }
 +
 +    LGFX_TDISPLAY_P4(void)
 +    {
 +        {
 +            auto cfg = _panel_instance.config();
-+            cfg.memory_width = TDP4_PANEL_W;
-+            cfg.memory_height = TDP4_PANEL_H;
-+            cfg.panel_width = TDP4_PANEL_W;
-+            cfg.panel_height = TDP4_PANEL_H;
++            cfg.memory_width = TDP4_LOGICAL_W;
++            cfg.memory_height = TDP4_LOGICAL_H;
++            cfg.panel_width = TDP4_LOGICAL_W;
++            cfg.panel_height = TDP4_LOGICAL_H;
 +            cfg.readable = true;
 +            cfg.rgb_order = false;
 +            cfg.bus_shared = false;
@@ -457,8 +563,8 @@ index 0000000..f1dea71
 +            auto cfg = _touch_instance.config();
 +            cfg.x_min = 0;
 +            cfg.y_min = 0;
-+            cfg.x_max = TDP4_PANEL_W - 1;
-+            cfg.y_max = TDP4_PANEL_H - 1;
++            cfg.x_max = TDP4_LOGICAL_W - 1;
++            cfg.y_max = TDP4_LOGICAL_H - 1;
 +            cfg.pin_int = -1;
 +            cfg.pin_rst = -1; // reset handled by initVariant via XL9535
 +            cfg.bus_shared = true;
@@ -469,6 +575,176 @@ index 0000000..f1dea71
 +        setPanel(&_panel_instance);
 +    }
 +};
+diff --git a/include/graphics/driver/LGFXDriver.h b/include/graphics/driver/LGFXDriver.h
+index 2922a4f..44930e9 100644
+--- a/include/graphics/driver/LGFXDriver.h
++++ b/include/graphics/driver/LGFXDriver.h
+@@ -180,6 +180,12 @@ template <class LGFX> void LGFXDriver<LGFX>::display_flush(lv_display_t *disp, c
+     lv_draw_sw_rgb565_swap(px_map, w * h);
+ #endif
+     lgfx->pushImage(area->x1, area->y1, w, h, (uint16_t *)px_map);
++#if defined(TDISPLAY_P4)
++    // T-Display P4 composes the upscaled frame into an off-screen DSI buffer;
++    // present (vsync swap) once the frame's final dirty area has been pushed.
++    if (lv_display_flush_is_last(disp))
++        lgfx->present();
++#endif
+     lv_display_flush_ready(disp);
+ }
+ #else
+@@ -282,7 +288,14 @@ template <class LGFX> void LGFXDriver<LGFX>::init(DeviceGUI *gui)
+     ILOG_DEBUG("LVGL: allocating %u bytes PSRAM for draw buffer (max free PSRAM: %u)", bufsize, ESP.getMaxAllocPsram());
+     buf1 = (lv_color_t *)LV_MEM_POOL_ALLOC(bufsize);
+     assert(buf1 != 0);
++#if defined(TDISPLAY_P4)
++    // FULL mode: LVGL always hands us a complete frame, so the off-screen DSI
++    // buffer we swap in is never missing un-redrawn regions. LGFX_BUFSIZE is
++    // sized to one full logical frame (TDP4_LOGICAL_W * TDP4_LOGICAL_H * 2).
++    lv_display_set_buffers(this->display, buf1, buf2, bufsize, LV_DISPLAY_RENDER_MODE_FULL);
++#else
+     lv_display_set_buffers(this->display, buf1, buf2, bufsize, LV_DISPLAY_RENDER_MODE_PARTIAL);
++#endif
+ #else
+ #ifdef LGFX_BUFSIZE
+     bufsize = LGFX_BUFSIZE;
+diff --git a/include/lv_conf.h b/include/lv_conf.h
+index bb20143..4d82332 100644
+--- a/include/lv_conf.h
++++ b/include/lv_conf.h
+@@ -499,9 +499,9 @@
+ #define LV_FONT_MONTSERRAT_18 0
+ #define LV_FONT_MONTSERRAT_20 0
+ #define LV_FONT_MONTSERRAT_22 0
+-#define LV_FONT_MONTSERRAT_24 0
++#define LV_FONT_MONTSERRAT_24 1 // T-Display P4 540x1168 native: larger readable UI
+ #define LV_FONT_MONTSERRAT_26 0
+-#define LV_FONT_MONTSERRAT_28 0
++#define LV_FONT_MONTSERRAT_28 1 // T-Display P4 540x1168 native: headers/labels
+ #define LV_FONT_MONTSERRAT_30 0
+ #define LV_FONT_MONTSERRAT_32 0
+ #define LV_FONT_MONTSERRAT_34 0
+diff --git a/source/graphics/TFT/TFTView_320x240.cpp b/source/graphics/TFT/TFTView_320x240.cpp
+index e04073d..17f25e8 100644
+--- a/source/graphics/TFT/TFTView_320x240.cpp
++++ b/source/graphics/TFT/TFTView_320x240.cpp
+@@ -568,6 +568,28 @@ void TFTView_320x240::apply_hotfix(void)
+     uint32_t h = lv_display_get_horizontal_resolution(displaydriver->getDisplay());
+     uint32_t v = lv_display_get_vertical_resolution(displaydriver->getDisplay());
+ 
++    // Expose all 9 LoRa modem presets in the dropdown (the generated UI omits LONG SLOW).
++    // Set at runtime so it survives an EEZ regen; order MUST match val2preset() indices.
++    if (objects.settings_modem_preset_dropdown)
++        lv_dropdown_set_options(objects.settings_modem_preset_dropdown,
++                                _("LONG FAST\nLONG MODERATE\nLONG TURBO\nMEDIUM FAST\nMEDIUM SLOW\nSHORT FAST\n"
++                                  "SHORT TURBO\nSHORT SLOW\nLONG SLOW"));
++
++    // The generated EEZ screens hard-size their root container to the design
++    // resolution (e.g. 240x320). On a larger/taller panel that would pin the UI
++    // to a corner, so fill each full screen to the real panel size. No-op when
++    // the panel matches the design (h,v == design), so existing boards are safe.
++    if (h > 320 || v > 320) {
++        lv_obj_t *fullScreens[] = {objects.boot_screen,  objects.main_screen,        objects.blank_screen,
++                                   objects.lock_screen,  objects.calibration_screen};
++        for (auto s : fullScreens) {
++            if (s) {
++                lv_obj_set_pos(s, 0, 0);
++                lv_obj_set_size(s, h, v);
++            }
++        }
++    }
++
+     // resize buttons on larger display (assuming 480x480)
+     if (h > 320 && v > 320) {
+         lv_obj_t *button[] = {objects.home_button,     objects.nodes_button, objects.groups_button,
+@@ -603,6 +625,69 @@ void TFTView_320x240::apply_hotfix(void)
+                                    ((lv_style_selector_t)LV_PART_MAIN | (lv_style_selector_t)LV_STATE_DEFAULT));
+     }
+ 
++    // Tall hi-res native panels (T-Display P4 540x1168): the 240x320 design
++    // renders small. Scale the home content + fonts to fill. Gated on v > 800
++    // so normal-size panels are untouched.
++    if (v > 800) {
++        const lv_style_selector_t md = (lv_style_selector_t)LV_PART_MAIN | (lv_style_selector_t)LV_STATE_DEFAULT;
++
++        // NB: the 6 bottom-bar nav buttons (home/nodes/groups/messages/map/settings)
++        // are left at the 72px set above — 6 x 72 = 432 fits the 540px width;
++        // larger sizes overflow the row off-screen.
++
++        // larger home status icons
++        lv_obj_t *homeButtons[] = {objects.home_mail_button,    objects.home_nodes_button,
++                                   objects.home_time_button,    objects.home_lora_button,
++                                   objects.home_signal_button,  objects.home_bell_button,
++                                   objects.home_location_button};
++        for (auto b : homeButtons)
++            if (b)
++                lv_obj_set_size(b, 64, 64);
++
++        // readable home labels (font inherits to the flex children) + breathing room
++        if (objects.home_container) {
++            lv_obj_set_style_text_font(objects.home_container, &lv_font_montserrat_24, md);
++            lv_obj_set_style_pad_row(objects.home_container, 12, md);
++            lv_obj_set_style_pad_column(objects.home_container, 12, md);
++        }
++
++        // bigger keyboard-toggle buttons (tiny 25x24 next to the text input on
++        // every chat screen -> hard to tap). Enlarges the tap target.
++        lv_obj_t *kbButtons[] = {objects.keyboard_button_0, objects.keyboard_button_1, objects.keyboard_button_2,
++                                 objects.keyboard_button_3, objects.keyboard_button_4, objects.keyboard_button_5,
++                                 objects.keyboard_button_6, objects.keyboard_button_7, objects.keyboard_button_8,
++                                 objects.keyboard_button_9};
++        for (auto b : kbButtons)
++            if (b)
++                lv_obj_set_size(b, 50, 44);
++
++        // bottom nav: spread the 6 buttons edge-to-edge across the full width.
++        // The generated layout centers them, leaving big empty margins on a
++        // 540px-wide panel.
++        if (objects.button_panel)
++            lv_obj_set_style_flex_main_place(objects.button_panel, LV_FLEX_ALIGN_SPACE_BETWEEN, md);
++
++        // top-right battery status icon is tiny (24px) and unreadable. It is a
++        // dynamically-swapped *background* image (the view swaps full/low/charging),
++        // so scale it with a transform rather than a resize (which wouldn't scale
++        // a bg image).
++        if (objects.battery_image) {
++            lv_obj_set_style_transform_pivot_x(objects.battery_image, 12, md);
++            lv_obj_set_style_transform_pivot_y(objects.battery_image, 12, md);
++            lv_obj_set_style_transform_scale_x(objects.battery_image, 460, md); // ~1.8x
++            lv_obj_set_style_transform_scale_y(objects.battery_image, 460, md);
++        }
++        if (objects.battery_percentage_label)
++            lv_obj_set_style_text_font(objects.battery_percentage_label, &ui_font_montserrat_20, md);
++
++        // signal row: the "(xx%)" sub-label sits at a fixed x=90 that the larger
++        // 24px font now overruns, overlapping "RSSI: -nnn". Move it clear + widen.
++        if (objects.home_signal_pct_label) {
++            lv_obj_set_pos(objects.home_signal_pct_label, 180, 0);
++            lv_obj_set_size(objects.home_signal_pct_label, 110, LV_SIZE_CONTENT);
++        }
++    }
++
+     lv_obj_move_foreground(objects.keyboard);
+     lv_obj_add_flag(objects.detector_radar_panel, LV_OBJ_FLAG_HIDDEN);
+     lv_obj_add_flag(objects.detected_node_button, LV_OBJ_FLAG_HIDDEN);
+@@ -3422,7 +3507,7 @@ void TFTView_320x240::updateSignalStrength(int32_t rssi, float snr)
+  */
+ uint32_t TFTView_320x240::preset2val(meshtastic_Config_LoRaConfig_ModemPreset preset)
+ {
+-    int32_t val[] = {0, -1, -1, 4, 3, 7, 5, 1, 6, 2};
++    int32_t val[] = {0, 8, -1, 4, 3, 7, 5, 1, 6, 2}; // LONG_SLOW(1) -> dropdown index 8
+ 
+     if (preset > (sizeof(val) / sizeof(val[0]) - 1) || val[preset] == -1) {
+         ILOG_WARN("unknown or deprecated preset value: %d", preset);
+@@ -3440,7 +3525,8 @@ meshtastic_Config_LoRaConfig_ModemPreset TFTView_320x240::val2preset(uint32_t va
+         meshtastic_Config_LoRaConfig_ModemPreset_LONG_FAST,   meshtastic_Config_LoRaConfig_ModemPreset_LONG_MODERATE,
+         meshtastic_Config_LoRaConfig_ModemPreset_LONG_TURBO,  meshtastic_Config_LoRaConfig_ModemPreset_MEDIUM_FAST,
+         meshtastic_Config_LoRaConfig_ModemPreset_MEDIUM_SLOW, meshtastic_Config_LoRaConfig_ModemPreset_SHORT_FAST,
+-        meshtastic_Config_LoRaConfig_ModemPreset_SHORT_TURBO, meshtastic_Config_LoRaConfig_ModemPreset_SHORT_SLOW};
++        meshtastic_Config_LoRaConfig_ModemPreset_SHORT_TURBO, meshtastic_Config_LoRaConfig_ModemPreset_SHORT_SLOW,
++        meshtastic_Config_LoRaConfig_ModemPreset_LONG_SLOW};
+     if (val > (sizeof(preset) / sizeof(preset[0]) - 1)) {
+         ILOG_ERROR("unknown preset value: %d", val);
+         return meshtastic_Config_LoRaConfig_ModemPreset_LONG_FAST;
 diff --git a/source/graphics/driver/DisplayDriverFactory.cpp b/source/graphics/driver/DisplayDriverFactory.cpp
 index 730a424..5258499 100644
 --- a/source/graphics/driver/DisplayDriverFactory.cpp
@@ -483,6 +759,3 @@ index 730a424..5258499 100644
  #ifdef CROWPANEL_ADV_P4_70_90_101
  #include "graphics/LGFX/LGFX_ELECROW_P4_70_90_101.h"
  #endif
--- 
-2.53.0.windows.2
-

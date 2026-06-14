@@ -1,0 +1,28 @@
+From 4af360818ce81e9e7ed5107318192514b8384239 Mon Sep 17 00:00:00 2001
+From: Mikhail-Za <86077672+Mikhail-Za@users.noreply.github.com>
+Date: Fri, 12 Jun 2026 17:38:56 -0500
+Subject: [PATCH 6/9] crowpanel-p4-50: pin device-ui to elecrow-p4 branch (P4
+ LGFX classes)
+
+---
+ variants/esp32p4/crowpanel-advanced-p4/platformio.ini | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/variants/esp32p4/crowpanel-advanced-p4/platformio.ini b/variants/esp32p4/crowpanel-advanced-p4/platformio.ini
+index ff35f9f03..9e9a49bae 100644
+--- a/variants/esp32p4/crowpanel-advanced-p4/platformio.ini
++++ b/variants/esp32p4/crowpanel-advanced-p4/platformio.ini
+@@ -61,7 +61,9 @@ build_flags =
+ 
+ lib_deps =
+   ${esp32p4_base.lib_deps}
+-  ${device-ui_base.lib_deps}
++  ; device-ui pinned to the elecrow-p4 branch head — master snapshot lacks the
++  ; P4 LGFX classes this env references
++  https://github.com/meshtastic/device-ui/archive/b4afa48fcb08b6ea30398d6ebdf0faf0b170c1b9.zip
+   # renovate: datasource=github-tags depName=LovyanGFX packageName=lovyan03/LovyanGFX
+   https://github.com/lovyan03/LovyanGFX/archive/refs/tags/1.2.21.zip
+ 
+-- 
+2.53.0.windows.2
+
