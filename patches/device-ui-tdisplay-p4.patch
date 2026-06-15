@@ -624,7 +624,7 @@ index bb20143..4d82332 100644
  #define LV_FONT_MONTSERRAT_32 0
  #define LV_FONT_MONTSERRAT_34 0
 diff --git a/source/graphics/TFT/TFTView_320x240.cpp b/source/graphics/TFT/TFTView_320x240.cpp
-index e04073d..17f25e8 100644
+index e04073d..8eb4097 100644
 --- a/source/graphics/TFT/TFTView_320x240.cpp
 +++ b/source/graphics/TFT/TFTView_320x240.cpp
 @@ -568,6 +568,28 @@ void TFTView_320x240::apply_hotfix(void)
@@ -656,7 +656,7 @@ index e04073d..17f25e8 100644
      // resize buttons on larger display (assuming 480x480)
      if (h > 320 && v > 320) {
          lv_obj_t *button[] = {objects.home_button,     objects.nodes_button, objects.groups_button,
-@@ -603,6 +625,69 @@ void TFTView_320x240::apply_hotfix(void)
+@@ -603,6 +625,467 @@ void TFTView_320x240::apply_hotfix(void)
                                     ((lv_style_selector_t)LV_PART_MAIN | (lv_style_selector_t)LV_STATE_DEFAULT));
      }
  
@@ -696,6 +696,21 @@ index e04073d..17f25e8 100644
 +            if (b)
 +                lv_obj_set_size(b, 50, 44);
 +
++        // Message input box was 25px tall (with max_height also pinned to 25) while its
++        // row-mate keyboard button grew to 50x44 -> lift the clamp, then match it. It is
++        // BOTTOM_LEFT-anchored in messages_panel (not a flex row) so growing it upward
++        // does not disturb the messages list or the keyboard button.
++        if (objects.message_input_area) {
++            lv_obj_set_style_max_height(objects.message_input_area, 50, md);
++            lv_obj_set_height(objects.message_input_area, 50);
++            lv_obj_set_style_text_font(objects.message_input_area, &ui_font_montserrat_20, md);
++            lv_obj_set_style_pad_top(objects.message_input_area, 6, md);
++            lv_obj_set_style_pad_bottom(objects.message_input_area, 6, md);
++        }
++        // Let the on-screen keyboard grow past its 300px create-site max_height clamp so
++        // showKeyboard() can size it to fill the gap above the screen bottom (see there).
++        lv_obj_set_style_max_height(objects.keyboard, v, md);
++
 +        // bottom nav: spread the 6 buttons edge-to-edge across the full width.
 +        // The generated layout centers them, leaving big empty margins on a
 +        // 540px-wide panel.
@@ -721,12 +736,395 @@ index e04073d..17f25e8 100644
 +            lv_obj_set_pos(objects.home_signal_pct_label, 180, 0);
 +            lv_obj_set_size(objects.home_signal_pct_label, 110, LV_SIZE_CONTENT);
 +        }
++
++        // ---- SETTINGS reflow: make every touchable control easy to tap (>=~50x44)
++        // with larger text, across BOTH settings systems (Basic Settings tab +
++        // Advanced Settings drawer). Runtime so it survives an EEZ regen. ----
++        const lv_font_t *FB = &ui_font_montserrat_20; // button/label text
++
++        // (1) tab bars 25 -> 56, item font 24
++        lv_obj_t *settingsTabs[] = {objects.controller_tab_view, ui_SettingsTabView,
++                                    objects.node_options_tab_view};
++        for (auto tv : settingsTabs)
++            if (tv) {
++                lv_tabview_set_tab_bar_size(tv, 56);
++                lv_obj_set_style_text_font(lv_tabview_get_tab_bar(tv), &lv_font_montserrat_24,
++                                           LV_PART_ITEMS | LV_STATE_DEFAULT);
++            }
++
++        // (2) Basic-Settings category buttons 30 -> 56 (font inherits from the page parent)
++        if (objects.tab_page_basic_settings)
++            lv_obj_set_style_text_font(objects.tab_page_basic_settings, FB, md);
++        lv_obj_t *bsBtns[] = {objects.basic_settings_user_button,           objects.basic_settings_region_button,
++                              objects.basic_settings_modem_preset_button,   objects.basic_settings_channel_button,
++                              objects.basic_settings_role_button,           objects.basic_settings_wifi_button,
++                              objects.basic_settings_timeout_button,        objects.basic_settings_screen_lock_button,
++                              objects.basic_settings_brightness_button,     objects.basic_settings_theme_button,
++                              objects.basic_settings_calibration_button,    objects.basic_settings_input_button,
++                              objects.basic_settings_alert_button,          objects.basic_settings_language_button,
++                              objects.basic_settings_timezone_button,       objects.basic_settings_reset_button,
++                              objects.basic_settings_backup_restore_button, objects.basic_settings_reboot_button};
++        for (auto b : bsBtns)
++            if (b)
++                lv_obj_set_height(b, 56);
++
++        // (2b) Tools-tab category buttons 30 -> 56 (the OTHER controller_tab_view tab,
++        // which was left small) + font on its page parent.
++        if (objects.tab_page_tools)
++            lv_obj_set_style_text_font(objects.tab_page_tools, FB, md);
++        lv_obj_t *toolsBtns[] = {objects.tools_mesh_detector_button, objects.tools_signal_scanner_button,
++                                 objects.tools_trace_route_button,   objects.tools_neighbors_button,
++                                 objects.tools_statistics_button,    objects.tools_packet_log_button};
++        for (auto b : toolsBtns)
++            if (b)
++                lv_obj_set_height(b, 56);
++
++        // (3) Advanced-Settings drawer category buttons 30 -> 56 (font on the 3 tab pages)
++        lv_obj_t *advPages[] = {ui_TabPageGeneral, ui_TabPageRadio, ui_TabPageModules};
++        for (auto p : advPages)
++            if (p)
++                lv_obj_set_style_text_font(p, FB, md);
++        lv_obj_t *advBtns[] = {ui_GeneralLanguageButton,    ui_GeneralTimezoneButton,  ui_GeneralScreenButton,
++                               ui_GeneralMapsButton,        ui_GeneralAudioButton,     ui_RadioBluetoothButton,
++                               ui_RadioDeviceButton,        ui_RadioDisplayButton,     ui_RadioLoRaButton,
++                               ui_RadioNetworkButton,       ui_RadioPositionButton,    ui_RadioPowerButton,
++                               ui_ModuleCannedMsgButton,    ui_ModuleSaFButton,        ui_ModuleTelemetryButton,
++                               ui_ModuleMQTTButton,         ui_ModuleRangeTestButton,  ui_ModuleAudioButton,
++                               ui_ModuleSerialButton,       ui_ModuleExtNotificationButton,
++                               ui_ModuleNeighborInfoButton, ui_ModuleAmbientLightingButton,
++                               ui_ModuleDetectionSensorButton, ui_ModuleRemoteHardwareButton};
++        for (auto b : advBtns)
++            if (b)
++                lv_obj_set_height(b, 56);
++
++        // (4) Dropdowns: closed control 30 -> 48 + bigger font
++        lv_obj_t *settingsDds[] = {objects.settings_region_dropdown,        objects.settings_modem_preset_dropdown,
++                                   objects.settings_device_role_dropdown,   objects.settings_theme_dropdown,
++                                   objects.settings_mouse_input_dropdown,    objects.settings_keyboard_input_dropdown,
++                                   objects.settings_ringtone_dropdown,       objects.settings_language_dropdown,
++                                   objects.settings_backup_restore_dropdown, objects.settings_reset_dropdown};
++        for (auto dd : settingsDds)
++            if (dd) {
++                lv_obj_set_height(dd, 48);
++                lv_obj_set_style_text_font(dd, FB, md);
++            }
++
++        // (5) Switches 50x25 -> 70x44
++        lv_obj_t *settingsSws[] = {objects.settings_screen_lock_switch, objects.settings_settings_lock_switch,
++                                   objects.settings_alert_buzzer_switch};
++        for (auto s : settingsSws)
++            if (s)
++                lv_obj_set_size(s, 70, 44);
++
++        // (6) Checkboxes: bigger font + indicator tick
++        lv_obj_t *settingsCbs[] = {objects.settings_backup_checkbox, objects.settings_restore_checkbox};
++        for (auto c : settingsCbs)
++            if (c) {
++                lv_obj_set_style_text_font(c, FB, md);
++                lv_obj_set_style_min_width(c, 32, LV_PART_INDICATOR | LV_STATE_DEFAULT);
++                lv_obj_set_style_min_height(c, 32, LV_PART_INDICATOR | LV_STATE_DEFAULT);
++            }
++
++        // (7) Shared OK/Cancel dialog touch fix. The 44px buttons were overflowing the
++        // 50px wrapper / 56px band and getting CLIPPED OUT of LVGL's touch hit-test, so
++        // taps fell through to the list behind ("dialog touch is wrong"). Fix: enlarge
++        // the buttons, then grow AND un-clip the wrapper + band, and grow the small
++        // (120px) dialog panels so the dropdown + band actually fit.
++        lv_obj_t *okCancelBtns[] = {
++            objects.obj2__ok_button_w,  objects.obj2__cancel_button_w,  objects.obj3__ok_button_w,
++            objects.obj3__cancel_button_w,  objects.obj4__ok_button_w,  objects.obj4__cancel_button_w,
++            objects.obj5__ok_button_w,  objects.obj5__cancel_button_w,  objects.obj6__ok_button_w,
++            objects.obj6__cancel_button_w,  objects.obj7__ok_button_w,  objects.obj7__cancel_button_w,
++            objects.obj8__ok_button_w,  objects.obj8__cancel_button_w,  objects.obj9__ok_button_w,
++            objects.obj9__cancel_button_w,  objects.obj10__ok_button_w, objects.obj10__cancel_button_w,
++            objects.obj11__ok_button_w, objects.obj11__cancel_button_w, objects.obj12__ok_button_w,
++            objects.obj12__cancel_button_w, objects.obj13__ok_button_w, objects.obj13__cancel_button_w,
++            objects.obj14__ok_button_w, objects.obj14__cancel_button_w, objects.obj15__ok_button_w,
++            objects.obj15__cancel_button_w, objects.obj16__ok_button_w, objects.obj16__cancel_button_w,
++            objects.obj17__ok_button_w, objects.obj17__cancel_button_w, objects.obj18__ok_button_w,
++            objects.obj18__cancel_button_w, objects.obj21__ok_button_w, objects.obj21__cancel_button_w,
++            objects.obj27__ok_button_w, objects.obj27__cancel_button_w};
++        for (auto b : okCancelBtns)
++            if (b) {
++                lv_obj_set_style_text_font(b, FB, md);
++                lv_obj_set_style_min_height(b, 44, md);
++                lv_obj_set_style_min_width(b, 70, md);
++            }
++        // Grow the 160x50 wrapper that holds each band, and let it show overflow so the
++        // taller band/buttons inside stay inside the touch hit-test (the core fix).
++        lv_obj_t *okCancelWraps[] = {objects.obj2,  objects.obj3,  objects.obj4,  objects.obj5,
++            objects.obj6,  objects.obj7,  objects.obj8,  objects.obj9,  objects.obj10, objects.obj11,
++            objects.obj12, objects.obj13, objects.obj14, objects.obj15, objects.obj16, objects.obj17,
++            objects.obj18, objects.obj21, objects.obj27};
++        for (auto w : okCancelWraps)
++            if (w) {
++                lv_obj_set_height(w, 64);
++                lv_obj_add_flag(w, LV_OBJ_FLAG_OVERFLOW_VISIBLE);
++            }
++        lv_obj_t *okCancelPanels[] = {
++            objects.obj2__ok_cancel_panel_w,  objects.obj3__ok_cancel_panel_w,  objects.obj4__ok_cancel_panel_w,
++            objects.obj5__ok_cancel_panel_w,  objects.obj6__ok_cancel_panel_w,  objects.obj7__ok_cancel_panel_w,
++            objects.obj8__ok_cancel_panel_w,  objects.obj9__ok_cancel_panel_w,  objects.obj10__ok_cancel_panel_w,
++            objects.obj11__ok_cancel_panel_w, objects.obj12__ok_cancel_panel_w, objects.obj13__ok_cancel_panel_w,
++            objects.obj14__ok_cancel_panel_w, objects.obj15__ok_cancel_panel_w, objects.obj16__ok_cancel_panel_w,
++            objects.obj17__ok_cancel_panel_w, objects.obj18__ok_cancel_panel_w, objects.obj21__ok_cancel_panel_w,
++            objects.obj27__ok_cancel_panel_w};
++        for (auto p : okCancelPanels)
++            if (p) {
++                lv_obj_set_height(p, 60);
++                lv_obj_set_style_pad_top(p, 6, md);
++                lv_obj_set_style_pad_bottom(p, 6, md);   // band content 60-12 = 48 >= 44 buttons
++                lv_obj_set_style_flex_cross_place(p, LV_FLEX_ALIGN_CENTER, md);
++                lv_obj_add_flag(p, LV_OBJ_FLAG_OVERFLOW_VISIBLE);
++            }
++        // (8) Config dialogs were still ~220px wide (240x320 era) -> tiny on the 540px
++        // screen, and wide labels clipped (the modem freq label at font 20). Widen every
++        // dialog to a consistent 440 and keep the dropdown ones tall enough for the 48px
++        // dropdown + 60px OK/Cancel band. The 3 slider dialogs get explicit height +
++        // re-stacked contents in (10). Children are TOP_MID / PCT-width so they re-center
++        // in the wider box automatically.
++        lv_obj_t *dlgPanels[] = {objects.settings_language_panel,    objects.settings_region_panel,
++                                 objects.settings_device_role_panel, objects.settings_brightness_panel,
++                                 objects.settings_theme_panel,       objects.settings_screen_timeout_panel,
++                                 objects.settings_reset_panel,       objects.settings_alert_buzzer_panel,
++                                 objects.settings_modem_preset_panel};
++        for (auto p : dlgPanels)
++            if (p) {
++                lv_obj_set_width(p, 440);
++                if (lv_obj_get_height(p) < 170)
++                    lv_obj_set_height(p, 170);
++            }
++
++        // (9) Settings SLIDERS: a modest track + knob -> easy to grab but not oversized
++        // (the earlier 30px track / 10px knob-pad was too big in the photos). Knob target =
++        // track + 2*pad = 20 + 8 ~= 28px.
++        lv_obj_t *settingsSliders[] = {objects.frequency_slot_slider, objects.brightness_slider,
++                                       objects.screen_timeout_slider};
++        for (auto s : settingsSliders)
++            if (s) {
++                lv_obj_set_height(s, 20);
++                lv_obj_set_style_pad_all(s, 4, LV_PART_KNOB | LV_STATE_DEFAULT);
++                lv_obj_set_style_radius(s, 6, md);
++            }
++
++        // (10) The 3 SLIDER dialogs: bigger box + bigger label, label + slider stacked
++        // above the bottom OK/Cancel band.
++        if (objects.settings_brightness_panel) {
++            lv_obj_set_height(objects.settings_brightness_panel, 220);
++            if (objects.settings_brightness_label) {
++                lv_obj_set_style_text_font(objects.settings_brightness_label, FB, md);
++                lv_obj_set_y(objects.settings_brightness_label, 20);
++            }
++            if (objects.brightness_slider)
++                lv_obj_set_y(objects.brightness_slider, 78);
++        }
++        if (objects.settings_screen_timeout_panel) {
++            lv_obj_set_height(objects.settings_screen_timeout_panel, 220);
++            if (objects.settings_screen_timeout_label) {
++                lv_obj_set_style_text_font(objects.settings_screen_timeout_label, FB, md);
++                lv_obj_set_y(objects.settings_screen_timeout_label, 20);
++            }
++            if (objects.screen_timeout_slider)
++                lv_obj_set_y(objects.screen_timeout_slider, 78);
++        }
++        if (objects.settings_modem_preset_panel) {
++            lv_obj_set_height(objects.settings_modem_preset_panel, 250);
++            if (objects.settings_modem_preset_dropdown)
++                lv_obj_set_width(objects.settings_modem_preset_dropdown, 320); // was 180, narrow in a 440 box
++            if (objects.frequency_slot_label) {
++                lv_obj_set_style_text_font(objects.frequency_slot_label, FB, md);
++                lv_obj_set_y(objects.frequency_slot_label, 72);
++            }
++            if (objects.frequency_slot_slider)
++                lv_obj_set_y(objects.frequency_slot_slider, 120);
++            lv_obj_add_flag(objects.settings_modem_preset_panel, LV_OBJ_FLAG_OVERFLOW_VISIBLE);
++        }
++
++        // (11) The 3 TEXT-ENTRY config dialogs (WiFi / Username / Screen-Lock) were
++        // 240x170-ish (240x320 era). After (5)/(7) enlarged their switches to 70x44 and
++        // keyboard buttons to 50x44, the controls overlap the next row and crowd the edges
++        // on the 540px panel. Reflow each: widen the box to 430 (centered TOP_MID, ~55px
++        // side margins on 540), re-space rows so nothing collides, move the enlarged
++        // controls onto a consistent right rail, and bump the small anon labels to a
++        // readable font. These panels are LV_LAYOUT_NONE + TOP_MID, so set_pos/set_y/
++        // set_align are honored.
++        //
++        // CLIP/TOUCH SAFETY: a child that overflows a clipping ancestor is dropped from
++        // LVGL's hit-test (the dialog-touch bug). set_pos() is relative to the panel
++        // CONTENT origin (inside border+padding); content_w = W - 2*border - pad_l - pad_r,
++        // content_h = H - 2*border - pad_t - pad_b. Every interactive child below is placed
++        // with x>=0, y>=0, x+w<=content_w, y+h<=(band_top) so all stay fully inside.
++        //
++        // FONT NOTE: lv_conf.h has LV_FONT_MONTSERRAT_18=0 and _20=0 (disabled), so the
++        // built-in lv_font_montserrat_18 is NOT linkable. Use the EEZ-exported fonts that
++        // the rest of this hotfix already uses: FB (=ui_font_montserrat_20) for the labels,
++        // ui_font_montserrat_16 for the (now taller) text fields. Both are declared extern
++        // in generated/ui_240x320/fonts.h.
++        //
++        // RIGHT-RAIL SIGN SAFETY: rather than reason about LV_ALIGN_TOP_RIGHT's offset sign
++        // (where the original screen_lock controls live), every control I reposition on the
++        // right is switched to LV_ALIGN_TOP_LEFT with an explicit x = content_w - ctrl_w -
++        // margin. Unambiguous and matches how the keyboard buttons were originally placed
++        // (LV_ALIGN_DEFAULT == TOP_LEFT + absolute x).
++        const lv_font_t *FF = &ui_font_montserrat_16; // text-field font (16 fits a 40px field)
++
++        // ---- DIALOG 1: WiFi (settings_wifi_panel) ----
++        // box 430x260; border2 pad t6/b10/l5/r5 -> content 416 x 240; band(64) top @ y176.
++        // child indices verified in screens.c ~3824 creation order.
++        if (objects.settings_wifi_panel) {
++            lv_obj_t *p = objects.settings_wifi_panel;
++            lv_obj_set_size(p, 430, 260);
++            // [0] "WiFi SSID" label
++            lv_obj_t *l0 = lv_obj_get_child(p, 0);
++            if (l0) {
++                lv_obj_set_style_text_font(l0, FB, md);
++                lv_obj_set_width(l0, 240);
++                lv_obj_set_y(l0, 8);
++            }
++            // [1] SSID textarea -> wide on the left, taller
++            if (objects.settings_wifi_ssid_textarea) {
++                lv_obj_set_align(objects.settings_wifi_ssid_textarea, LV_ALIGN_TOP_LEFT);
++                lv_obj_set_pos(objects.settings_wifi_ssid_textarea, 0, 34);
++                lv_obj_set_size(objects.settings_wifi_ssid_textarea, 330, 40);
++                lv_obj_set_style_text_font(objects.settings_wifi_ssid_textarea, FF, md);
++            }
++            // [2] keyboard_button_8 (50x44) just right of the SSID field, inside content
++            if (objects.keyboard_button_8) {
++                lv_obj_set_align(objects.keyboard_button_8, LV_ALIGN_TOP_LEFT);
++                lv_obj_set_pos(objects.keyboard_button_8, 360, 34); // 360+50=410 <= 416
++            }
++            // [3] "WiFi pre-shared Key" label (row 2)
++            lv_obj_t *l3 = lv_obj_get_child(p, 3);
++            if (l3) {
++                lv_obj_set_style_text_font(l3, FB, md);
++                lv_obj_set_width(l3, 240);
++                lv_obj_set_y(l3, 92);
++            }
++            // [4] password textarea
++            if (objects.settings_wifi_password_textarea) {
++                lv_obj_set_align(objects.settings_wifi_password_textarea, LV_ALIGN_TOP_LEFT);
++                lv_obj_set_pos(objects.settings_wifi_password_textarea, 0, 118);
++                lv_obj_set_size(objects.settings_wifi_password_textarea, 330, 40);
++                lv_obj_set_style_text_font(objects.settings_wifi_password_textarea, FF, md);
++            }
++            // [5] keyboard_button_9
++            if (objects.keyboard_button_9) {
++                lv_obj_set_align(objects.keyboard_button_9, LV_ALIGN_TOP_LEFT);
++                lv_obj_set_pos(objects.keyboard_button_9, 360, 118); // btn bottom 162 < band top 176
++            }
++            // [6] obj8 OK/Cancel wrapper: LEAVE (auto-bottoms; (7) un-clipped it).
++        }
++
++        // ---- DIALOG 2: Username (settings_username_panel) ----
++        // box 430x260; same padding -> content 416 x 240; band(64) top @ y176.
++        // child indices verified in screens.c ~3231 creation order.
++        if (objects.settings_username_panel) {
++            lv_obj_t *p = objects.settings_username_panel;
++            lv_obj_set_size(p, 430, 260);
++            // [0] "Short Name" label
++            lv_obj_t *l0 = lv_obj_get_child(p, 0);
++            if (l0) {
++                lv_obj_set_style_text_font(l0, FB, md);
++                lv_obj_set_width(l0, 240);
++                lv_obj_set_y(l0, 8);
++            }
++            // [1] short-name textarea: was PCT42 TOP_MID -> fixed narrow field, left rail
++            if (objects.settings_user_short_textarea) {
++                lv_obj_set_align(objects.settings_user_short_textarea, LV_ALIGN_TOP_LEFT);
++                lv_obj_set_pos(objects.settings_user_short_textarea, 0, 34);
++                lv_obj_set_size(objects.settings_user_short_textarea, 150, 40);
++                lv_obj_set_style_text_font(objects.settings_user_short_textarea, FF, md);
++            }
++            // [2] keyboard_button_1 just right of the short field (150+20 gap)
++            if (objects.keyboard_button_1) {
++                lv_obj_set_align(objects.keyboard_button_1, LV_ALIGN_TOP_LEFT);
++                lv_obj_set_pos(objects.keyboard_button_1, 170, 34); // 170+50=220 <= 416
++            }
++            // [3] "Long Name" label (row 2)
++            lv_obj_t *l3 = lv_obj_get_child(p, 3);
++            if (l3) {
++                lv_obj_set_style_text_font(l3, FB, md);
++                lv_obj_set_width(l3, 240);
++                lv_obj_set_y(l3, 92);
++            }
++            // [4] long-name textarea: wide, left rail
++            if (objects.settings_user_long_textarea) {
++                lv_obj_set_align(objects.settings_user_long_textarea, LV_ALIGN_TOP_LEFT);
++                lv_obj_set_pos(objects.settings_user_long_textarea, 0, 118);
++                lv_obj_set_size(objects.settings_user_long_textarea, 330, 40);
++                lv_obj_set_style_text_font(objects.settings_user_long_textarea, FF, md);
++            }
++            // [5] keyboard_button_2
++            if (objects.keyboard_button_2) {
++                lv_obj_set_align(objects.keyboard_button_2, LV_ALIGN_TOP_LEFT);
++                lv_obj_set_pos(objects.keyboard_button_2, 360, 118); // btn bottom 162 < band top 176
++            }
++            // [6] obj3 OK/Cancel wrapper: LEAVE.
++        }
++
++        // ---- DIALOG 3: Screen Lock (settings_screen_lock_panel) ----
++        // box 430x260; border2 pad l10 (t/r/b 0) -> content 416 x 256.
++        // obj12 band is BOTTOM_MID with +10 y (hangs 10px below content bottom but its
++        // wrapper got OVERFLOW_VISIBLE in (7)); effective band top ~ 256-64+10 = 202, so
++        // keep the last row's bottom < ~200. The two 70x44 switches at y0/y35 (35<44) used
++        // to overlap -> re-space to 58px pitch. child indices verified in screens.c ~4108;
++        // NOTE obj12 is child [6] and keyboard_button_7 is child [7] (created last).
++        if (objects.settings_screen_lock_panel) {
++            lv_obj_t *p = objects.settings_screen_lock_panel;
++            lv_obj_set_size(p, 430, 260);
++            const int32_t clw = 416; // content width
++            // [0] "Screen Lock" label (row 1, left)
++            lv_obj_t *l0 = lv_obj_get_child(p, 0);
++            if (l0) {
++                lv_obj_set_style_text_font(l0, FB, md);
++                lv_obj_set_width(l0, 220);
++                lv_obj_set_pos(l0, 0, 12);
++            }
++            // [1] screen-lock switch (70x44) -> right rail, row 1
++            if (objects.settings_screen_lock_switch) {
++                lv_obj_set_align(objects.settings_screen_lock_switch, LV_ALIGN_TOP_LEFT);
++                lv_obj_set_pos(objects.settings_screen_lock_switch, clw - 70 - 6, 8); // 340..410
++            }
++            // [2] "Settings Lock" label (row 2, left) - 58px below row 1
++            lv_obj_t *l2 = lv_obj_get_child(p, 2);
++            if (l2) {
++                lv_obj_set_style_text_font(l2, FB, md);
++                lv_obj_set_width(l2, 220);
++                lv_obj_set_pos(l2, 0, 70);
++            }
++            // [3] settings-lock switch (70x44) -> right rail, row 2 (top 66, bottom 110;
++            //     row-1 switch bottom 52 -> 14px gap, no overlap)
++            if (objects.settings_settings_lock_switch) {
++                lv_obj_set_align(objects.settings_settings_lock_switch, LV_ALIGN_TOP_LEFT);
++                lv_obj_set_pos(objects.settings_settings_lock_switch, clw - 70 - 6, 66); // 340..410
++            }
++            // [4] "Lock PIN" label (row 3, left)
++            lv_obj_t *l4 = lv_obj_get_child(p, 4);
++            if (l4) {
++                lv_obj_set_style_text_font(l4, FB, md);
++                lv_obj_set_width(l4, 120);
++                lv_obj_set_pos(l4, 0, 128);
++            }
++            // [5] PIN textarea -> right area, left of the keyboard button (row 3)
++            if (objects.settings_screen_lock_password_textarea) {
++                lv_obj_set_align(objects.settings_screen_lock_password_textarea, LV_ALIGN_TOP_LEFT);
++                lv_obj_set_pos(objects.settings_screen_lock_password_textarea, 220, 124); // 220..350
++                lv_obj_set_size(objects.settings_screen_lock_password_textarea, 130, 40);
++                lv_obj_set_style_text_font(objects.settings_screen_lock_password_textarea, FF, md);
++            }
++            // [6] obj12 OK/Cancel wrapper: LEAVE.
++            // [7] keyboard_button_7 (50x44) -> far right, row 3 (360..410; bottom 168 < 200)
++            if (objects.keyboard_button_7) {
++                lv_obj_set_align(objects.keyboard_button_7, LV_ALIGN_TOP_LEFT);
++                lv_obj_set_pos(objects.keyboard_button_7, clw - 50 - 6, 124); // 360..410
++            }
++        }
 +    }
 +
      lv_obj_move_foreground(objects.keyboard);
      lv_obj_add_flag(objects.detector_radar_panel, LV_OBJ_FLAG_HIDDEN);
      lv_obj_add_flag(objects.detected_node_button, LV_OBJ_FLAG_HIDDEN);
-@@ -3422,7 +3507,7 @@ void TFTView_320x240::updateSignalStrength(int32_t rssi, float snr)
+@@ -3422,7 +3905,7 @@ void TFTView_320x240::updateSignalStrength(int32_t rssi, float snr)
   */
  uint32_t TFTView_320x240::preset2val(meshtastic_Config_LoRaConfig_ModemPreset preset)
  {
@@ -735,7 +1133,7 @@ index e04073d..17f25e8 100644
  
      if (preset > (sizeof(val) / sizeof(val[0]) - 1) || val[preset] == -1) {
          ILOG_WARN("unknown or deprecated preset value: %d", preset);
-@@ -3440,7 +3525,8 @@ meshtastic_Config_LoRaConfig_ModemPreset TFTView_320x240::val2preset(uint32_t va
+@@ -3440,7 +3923,8 @@ meshtastic_Config_LoRaConfig_ModemPreset TFTView_320x240::val2preset(uint32_t va
          meshtastic_Config_LoRaConfig_ModemPreset_LONG_FAST,   meshtastic_Config_LoRaConfig_ModemPreset_LONG_MODERATE,
          meshtastic_Config_LoRaConfig_ModemPreset_LONG_TURBO,  meshtastic_Config_LoRaConfig_ModemPreset_MEDIUM_FAST,
          meshtastic_Config_LoRaConfig_ModemPreset_MEDIUM_SLOW, meshtastic_Config_LoRaConfig_ModemPreset_SHORT_FAST,
@@ -745,6 +1143,81 @@ index e04073d..17f25e8 100644
      if (val > (sizeof(preset) / sizeof(preset[0]) - 1)) {
          ILOG_ERROR("unknown preset value: %d", val);
          return meshtastic_Config_LoRaConfig_ModemPreset_LONG_FAST;
+@@ -6938,6 +7422,12 @@ void TFTView_320x240::showMessages(uint32_t nodeNum)
+     }
+ }
+ 
++// Panel-slide distance from the last messaging showKeyboard(), so hideKeyboard() can
++// reverse exactly that. On the native panel the keyboard is now taller than the slide,
++// so the keyboard height no longer equals the slide. Single view instance -> a file-scope
++// static is sufficient.
++static int32_t s_messagesKbSlide = 0;
++
+ /**
+  * @brief Place keyboard at a suitable space above or below the text input area
+  *
+@@ -6953,17 +7443,37 @@ void TFTView_320x240::showKeyboard(lv_obj_t *textArea)
+ 
+     if (textArea == objects.message_input_area) {
+         // if keyboard is to be shown in message input area then scroll the panel using animation
+-        static auto panelAnimCB = [](void *var, int32_t v) { lv_obj_set_y((lv_obj_t *)var, v); };
+-        static auto kbdAnimCB = [](void *var, int32_t v) { lv_obj_set_y((lv_obj_t *)var, v); };
++        static auto panelAnimCB = [](void *var, int32_t y) { lv_obj_set_y((lv_obj_t *)var, y); };
++        static auto kbdAnimCB = [](void *var, int32_t y) { lv_obj_set_y((lv_obj_t *)var, y); };
+ 
+-        static lv_anim_t a1;
+         lv_area_t panel_coords;
+         lv_obj_get_coords(objects.messages_panel, &panel_coords);
+ 
++        // On tall native panels (T-Display P4 540x1168) the messages_panel bottom sits a
++        // bottom-nav height (~12%) above the screen bottom, so the old "slide panel by
++        // kb_h, rest keyboard at v-kb_h" stranded the input row mid-screen and left a big
++        // dark gap above the keys. Use a FIXED keyboard height (from screen geometry, not
++        // the keyboard's current height, which would accumulate over repeated show/hide)
++        // and anchor the keyboard top exactly where the input row lands. Store the panel
++        // slide so hideKeyboard() reverses it (the keyboard is now taller than the slide).
++        int32_t kbH, kbTop, slide;
++        if (v > 800) {
++            kbH   = (int32_t)v * 2 / 5;             // 40% keyboard on the native panel
++            kbTop = (int32_t)v - kbH;               // keyboard bottom == screen bottom
++            slide = panel_coords.y2 - kbTop;        // slide input-row bottom down onto kbTop
++        } else {
++            kbH   = (int32_t)kb_h;                  // small panels: original behavior unchanged
++            kbTop = (int32_t)v - (int32_t)kb_h;
++            slide = (int32_t)kb_h;
++        }
++        s_messagesKbSlide = slide;
++        lv_obj_set_height(objects.keyboard, kbH);
++
++        static lv_anim_t a1;
+         lv_anim_init(&a1);
+         lv_anim_set_var(&a1, objects.messages_panel);
+         lv_anim_set_exec_cb(&a1, panelAnimCB);
+-        lv_anim_set_values(&a1, panel_coords.y1, panel_coords.y1 - kb_h);
++        lv_anim_set_values(&a1, panel_coords.y1, panel_coords.y1 - slide);
+         lv_anim_set_duration(&a1, 300);
+         lv_anim_set_path_cb(&a1, lv_anim_path_linear);
+         lv_anim_start(&a1);
+@@ -6972,7 +7482,7 @@ void TFTView_320x240::showKeyboard(lv_obj_t *textArea)
+         lv_anim_init(&a2);
+         lv_anim_set_var(&a2, objects.keyboard);
+         lv_anim_set_exec_cb(&a2, kbdAnimCB);
+-        lv_anim_set_values(&a2, v, v - kb_h);
++        lv_anim_set_values(&a2, v, kbTop);
+         lv_anim_set_duration(&a2, 300);
+         lv_anim_set_path_cb(&a2, lv_anim_path_linear);
+         lv_anim_start(&a2);
+@@ -7009,7 +7519,9 @@ void TFTView_320x240::hideKeyboard(lv_obj_t *panel)
+         lv_anim_init(&a1);
+         lv_anim_set_var(&a1, panel);
+         lv_anim_set_exec_cb(&a1, panelAnimCB);
+-        lv_anim_set_values(&a1, panel_coords.y1, panel_coords.y1 + kb_h);
++        // reverse exactly the slide showKeyboard() applied (the keyboard is now taller
++        // than the slide on native panels, so kb_h is no longer the right amount).
++        lv_anim_set_values(&a1, panel_coords.y1, panel_coords.y1 + s_messagesKbSlide);
+         lv_anim_set_duration(&a1, 300);
+         lv_anim_set_path_cb(&a1, lv_anim_path_linear);
+         lv_anim_start(&a1);
 diff --git a/source/graphics/driver/DisplayDriverFactory.cpp b/source/graphics/driver/DisplayDriverFactory.cpp
 index 730a424..5258499 100644
 --- a/source/graphics/driver/DisplayDriverFactory.cpp
