@@ -59,6 +59,17 @@ def main():
         node.writeConfig("lora")
         time.sleep(2)
 
+    if "--set-bt" in sys.argv:
+        # On boards not in NodeDB's BT-off-by-default list (incl. T-Display P4), a fresh
+        # config defaults bluetooth.enabled=true, which forces the MUI into a dead-end
+        # "programming mode" screen on BT-excluded builds. Set it off to recover.
+        val = sys.argv[sys.argv.index("--set-bt") + 1].lower() in ("on", "true", "1", "enable")
+        node = iface.localNode
+        node.localConfig.bluetooth.enabled = val
+        print(f"\nsetting bluetooth.enabled = {val} (device will reboot)...")
+        node.writeConfig("bluetooth")
+        time.sleep(2)
+
     iface.close()
 
 

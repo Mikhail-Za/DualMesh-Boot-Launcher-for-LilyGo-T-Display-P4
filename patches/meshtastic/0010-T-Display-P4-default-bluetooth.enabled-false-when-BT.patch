@@ -1,0 +1,36 @@
+From 912027cecd739d17fe34b062e7122554dda96f53 Mon Sep 17 00:00:00 2001
+From: Mikhail-Za <86077672+Mikhail-Za@users.noreply.github.com>
+Date: Wed, 17 Jun 2026 15:53:58 -0500
+Subject: [PATCH] T-Display P4: default bluetooth.enabled=false when BT is
+ excluded
+
+On MESHTASTIC_EXCLUDE_BLUETOOTH builds (T-Display P4 dual-boot), a fresh
+config defaulted bluetooth.enabled=true (the T-Display P4 is not in NodeDB's
+BT-off-by-default board list), which forces the on-screen MUI client into a
+dead-end Bluetooth "programming mode" screen every boot. Default it off when
+Bluetooth is compiled out.
+
+Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
+---
+ src/mesh/NodeDB.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/mesh/NodeDB.cpp b/src/mesh/NodeDB.cpp
+index ac724e5e0..850be9061 100644
+--- a/src/mesh/NodeDB.cpp
++++ b/src/mesh/NodeDB.cpp
+@@ -934,6 +934,11 @@ void NodeDB::installDefaultConfig(bool preserveKey = false)
+     HAS_TFT
+     // switch BT off by default; use TFT programming mode or hotkey to enable
+     config.bluetooth.enabled = false;
++#elif defined(MESHTASTIC_EXCLUDE_BLUETOOTH)
++    // BT is compiled out of this build (T-Display P4 dual-boot) -> never default it on,
++    // or PacketAPI (runOnce) traps the MUI in a dead-end Bluetooth "programming mode"
++    // screen on every fresh config. (Recovered Unit B 2026-06-17 by setting it off.)
++    config.bluetooth.enabled = false;
+ #else
+     // default to bluetooth capability of platform as default
+     config.bluetooth.enabled = true;
+-- 
+2.53.0.windows.2
+
