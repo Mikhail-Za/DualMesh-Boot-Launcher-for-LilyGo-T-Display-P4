@@ -330,12 +330,16 @@ void ShowOverwriteConfirm(int slot) {
 }
 
 void StartInstall(int slot) {
-  if (g_selected_file.empty()) {
-    lv_label_set_text(g_progress_label, "Select a .bin file first");
+  if (slot == 0) {
+    // ota_0 holds the licensed MeshOS. A short TAP never flashes it, so the
+    // license can't be lost to a stray tap. It's locked by default; a deliberate
+    // LONG-PRESS on the slot-0 button (see BuildUi) opens the overwrite confirm,
+    // so someone who doesn't have/want MeshOS can use ota_0 for their own firmware.
+    lv_label_set_text(g_progress_label, "Slot 0 is MeshOS - long-press the button to unlock");
     return;
   }
-  if (slot == 0 && SlotBootable(0)) {
-    ShowOverwriteConfirm(slot);
+  if (g_selected_file.empty()) {
+    lv_label_set_text(g_progress_label, "Select a .bin file first");
     return;
   }
   DoStartInstall(slot);
@@ -401,7 +405,7 @@ void BuildUi(lv_display_t *display) {
   lv_obj_set_flex_flow(row, LV_FLEX_FLOW_ROW);
   lv_obj_set_flex_align(row, LV_FLEX_ALIGN_SPACE_EVENLY, LV_FLEX_ALIGN_CENTER,
                         LV_FLEX_ALIGN_CENTER);
-  const char *install_names[2] = {"Install > Slot 0", "Install > Slot 1"};
+  const char *install_names[2] = {"Slot 0: MeshOS (hold to unlock)", "Install > Slot 1"};
   for (int i = 0; i < 2; i++) {
     g_install_btn[i] = lv_button_create(row);
     lv_obj_set_size(g_install_btn[i], 220, 60);
@@ -414,6 +418,12 @@ void BuildUi(lv_display_t *display) {
         [](lv_event_t *e) { StartInstall(*(int *)lv_event_get_user_data(e)); },
         LV_EVENT_CLICKED, &slot_ids2[i]);
   }
+  // ota_0 = MeshOS, locked by default. A short tap is refused (see StartInstall);
+  // a deliberate LONG-PRESS opens the overwrite confirm, so someone who doesn't
+  // want MeshOS can flash their own firmware into the slot.
+  lv_obj_add_event_cb(
+      g_install_btn[0], [](lv_event_t *) { ShowOverwriteConfirm(0); },
+      LV_EVENT_LONG_PRESSED, NULL);
 
   g_progress_bar = lv_bar_create(scr);
   lv_obj_set_size(g_progress_bar, lv_pct(100), 18);
