@@ -33,3 +33,7 @@ notes/at-scout.txt
 notes/*.txt
 notes/*.log
 device-ui-tdp4/
+
+# local-only, not for publication
+trail-mate/
+TRAILMATE-PORT-PLAN.md
