@@ -24,6 +24,7 @@ c6-updater/dependencies.lock
 c6-updater/sdkconfig
 c6-updater/sdkconfig.old
 c6-updater/main/slave_fw.bin
+c6-updater/build_updater.log
 
 __pycache__/
 notes/*-capture.txt
