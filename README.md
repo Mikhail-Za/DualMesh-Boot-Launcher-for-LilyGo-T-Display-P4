@@ -11,6 +11,15 @@ independently validated on a third device by
 which used it to install and boot two other firmwares. Believed to be the first
 multi-firmware boot solution for this board.
 
+## Also for this board: Trail Mate
+
+If you want a full standalone outdoor OS for the T-Display P4 rather than a
+boot-switcher, see [my Trail Mate fork](https://github.com/Mikhail-Za/trail-mate-T-display-p4-):
+an offline-first handheld system (GPS navigation, offline maps, LoRa comms, team
+awareness) with a long list of added apps: waypoints, compass, trip computer,
+emergency beacon, walkie PTT, games, and more. It uses its own partition layout,
+so flash it standalone rather than into a DualMesh slot.
+
 ## How it works
 
 A small LVGL touch UI lives in the `factory` partition. The ESP-IDF bootloader falls
@@ -124,15 +133,6 @@ Full narrative, boot logs, and the complete trap list: `notes/session-log.md`.
 No firmware binaries. Build the open-source projects from their own repos. If your
 board shipped with a licensed firmware, extract the app image from **your own
 device's** flash dump (`tools/parse_partitions.py` does this) and keep it private.
-
-## Related: Trail Mate for the T-Display P4
-
-If you want a full standalone outdoor OS for this board rather than a boot-switcher,
-see [my Trail Mate fork](https://github.com/Mikhail-Za/trail-mate-T-display-p4-):
-an offline-first handheld system (GPS navigation, offline maps, LoRa comms, team
-awareness) with a long list of added apps: waypoints, compass, trip computer,
-emergency beacon, walkie PTT, games, and more. It uses its own partition layout,
-so flash it standalone rather than into a DualMesh slot.
 
 ## Roadmap
 
