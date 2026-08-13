@@ -1,5 +1,5 @@
 # Licensed/extracted binaries and full flash dumps — never version, never publish.
-# MeshOS is Andy Kirby's closed-source licensed firmware; the dump contains it.
+# The dumps contain closed-source licensed firmware.
 backups/
 
 # External clones (LilyGo SDK + reference ports) — patches/ captures our changes

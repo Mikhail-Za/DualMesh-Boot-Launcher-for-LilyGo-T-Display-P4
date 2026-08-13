@@ -84,7 +84,7 @@ bool SlotBootable(int slot) {
 }
 
 /* Last-booted slot lives in the mesh_nvs partition (never in "nvs" — that one
- * belongs to MeshOS and we treat it as read-only). */
+ * belongs to the resident firmware and we treat it as read-only). */
 int LoadLastSlot(void) {
   if (!g_nvs_ok) return -1;
   nvs_handle_t h;
@@ -231,7 +231,7 @@ void InstallTask(void *arg) {
 /* ---------- UI ---------- */
 
 void RefreshSlotsUi() {
-  const char *names[2] = {"Slot 0 - MeshCore bay", "Slot 1 - Meshtastic bay"};
+  const char *names[2] = {"Slot 0 - large bay", "Slot 1 - flex bay"};
   for (int i = 0; i < 2; i++) {
     std::string d = DescribeSlot(i);
     lv_label_set_text_fmt(g_slot_status[i], "%s\n%s", names[i], d.c_str());
@@ -282,8 +282,8 @@ void DoStartInstall(int slot) {
   xTaskCreate(InstallTask, "install", 8192, job, 4, NULL);
 }
 
-/* Slot 0 holds licensed MeshOS, which cannot be re-downloaded — overwriting it
- * requires explicit confirmation. */
+/* Slot 0 is the resident bay and may hold licensed firmware that cannot be
+ * re-downloaded — overwriting it requires explicit confirmation. */
 void ShowOverwriteConfirm(int slot) {
   lv_obj_t *overlay = lv_obj_create(lv_layer_top());
   lv_obj_set_size(overlay, lv_pct(100), lv_pct(100));
@@ -297,8 +297,8 @@ void ShowOverwriteConfirm(int slot) {
 
   lv_obj_t *warn = lv_label_create(overlay);
   lv_label_set_text(warn,
-                    "Slot 0 holds MeshCore (licensed).\n"
-                    "It cannot be re-downloaded.\n\nOverwrite it?");
+                    "Slot 0 may hold licensed firmware\n"
+                    "that cannot be re-downloaded.\n\nOverwrite it?");
   lv_obj_set_style_text_color(warn, lv_color_hex(0xF2C14E), 0);
   lv_obj_set_style_text_font(warn, &lv_font_montserrat_24, 0);
   lv_obj_set_style_text_align(warn, LV_TEXT_ALIGN_CENTER, 0);
@@ -331,11 +331,11 @@ void ShowOverwriteConfirm(int slot) {
 
 void StartInstall(int slot) {
   if (slot == 0) {
-    // ota_0 holds the licensed MeshOS. A short TAP never flashes it, so the
-    // license can't be lost to a stray tap. It's locked by default; a deliberate
+    // ota_0 is locked by default: a short TAP never flashes it, so a resident
+    // (possibly licensed) firmware can't be lost to a stray tap. A deliberate
     // LONG-PRESS on the slot-0 button (see BuildUi) opens the overwrite confirm,
-    // so someone who doesn't have/want MeshOS can use ota_0 for their own firmware.
-    lv_label_set_text(g_progress_label, "Slot 0 is MeshOS - long-press the button to unlock");
+    // so the bay is still fully usable for any firmware.
+    lv_label_set_text(g_progress_label, "Slot 0 is locked - long-press the button to unlock");
     return;
   }
   if (g_selected_file.empty()) {
@@ -405,7 +405,7 @@ void BuildUi(lv_display_t *display) {
   lv_obj_set_flex_flow(row, LV_FLEX_FLOW_ROW);
   lv_obj_set_flex_align(row, LV_FLEX_ALIGN_SPACE_EVENLY, LV_FLEX_ALIGN_CENTER,
                         LV_FLEX_ALIGN_CENTER);
-  const char *install_names[2] = {"Slot 0: MeshOS (hold to unlock)", "Install > Slot 1"};
+  const char *install_names[2] = {"Slot 0 (hold to unlock)", "Install > Slot 1"};
   for (int i = 0; i < 2; i++) {
     g_install_btn[i] = lv_button_create(row);
     lv_obj_set_size(g_install_btn[i], 220, 60);
@@ -418,9 +418,9 @@ void BuildUi(lv_display_t *display) {
         [](lv_event_t *e) { StartInstall(*(int *)lv_event_get_user_data(e)); },
         LV_EVENT_CLICKED, &slot_ids2[i]);
   }
-  // ota_0 = MeshOS, locked by default. A short tap is refused (see StartInstall);
-  // a deliberate LONG-PRESS opens the overwrite confirm, so someone who doesn't
-  // want MeshOS can flash their own firmware into the slot.
+  // ota_0 is locked by default. A short tap is refused (see StartInstall);
+  // a deliberate LONG-PRESS opens the overwrite confirm, so the resident
+  // firmware can't be lost to a stray tap.
   lv_obj_add_event_cb(
       g_install_btn[0], [](lv_event_t *) { ShowOverwriteConfirm(0); },
       LV_EVENT_LONG_PRESSED, NULL);
@@ -464,7 +464,7 @@ void ShowAutoBootSplash(int slot) {
   lv_obj_add_flag(st->overlay, LV_OBJ_FLAG_CLICKABLE);
 
   lv_obj_t *title = lv_label_create(st->overlay);
-  lv_label_set_text_fmt(title, "Booting %s", slot == 0 ? "MeshCore" : "Slot 1");
+  lv_label_set_text_fmt(title, "Booting Slot %d", slot);
   lv_obj_set_style_text_font(title, &lv_font_montserrat_28, 0);
   lv_obj_set_style_text_color(title, lv_color_hex(0xE8EDF2), 0);
 

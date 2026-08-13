@@ -1,6 +1,6 @@
-# Restore Unit A to the exact stock MeshOS state captured 2026-06-12.
-# Writes the full 16MB dump back — bootloader, stock partition table, MeshOS
-# in factory slot, NVS with license cache and user config. Takes ~10 min.
+# Restore Unit A to the exact stock state captured 2026-06-12.
+# Writes the full 16MB dump back — bootloader, stock partition table, stock
+# firmware in factory slot, NVS with license cache and user config. Takes ~10 min.
 param([string]$Port = 'COM6')
 
 $root = Split-Path $PSScriptRoot -Parent

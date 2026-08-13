@@ -9,7 +9,7 @@ CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
 CONFIG_PARTITION_TABLE_CUSTOM=y
 CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions_dualmesh.csv"
 
-# Match the flash mode/freq of the stock MeshOS image header (DIO @ 80MHz)
+# Match the flash mode/freq of the stock image header (DIO @ 80MHz)
 CONFIG_ESPTOOLPY_FLASHMODE_DIO=y
 CONFIG_ESPTOOLPY_FLASHFREQ_80M=y
 
@@ -17,8 +17,8 @@ CONFIG_ESPTOOLPY_FLASHFREQ_80M=y
 CONFIG_COMPILER_OPTIMIZATION_SIZE=y
 
 # GRUB-mode boot flow: app rollback makes every esp_ota_set_boot_partition a
-# ONE-SHOT boot. The booted firmware (closed-source MeshOS) never confirms the
-# image, so the next reset returns to the factory launcher, which shows a
+# ONE-SHOT boot. A booted firmware that never confirms the
+# image means the next reset returns to the factory launcher, which shows a
 # tap-to-interrupt splash and auto-boots the last choice. No buttons needed.
 # (GPIO35 factory-reset was abandoned: it is the download strap — holding it at
 # reset enters ROM download mode, and the bootloader samples it too early to
