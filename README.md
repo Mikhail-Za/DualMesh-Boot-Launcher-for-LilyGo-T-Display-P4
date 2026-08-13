@@ -17,8 +17,9 @@ If you want a full standalone outdoor OS for the T-Display P4 rather than a
 boot-switcher, see [my Trail Mate fork](https://github.com/Mikhail-Za/trail-mate-T-display-p4-):
 an offline-first handheld system (GPS navigation, offline maps, LoRa comms, team
 awareness) with a long list of added apps: waypoints, compass, trip computer,
-emergency beacon, walkie PTT, games, and more. It uses its own partition layout,
-so flash it standalone rather than into a DualMesh slot.
+emergency beacon, walkie PTT, games, and more. Flash it standalone with its own
+partition layout, or install its app-only `.bin` into slot 1 from the SD card
+(that is how my units run it).
 
 ## How it works
 
@@ -57,6 +58,7 @@ to use its own `mesh_nvs`/`mesh_fs`, so the two stacks never share storage.
 |----------|------|--------|
 | The firmware your board shipped with | slot0 | relocated from the factory slot with settings + license data intact (both my units) |
 | Meshtastic 2.8.x (this repo's `patches/meshtastic/`) | ota_1 | working: display, touch, LoRa RF pair test, battery gauge, GPS |
+| [Trail Mate](https://github.com/Mikhail-Za/trail-mate-T-display-p4-) (app-only `.bin`) | ota_1 | working: installed from SD via the launcher (both my units) |
 | Meck-P4 v0.7.1 | either | reported working via [pelgraine's fork](https://github.com/pelgraine/DualMesh-Boot-Launcher-for-LilyGo-T-Display-P4) |
 | Wadamesh beta_53 | either | reported working via [pelgraine's fork](https://github.com/pelgraine/DualMesh-Boot-Launcher-for-LilyGo-T-Display-P4) |
 
